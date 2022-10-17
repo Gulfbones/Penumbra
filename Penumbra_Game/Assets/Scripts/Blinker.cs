@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class blinker : MonoBehaviour
+public class Blinker : MonoBehaviour
 {
     private GameObject eyes;
     public float blinkTime = 5.0f;

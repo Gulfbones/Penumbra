@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Candle_UI : MonoBehaviour
 {
-    public pcScript playerScript;
+    public PlayerScript playerScript;
     public Vector3 initialPos;
     public float maxWax;
     // Start is called before the first frame update
@@ -12,7 +12,7 @@ public class Candle_UI : MonoBehaviour
     {
         //top = gameObject;
         initialPos = transform.localPosition;
-        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<pcScript>();
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         maxWax = playerScript.getWaxMax();
     }
 

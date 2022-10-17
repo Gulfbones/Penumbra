@@ -7,7 +7,7 @@ using System.Dynamic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class pcScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
     float waxMax = 4000.0f;
     float waxCurrent;

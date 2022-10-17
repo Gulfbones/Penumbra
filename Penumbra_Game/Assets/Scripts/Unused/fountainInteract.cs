@@ -5,13 +5,13 @@ using UnityEngine;
 public class fountainInteract : MonoBehaviour
 {
     bool used;
-    public pcScript playerScript;
+    public PlayerScript playerScript;
 
     // Start is called before the first frame update
     void Start()
     {
         used = false;
-        playerScript = GameObject.FindGameObjectWithTag("pc").GetComponent<pcScript>();
+        playerScript = GameObject.FindGameObjectWithTag("pc").GetComponent<PlayerScript>();
     }
 
     // Update is called once per frame

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class MovementScript : MonoBehaviour
+public class PlayerMovementScript : MonoBehaviour
 {
 
     public Vector3 rightMovement;

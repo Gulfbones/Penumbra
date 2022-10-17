@@ -5,14 +5,14 @@ using UnityEngine;
 public class lanternInteract : MonoBehaviour
 {
     bool used;
-    public pcScript playerScript;
+    public PlayerScript playerScript;
     public Light lanternLight;
 
     // Start is called before the first frame update
     void Start()
     {
         used = false;
-        playerScript = GameObject.FindGameObjectWithTag("pc").GetComponent<pcScript>();
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         lanternLight = GameObject.FindGameObjectWithTag("lanternLight").GetComponent<Light>();
         lanternLight.enabled = false;
     }
