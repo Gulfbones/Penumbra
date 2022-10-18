@@ -9,6 +9,8 @@ TagManager:
   - MinecartWall
   - Hazard
   - Interactable
+  - candleUIBottom
+  - waxbottle
   layers:
   - Default
   - TransparentFX
@@ -57,4 +59,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1909330347
+    locked: 0
+  - name: Items
+    uniqueID: 4104263087
     locked: 0
