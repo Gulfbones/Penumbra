@@ -15,7 +15,7 @@ public class EnemyScript : MonoBehaviour
     public int timer = 0;
     public int attackTimer = 300;
     private Vector3 desiredScale;
-    private float moveSpeed = 0.0f;
+    private float moveSpeed;
     public float stalkMoveSpeed = 12.0f;
     public float attackMoveSpeed = 10.0f;
     public float fleeMoveSpeed = -16.0f;
@@ -26,6 +26,7 @@ public class EnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        moveSpeed = 0.0f;
         OriginalGameObject = gameObject;
         animator = OriginalGameObject.transform.GetChild(0).GetComponent<Animator>();
         desiredScale = transform.localScale;

@@ -17,7 +17,7 @@ public class fountainInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        useFunction(playerScript.getCanInteractFountain());
+        //useFunction(playerScript.getCanInteractFountain());
         if (playerScript.getWaxCurrent() <= 0)
         {
             Destroy(gameObject);

@@ -20,7 +20,7 @@ public class lanternInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        useFunction(playerScript.getCanInteractLantern());
+        //useFunction(playerScript.getCanInteractLantern());
         //UnityEngine.Debug.Log("can interact lantern: " + playerScript.getCanInteractLantern());
         if (playerScript.getWaxCurrent()<=0)
         {

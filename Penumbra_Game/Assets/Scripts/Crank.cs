@@ -5,7 +5,6 @@ using UnityEngine;
 public class Crank : MonoBehaviour
 {
     private float turnAmount = 5.0f;
-    //private float fullTurnAmount;
     public bool handleCollected;
     public Sprite newSprite;
     public SpriteRenderer spriteRenderer;
@@ -21,21 +20,21 @@ public class Crank : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void Update() {}
+
+    // Collects the handle, changing the sprite and bool
     public void CollectHandle()
     {
         handleCollected = true;
+        // Changes Sprite to add handle
         spriteRenderer.sprite = newSprite;
     }
     void OnTriggerStay2D(Collider2D other)
     {
-        //Debug.Log(other.gameObject.tag);
+        // While the player is within the radius of the crank
         if (handleCollected && other.CompareTag("Player") && Input.GetKey(KeyCode.E))
         {
-            //Debug.Log("DOING");
+            // Moves the rails into place while all use conditions met
             rails.transform.localPosition = Vector3.MoveTowards(rails.transform.localPosition, new Vector3(6,0,0), 1.0f * Time.deltaTime); ;
         }
     }

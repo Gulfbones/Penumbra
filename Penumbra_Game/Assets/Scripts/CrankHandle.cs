@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CrankHandle : MonoBehaviour
 {
-    public Crank cranker;
-    //private bool collected = false;
+    public Crank cranker; // Script for crank
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,10 +13,9 @@ public class CrankHandle : MonoBehaviour
     }
 
     // Update is called once per frame :)
-    void Update()
-    { 
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
+    void Update() {}
+
+    private void OnTriggerEnter2D(Collider2D collision) // OnCollisionEnter2D(Collision2D collision)
     {
 
         Debug.Log(collision.gameObject.name);

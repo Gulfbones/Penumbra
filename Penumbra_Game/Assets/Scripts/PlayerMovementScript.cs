@@ -10,10 +10,9 @@ public class PlayerMovementScript : MonoBehaviour
     public Vector3 leftMovement;
     public Vector3 upMovement;
     public Vector3 downMovement;
-    public float animTriggerVelocity = 9.5f;
+    public float animTriggerVelocity = 9.5f; // How fast you need to move to trigger walk animation
     public Rigidbody2D playerPhysicsEngine;
 
-    //public Animator walk;
     public GameObject down;
     public GameObject up;
     public GameObject left;
@@ -56,9 +55,8 @@ public class PlayerMovementScript : MonoBehaviour
         leftMovement = new Vector3(-10, 0, 0);  // x, y, z
         upMovement = new Vector3(0, 10, 0);     // x, y, z
         downMovement = new Vector3(0, -10, 0);  // x, y, z
-        //Collider2D wallCollider = GameObject.FindGameObjectWithTag("MinecartWall").GetComponent<Collider2D>();
-        //Collider2D colliderWall = ;
-        //collision.gameObject.tag == "MinecartWall")
+        
+        // Probably not needed \/
         Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("MinecartWall").GetComponent<Collider2D>(), GetComponent<Collider2D>());
         
     }
@@ -74,6 +72,7 @@ public class PlayerMovementScript : MonoBehaviour
         if (direction != "right")
             right.SetActive(false);
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -84,7 +83,6 @@ public class PlayerMovementScript : MonoBehaviour
             currentDirection = down;
             right.SetActive(true);
             ClearActive("right");
-            //PlayerSpriteRenderer.flipX = false; // Flips player Sprite
             PlayerCandleSpriteRenderer.flipY = false; // Flips candle Sprite
             playerPhysicsEngine.velocity = new Vector3(rightMovement.x, playerPhysicsEngine.velocity.y, 0); // Adds Velocity which causes movement
             playerObject.transform.rotation = Quaternion.Euler(0, 0, 0); // Sets the Rotation of the child object "Player Object" which also rotates all other children objects
@@ -95,7 +93,6 @@ public class PlayerMovementScript : MonoBehaviour
             currentDirection = down;
             left.SetActive(true);
             ClearActive("left");
-            //PlayerSpriteRenderer.flipX = true; // Flips player Sprite
             PlayerCandleSpriteRenderer.flipY = true; // Flips candle Sprite
             playerPhysicsEngine.velocity = new Vector3(leftMovement.x, playerPhysicsEngine.velocity.y, 0);
             playerObject.transform.rotation = Quaternion.Euler(0, 0, 180); 
@@ -139,13 +136,14 @@ public class PlayerMovementScript : MonoBehaviour
             //else currentDirection.GetComponent<Animator>().SetBool("playWalk",false); 
         }
     }
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log(collision.gameObject.name);
+
         if (collision.gameObject.tag == "MinecartWall")
         {
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         }
     }
-
+    
 }

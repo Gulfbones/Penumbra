@@ -9,24 +9,21 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    float waxMax = 4000.0f;
+    float waxMax = 120.0f; // This float value represents amount of seconds the candle can burn
     float waxCurrent;
     float standardWaxLost;
     float attackingWaxLost;
     bool attacking;
     bool busy;
-    bool canInteractFountain;
-    bool canInteractLantern;
+    //bool canInteractFountain;
+    //bool canInteractLantern;
 
     // Start is called before the first frame update
     void Start()
     {
-        //waxMax = 20000.0f;
         waxCurrent = waxMax;
-        standardWaxLost = 15.5f;//.5
-        attackingWaxLost = 50.25f;//5.25
-        canInteractFountain = false;
-        canInteractLantern = false;
+        standardWaxLost = 1.0f; //.5
+        attackingWaxLost = 5.0f; //5.25
 
         attacking = false;
         busy = false;
@@ -38,8 +35,6 @@ public class PlayerScript : MonoBehaviour
     {
         isAttacking();
         waxMeter();
-        //UnityEngine.Debug.Log(waxCurrent);//testing
-        //UnityEngine.Debug.Log("isAttacking: " + isAttacking());//testing
     }
 
 
@@ -59,74 +54,41 @@ public class PlayerScript : MonoBehaviour
     public void waxMeter()
     {
         //Wax meter logic
-        if (attacking)
-        {
-            waxCurrent -= attackingWaxLost * Time.deltaTime;
-        }
-        else
+        if (!attacking)
         {
             waxCurrent -= standardWaxLost * Time.deltaTime;
         }
-        //makes sure current player wax doesn't go over maximum wax amount
+        else
+        {
+            waxCurrent -= attackingWaxLost * Time.deltaTime;
+        }
+        // Makes sure current player wax doesn't go over maximum wax amount
         if (waxCurrent > waxMax)
         {
             waxCurrent = waxMax;
         }
+        // No wax left
         if (waxCurrent <= 0)
         {
             UnityEngine.Debug.Log("Game Over");
-            //Destroy(gameObject); //destroy pc game object
+            //Destroy(gameObject); // Destroys player game object
         }
     }
     void OnTriggerStay2D(Collider2D other)
     {
-        //UnityEngine.Debug.Log(other.tag);
+        // If player touches a hazard
         if (other.CompareTag("Hazard")) {
-            waxCurrent -= 50.0f;
+            waxCurrent -= 20.0f;
         }
-        /*
-        //UnityEngine.Debug.Log("on trigger stay attacking:" + attacking); //testing
-        if (busy)
-        {
-            canInteractFountain = false;
-            canInteractLantern = false;
-        }
-        else if (attacking)
-        {
-            canInteractFountain = false;
-            canInteractLantern = false;
-        }
-        else if (other.gameObject.CompareTag("fountainInteract"))
-        {
-            canInteractFountain = true;
-        }
-        else if (other.gameObject.CompareTag("lanternInteract"))
-        {
-            canInteractLantern = true;
-        }
-        else
-        {
-            canInteractFountain = false;
-            canInteractLantern = false;
-        }
-        */
+        
     }
     private void OnTriggerEnter2D(Collider2D other) 
     {
+        // If enemy gets too close to player
         if (other.gameObject.CompareTag("Enemy"))
         {
-            waxCurrent -= 1000.0f;
+            waxCurrent -= 10.0f;
         }
-        /*
-        if (other.gameObject.CompareTag("fountainInteract"))
-        {
-            canInteractFountain = false;
-        }
-        if (other.gameObject.CompareTag("lanternInteract"))
-        {
-            canInteractLantern = false;
-        }
-        */
     
     }
     
@@ -158,22 +120,5 @@ public class PlayerScript : MonoBehaviour
     {
         return busy;
     }
-    public bool getCanInteractFountain()
-    {
-        return canInteractFountain;
-    }
-    public void setCanInteractFountain(bool input)
-    {
-        canInteractFountain = input;
-    }
-    public bool getCanInteractLantern()
-    {
-        return canInteractLantern;
-    }
-    public void setCanInteractLantern(bool input)
-    {
-        canInteractLantern = input;
-    }
-
-
+    
 }
