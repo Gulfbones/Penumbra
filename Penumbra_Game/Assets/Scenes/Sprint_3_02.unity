@@ -30178,6 +30178,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 766044536, guid: a2b6466fd9b72cf48b5e93fd2869f58f, type: 3}
+      propertyPath: m_LightType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 766044536, guid: a2b6466fd9b72cf48b5e93fd2869f58f, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 766044536, guid: a2b6466fd9b72cf48b5e93fd2869f58f, type: 3}
+      propertyPath: m_ShapeLightFalloffSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 766044536, guid: a2b6466fd9b72cf48b5e93fd2869f58f, type: 3}
+      propertyPath: m_ShapePath.Array.data[0].x
+      value: -0.46994552
+      objectReference: {fileID: 0}
+    - target: {fileID: 766044536, guid: a2b6466fd9b72cf48b5e93fd2869f58f, type: 3}
+      propertyPath: m_ShapePath.Array.data[0].y
+      value: -2.183044
+      objectReference: {fileID: 0}
+    - target: {fileID: 766044536, guid: a2b6466fd9b72cf48b5e93fd2869f58f, type: 3}
+      propertyPath: m_ShapePath.Array.data[1].x
+      value: 1.0109241
+      objectReference: {fileID: 0}
+    - target: {fileID: 766044536, guid: a2b6466fd9b72cf48b5e93fd2869f58f, type: 3}
+      propertyPath: m_ShapePath.Array.data[1].y
+      value: -2.152988
+      objectReference: {fileID: 0}
+    - target: {fileID: 766044536, guid: a2b6466fd9b72cf48b5e93fd2869f58f, type: 3}
+      propertyPath: m_ShapePath.Array.data[2].x
+      value: 0.9207611
+      objectReference: {fileID: 0}
+    - target: {fileID: 766044536, guid: a2b6466fd9b72cf48b5e93fd2869f58f, type: 3}
+      propertyPath: m_ShapePath.Array.data[2].y
+      value: 3.1447835
+      objectReference: {fileID: 0}
+    - target: {fileID: 766044536, guid: a2b6466fd9b72cf48b5e93fd2869f58f, type: 3}
+      propertyPath: m_ShapePath.Array.data[3].x
+      value: -0.5300544
+      objectReference: {fileID: 0}
+    - target: {fileID: 766044536, guid: a2b6466fd9b72cf48b5e93fd2869f58f, type: 3}
+      propertyPath: m_ShapePath.Array.data[3].y
+      value: 3.174837
+      objectReference: {fileID: 0}
     - target: {fileID: 940855317, guid: a2b6466fd9b72cf48b5e93fd2869f58f, type: 3}
       propertyPath: m_Mesh
       value: 
