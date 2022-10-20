@@ -437,6 +437,7 @@ GameObject:
   - component: {fileID: 492168305145633811}
   - component: {fileID: 492168305145633822}
   - component: {fileID: 7530339549709182707}
+  - component: {fileID: 1423929563986078351}
   m_Layer: 7
   m_Name: Player Main
   m_TagString: Player
@@ -609,6 +610,34 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492168305145633810}
   m_Enabled: 1
+--- !u!114 &1423929563986078351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492168305145633810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000053438d4e9f67743411ad5e6fab11ce71af15a2f4
+  m_ShapePath:
+  - {x: -0.5333333, y: 0.5333334, z: 0}
+  - {x: -0.5333333, y: -0.79999995, z: 0}
+  - {x: 0.13333338, y: -1.4666667, z: 0}
+  - {x: 0.8000001, y: -0.79999995, z: 0}
+  - {x: 0.8000001, y: 0.5333334, z: 0}
+  - {x: 0.13333338, y: 1.2, z: 0}
+  m_ShapePathHash: -594373715
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -17666
 --- !u!1 &492168305402302333
 GameObject:
   m_ObjectHideFlags: 0
