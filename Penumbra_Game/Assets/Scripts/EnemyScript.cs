@@ -74,13 +74,15 @@ public class EnemyScript : MonoBehaviour
         if ((transform.position).x > destination.x && desiredScale.x > 0) // On right side
         {
             //transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-            desiredScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            //desiredScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            desiredScale = new Vector3(desiredScale.x * -1, desiredScale.y, desiredScale.z);
 
         }
         if ((transform.position).x < destination.x && desiredScale.x < 0) // On left side
         {
             //transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-            desiredScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            //desiredScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            desiredScale = new Vector3(desiredScale.x * -1, desiredScale.y, desiredScale.z);
 
         }
     }

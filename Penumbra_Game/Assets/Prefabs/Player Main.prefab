@@ -171,7 +171,7 @@ MonoBehaviour:
   m_HasRenderer: 1
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
-  m_SelfShadows: 0
+  m_SelfShadows: 1
   m_ApplyToSortingLayers: 0000000053438d4e9f67743411ad5e6fab11ce71af15a2f4
   m_ShapePath:
   - {x: -1.4166297, y: -1.2760698, z: 0}
@@ -396,12 +396,12 @@ MonoBehaviour:
   m_HasRenderer: 1
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
-  m_SelfShadows: 0
+  m_SelfShadows: 1
   m_ApplyToSortingLayers: 0000000053438d4e9f67743411ad5e6fab11ce71af15a2f4
   m_ShapePath:
-  - {x: -0.6160697, y: -1.2760698, z: 0}
-  - {x: 0.7228108, y: -1.7030349, z: 0}
-  - {x: 1.5093778, y: -1.0588342, z: 0}
+  - {x: -0.7806181, y: -1.5722569, z: 0}
+  - {x: 0.78863025, y: -2.1637702, z: 0}
+  - {x: 1.706836, y: -1.387932, z: 0}
   - {x: 1.0290419, y: 0.5155995, z: 0}
   - {x: 1.7635386, y: 1.4361813, z: 0}
   - {x: 0.8155593, y: 2.6504261, z: 0}
@@ -409,7 +409,7 @@ MonoBehaviour:
   - {x: -0.3852805, y: 2.0900345, z: 0}
   - {x: -0.5453924, y: 1.2627894, z: 0}
   - {x: -0.30522427, y: 0.8091392, z: 0}
-  m_ShapePathHash: 293531956
+  m_ShapePathHash: -1797607970
   m_Mesh: {fileID: 0}
   m_InstanceId: -46616
 --- !u!1 &492168305029943712
@@ -575,6 +575,7 @@ GameObject:
   - component: {fileID: 492168305145633811}
   - component: {fileID: 492168305145633822}
   - component: {fileID: 7530339549709182707}
+  - component: {fileID: 1575413360}
   m_Layer: 7
   m_Name: Player Main
   m_TagString: Player
@@ -747,6 +748,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492168305145633810}
   m_Enabled: 1
+--- !u!114 &1575413360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492168305145633810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 038a8a31dd3184c409a2e3f5e4271c8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waxBottle: {fileID: 0}
 --- !u!1 &492168305402302333
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,7 +895,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492168305591816472}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.79, y: 0.05, z: 0}
+  m_LocalPosition: {x: 0.55, y: 0, z: 0}
   m_LocalScale: {x: 0.3922915, y: 0.40158626, z: 1}
   m_Children:
   - {fileID: 492168305029943713}
@@ -1060,11 +1074,11 @@ MonoBehaviour:
   m_HasRenderer: 1
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
-  m_SelfShadows: 0
+  m_SelfShadows: 1
   m_ApplyToSortingLayers: 0000000053438d4e9f67743411ad5e6fab11ce71af15a2f4
   m_ShapePath:
-  - {x: -0.66944015, y: -1.7564063, z: 0}
-  - {x: 0.53601366, y: -1.4094964, z: 0}
+  - {x: -0.63653046, y: -2.0525947, z: 0}
+  - {x: 0.53601366, y: -1.7385942, z: 0}
   - {x: 0.30909783, y: 0.70239633, z: 0}
   - {x: 0.4958952, y: 1.4495862, z: 0}
   - {x: 0.30909783, y: 2.1967762, z: 0}
@@ -1072,10 +1086,10 @@ MonoBehaviour:
   - {x: -0.891742, y: 2.5169995, z: 0}
   - {x: -1.8169092, y: 1.4361813, z: 0}
   - {x: -0.9184272, y: 0.4622293, z: 0}
-  - {x: -1.4788191, y: -1.1388907, z: 0}
-  m_ShapePathHash: -109879832
+  - {x: -1.6104581, y: -1.4350778, z: 0}
+  m_ShapePathHash: 575901937
   m_Mesh: {fileID: 0}
-  m_InstanceId: -45154
+  m_InstanceId: -87218
 --- !u!114 &940855317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,7 +1106,7 @@ MonoBehaviour:
   m_HasRenderer: 0
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
-  m_SelfShadows: 0
+  m_SelfShadows: 1
   m_ApplyToSortingLayers: 0000000053438d4e9f67743411ad5e6fab11ce71af15a2f4
   m_ShapePath:
   - {x: -1.3539307, y: 1.5013982, z: 0}
