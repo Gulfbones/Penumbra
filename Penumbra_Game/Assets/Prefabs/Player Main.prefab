@@ -171,7 +171,7 @@ MonoBehaviour:
   m_HasRenderer: 1
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
-  m_SelfShadows: 1
+  m_SelfShadows: 0
   m_ApplyToSortingLayers: 0000000053438d4e9f67743411ad5e6fab11ce71af15a2f4
   m_ShapePath:
   - {x: -1.4166297, y: -1.2760698, z: 0}
@@ -396,7 +396,7 @@ MonoBehaviour:
   m_HasRenderer: 1
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
-  m_SelfShadows: 1
+  m_SelfShadows: 0
   m_ApplyToSortingLayers: 0000000053438d4e9f67743411ad5e6fab11ce71af15a2f4
   m_ShapePath:
   - {x: -0.7806181, y: -1.5722569, z: 0}
@@ -576,6 +576,7 @@ GameObject:
   - component: {fileID: 492168305145633822}
   - component: {fileID: 7530339549709182707}
   - component: {fileID: 1575413360}
+  - component: {fileID: 2762771567803531788}
   m_Layer: 7
   m_Name: Player Main
   m_TagString: Player
@@ -749,6 +750,19 @@ AudioListener:
   m_GameObject: {fileID: 492168305145633810}
   m_Enabled: 1
 --- !u!114 &1575413360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492168305145633810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 038a8a31dd3184c409a2e3f5e4271c8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waxBottle: {fileID: 0}
+--- !u!114 &2762771567803531788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1074,7 +1088,7 @@ MonoBehaviour:
   m_HasRenderer: 1
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
-  m_SelfShadows: 1
+  m_SelfShadows: 0
   m_ApplyToSortingLayers: 0000000053438d4e9f67743411ad5e6fab11ce71af15a2f4
   m_ShapePath:
   - {x: -0.63653046, y: -2.0525947, z: 0}
@@ -1089,7 +1103,7 @@ MonoBehaviour:
   - {x: -1.6104581, y: -1.4350778, z: 0}
   m_ShapePathHash: 575901937
   m_Mesh: {fileID: 0}
-  m_InstanceId: -87218
+  m_InstanceId: -94844
 --- !u!114 &940855317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1106,7 +1120,7 @@ MonoBehaviour:
   m_HasRenderer: 0
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
-  m_SelfShadows: 1
+  m_SelfShadows: 0
   m_ApplyToSortingLayers: 0000000053438d4e9f67743411ad5e6fab11ce71af15a2f4
   m_ShapePath:
   - {x: -1.3539307, y: 1.5013982, z: 0}
