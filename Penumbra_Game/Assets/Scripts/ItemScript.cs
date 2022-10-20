@@ -7,6 +7,7 @@ public class ItemScript : MonoBehaviour
 {
     [SerializeField] GameObject waxBottle;
     GameObject currentObject = null;
+   
 
 
     // Update is called once per frame
@@ -16,18 +17,15 @@ public class ItemScript : MonoBehaviour
         
         if (Input.GetKeyDown("e") && currentObject)
         {
-            Debug.Log("got it!");
             currentObject.SetActive(false);
-
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Hi");
+
         if (other.gameObject.CompareTag("waxbottle") )
         {
-            Debug.Log("can interact");
             currentObject = other.gameObject;
             
         }
