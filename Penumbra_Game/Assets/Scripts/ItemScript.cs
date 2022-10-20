@@ -13,6 +13,7 @@ public class ItemScript : MonoBehaviour
 
     void Update()
     {
+        
         if (Input.GetKeyDown("e") && currentObject)
         {
             Debug.Log("got it!");
@@ -21,8 +22,9 @@ public class ItemScript : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Hi");
         if (other.gameObject.CompareTag("waxbottle") )
         {
             Debug.Log("can interact");
@@ -32,7 +34,7 @@ public class ItemScript : MonoBehaviour
         
     }
 
-    void OnCollisionExit(Collision other)
+    void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("waxbottle"))
         {
