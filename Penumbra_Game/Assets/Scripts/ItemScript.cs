@@ -1,14 +1,22 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 
 public class ItemScript : MonoBehaviour
 {
     [SerializeField] GameObject waxBottle;
     GameObject currentObject = null;
-   
+    public PlayerScript playerScript;
 
+
+    private void Start()
+    {
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        
+    }
 
     // Update is called once per frame
 
@@ -18,6 +26,9 @@ public class ItemScript : MonoBehaviour
         if (Input.GetKeyDown("e") && currentObject)
         {
             currentObject.SetActive(false);
+            playerScript.setWaxCurrent(playerScript.getWaxMax());
+            
+            
         }
     }
 
