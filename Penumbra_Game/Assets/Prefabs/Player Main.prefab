@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766044534}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.7, y: 0, z: 0}
   m_LocalScale: {x: 0.75529623, y: 0.7378149, z: 1}
   m_Children: []
   m_Father: {fileID: 492168305591816473}
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.56
+  m_FalloffIntensity: 0.38
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
@@ -65,13 +65,13 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffSize: 10
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
+  - {x: -0.46994552, y: -2.183044, z: 0}
+  - {x: 1.0109241, y: -2.152988, z: 0}
+  - {x: 0.9207611, y: 3.1447835, z: 0}
+  - {x: -0.5300544, y: 3.174837, z: 0}
 --- !u!1 &492168304442147554
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492168305029943712}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.78, y: 0.22, z: 0}
+  m_LocalPosition: {x: 1.78, y: 0, z: 0}
   m_LocalScale: {x: 8, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 492168305591816473}
@@ -741,6 +741,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93074792068893349afad2d7f846a6de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightHitBox: {fileID: 492168305029943712}
+  candleLight: {fileID: 766044536}
 --- !u!81 &7530339549709182707
 AudioListener:
   m_ObjectHideFlags: 0
@@ -762,6 +764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waxBottle: {fileID: 0}
+  playerScript: {fileID: 0}
 --- !u!114 &2762771567803531788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -775,6 +778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waxBottle: {fileID: 0}
+  playerScript: {fileID: 0}
 --- !u!1 &492168305402302333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,7 +1107,7 @@ MonoBehaviour:
   - {x: -1.6104581, y: -1.4350778, z: 0}
   m_ShapePathHash: 575901937
   m_Mesh: {fileID: 0}
-  m_InstanceId: -94844
+  m_InstanceId: -1670
 --- !u!114 &940855317
 MonoBehaviour:
   m_ObjectHideFlags: 0

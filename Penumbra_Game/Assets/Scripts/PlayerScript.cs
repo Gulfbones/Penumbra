@@ -6,6 +6,10 @@ using System.Diagnostics;
 using System.Dynamic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.Experimental.Rendering.LWRP;
+using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.XR;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -13,6 +17,15 @@ public class PlayerScript : MonoBehaviour
     float waxCurrent;
     float standardWaxLost;
     float attackingWaxLost;
+
+    [SerializeField] GameObject lightHitBox;
+    [SerializeField] UnityEngine.Experimental.Rendering.Universal.Light2D candleLight;
+    float originalLightSize;
+    //GameObject lightHitBox;
+    Vector3 startingLightHitBox;
+    Vector3 attackingLightHitBox;
+    float attackingGrowSpeed;
+
     bool attacking;
     bool busy;
     //bool canInteractFountain;
@@ -21,9 +34,14 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //lightHitBox = GameObject.Find("Light_Hitbox");
         waxCurrent = waxMax;
         standardWaxLost = 1.0f; //.5
         attackingWaxLost = 5.0f; //5.25
+        startingLightHitBox = new Vector3(lightHitBox.transform.localScale.x, lightHitBox.transform.localScale.y, lightHitBox.transform.localScale.z);//new Vector(lightHitBox.transform.localPosition.x, lightHitBox.transform, lightHitBox.transform);
+        attackingLightHitBox = new Vector3(lightHitBox.transform.localScale.x*2.0f, lightHitBox.transform.localScale.y*1.5f, lightHitBox.transform.localScale.z);//new Vector3(1.0f,1.0f,0.0f);
+        attackingGrowSpeed = 15.0f;
+        originalLightSize = candleLight.pointLightOuterRadius;
 
         attacking = false;
         busy = false;
@@ -44,10 +62,14 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow) && !busy)
         {
             attacking = true;
+            lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, attackingLightHitBox, attackingGrowSpeed * Time.deltaTime);
+            candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, originalLightSize*2, attackingGrowSpeed * Time.deltaTime);
         }
         else
         {
             attacking = false;
+            lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, startingLightHitBox, attackingGrowSpeed * 2 * Time.deltaTime);
+            candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, originalLightSize, attackingGrowSpeed * 2 * Time.deltaTime);
         }
         return attacking;
     }

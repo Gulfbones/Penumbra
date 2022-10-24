@@ -38,7 +38,7 @@ public class Minecart_Script : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.name == "rocc")
+        if (collision.gameObject.name == "Exit Rock")
         {
             Debug.LogWarning("YOU WIN!!!!");
             Destroy(gameObject);
