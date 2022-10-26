@@ -108,7 +108,7 @@ public class PlayerScript : MonoBehaviour
         // No wax left
         if (waxCurrent <= 0)
         {
-            UnityEngine.Debug.Log("Game Over");
+            //UnityEngine.Debug.Log("Game Over");
             //Destroy(gameObject); // Destroys player game object
         }
     }

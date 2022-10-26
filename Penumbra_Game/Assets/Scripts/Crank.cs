@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Crank : MonoBehaviour
 {
-    private float turnAmount = 5.0f;
+    private float turnAmount;
     public bool handleCollected;
     public Sprite newSprite;
     public SpriteRenderer spriteRenderer;
@@ -12,7 +12,7 @@ public class Crank : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        turnAmount = 0.0f;
+        turnAmount = 0.5f;
         //fullTurnAmount = 100.0f;
         handleCollected = false;
         rails = GameObject.Find("Tilemap_Moving_Rails");
@@ -31,11 +31,14 @@ public class Crank : MonoBehaviour
     }
     void OnTriggerStay2D(Collider2D other)
     {
-        // While the player is within the radius of the crank
-        if (handleCollected && other.CompareTag("Player") && Input.GetKey(KeyCode.E))
+        if (rails.transform.localPosition.x > 5.75f) // insures that the rails are in the right spot
+        {
+            rails.transform.localPosition = Vector3.MoveTowards(rails.transform.localPosition, new Vector3(6,0,0), turnAmount * Time.deltaTime);
+        }
+        else if (handleCollected && other.CompareTag("Player") && Input.GetKey(KeyCode.E)) // While the player is within the radius of the crank
         {
             // Moves the rails into place while all use conditions met
-            rails.transform.localPosition = Vector3.MoveTowards(rails.transform.localPosition, new Vector3(6,0,0), 1.0f * Time.deltaTime); ;
+            rails.transform.localPosition = Vector3.MoveTowards(rails.transform.localPosition, new Vector3(6,0,0), turnAmount * Time.deltaTime);
         }
     }
 
