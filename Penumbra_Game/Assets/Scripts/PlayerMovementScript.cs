@@ -10,6 +10,7 @@ public class PlayerMovementScript : MonoBehaviour
     public Vector3 leftMovement;
     public Vector3 upMovement;
     public Vector3 downMovement;
+    public bool moving;
     public float animTriggerVelocity = 9.5f; // How fast you need to move to trigger walk animation
     public Rigidbody2D playerPhysicsEngine;
 
@@ -55,10 +56,11 @@ public class PlayerMovementScript : MonoBehaviour
         leftMovement = new Vector3(-10, 0, 0);  // x, y, z
         upMovement = new Vector3(0, 10, 0);     // x, y, z
         downMovement = new Vector3(0, -10, 0);  // x, y, z
-        
+
+        moving = false;
         // Probably not needed \/
-        Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("MinecartWall").GetComponent<Collider2D>(), GetComponent<Collider2D>());
-        
+        //Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("MinecartWall").GetComponent<Collider2D>(), GetComponent<Collider2D>());
+
     }
     // Clears all the player game objects
     void ClearActive(string direction)
@@ -80,48 +82,68 @@ public class PlayerMovementScript : MonoBehaviour
         // Can only move LEFT or RIGHT
         if (Input.GetKey(KeyCode.D)) // RIGHT
         {
-            currentDirection = down;
-            right.SetActive(true);
-            ClearActive("right");
-            PlayerCandleSpriteRenderer.flipY = false; // Flips candle Sprite
+            if (moving == false)
+            {
+                moving = true;
+                currentDirection = down;
+                right.SetActive(true);
+                ClearActive("right");
+                playerObject.transform.rotation = Quaternion.Euler(0, 0, 0); // Sets the Rotation of the child object "Player Object" which also rotates all other children objects
+            }
             playerPhysicsEngine.velocity = new Vector3(rightMovement.x, playerPhysicsEngine.velocity.y, 0); // Adds Velocity which causes movement
-            playerObject.transform.rotation = Quaternion.Euler(0, 0, 0); // Sets the Rotation of the child object "Player Object" which also rotates all other children objects
 
         }
         else if (Input.GetKey(KeyCode.A)) // LEFT
         {
-            currentDirection = down;
-            left.SetActive(true);
-            ClearActive("left");
-            PlayerCandleSpriteRenderer.flipY = true; // Flips candle Sprite
+            if (moving == false)
+            {
+                moving = true;
+                currentDirection = down;
+                left.SetActive(true);
+                ClearActive("left");
+                playerObject.transform.rotation = Quaternion.Euler(0, 0, 180); 
+            }
             playerPhysicsEngine.velocity = new Vector3(leftMovement.x, playerPhysicsEngine.velocity.y, 0);
-            playerObject.transform.rotation = Quaternion.Euler(0, 0, 180); 
 
 
         }
-
+        if(Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A))
+        {
+            moving = false;
+        }
         // Can only move UP or DOWN
         if (Input.GetKey(KeyCode.W)) // UP
         {
-            currentDirection = down;
-            up.SetActive(true);
-            ClearActive("up");
-            playerPhysicsEngine.velocity = new Vector3(playerPhysicsEngine.velocity.x, upMovement.y, 0);
+            if (moving == false)
+            {
+                moving = true;
+                currentDirection = down;
+                up.SetActive(true);
+                ClearActive("up");
             playerObject.transform.rotation = Quaternion.Euler(0, 0, 90); 
+            }
+                playerPhysicsEngine.velocity = new Vector3(playerPhysicsEngine.velocity.x, upMovement.y, 0);
 
 
 
         }
         else if (Input.GetKey(KeyCode.S)) // DOWN
         {
-            currentDirection = down;
-            down.SetActive(true);
-            ClearActive("down");
+            if (moving == false)
+            {
+                moving = true;
+                currentDirection = down;
+                down.SetActive(true);
+                ClearActive("down");
+                playerObject.transform.rotation = Quaternion.Euler(0, 0, -90);
+            }
             playerPhysicsEngine.velocity = new Vector3(playerPhysicsEngine.velocity.x, downMovement.y, 0);
-            playerObject.transform.rotation = Quaternion.Euler(0, 0, -90);
 
         }
-
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
+        {
+            moving = false;
+        }
         // if velocity > animTriggerSpeed, play animation
         if (down.gameObject.activeSelf)
         {
@@ -135,6 +157,7 @@ public class PlayerMovementScript : MonoBehaviour
             else down.GetComponent<Animator>().SetBool("playWalk", false);
             //else currentDirection.GetComponent<Animator>().SetBool("playWalk",false); 
         }
+        //move
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
