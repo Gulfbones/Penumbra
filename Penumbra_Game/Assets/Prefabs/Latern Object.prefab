@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6460960295222572255}
   - component: {fileID: 6460960295222572252}
   - component: {fileID: 6460960295222572249}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Latern Object
   m_TagString: Light
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6460960296421135443}
   - component: {fileID: 6460960296421135442}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lantern Point Light 2D
   m_TagString: Light
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_UseNormalMap: 0
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 1
-  m_ShadowIntensity: 1
+  m_ShadowIntensity: 0.5
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360

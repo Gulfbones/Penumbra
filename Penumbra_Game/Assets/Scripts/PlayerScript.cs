@@ -112,6 +112,11 @@ public class PlayerScript : MonoBehaviour
             //Destroy(gameObject); // Destroys player game object
         }
     }
+    // addRate: rate at which wax meter increases
+    public void addWax(float addRate = 10.0f)
+    {
+        waxCurrent += (addRate) * Time.deltaTime;
+    }
     void OnTriggerStay2D(Collider2D other)
     {
         // If player touches a hazard
