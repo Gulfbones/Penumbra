@@ -25,7 +25,7 @@ public class PlayerScript : MonoBehaviour
     Vector3 attackingLightHitBox;
     float attackingGrowSpeed;
 
-    bool wasAttacking;
+    //bool wasAttacking;
     bool attacking;
     bool busy;
     //bool canInteractFountain;
@@ -49,7 +49,7 @@ public class PlayerScript : MonoBehaviour
         attackingGrowSpeed = 15.0f;
         originalLightSize = candleLight.pointLightOuterRadius;
 
-        wasAttacking = false;
+        //wasAttacking = false;
         attacking = false;
         busy = false;
 
@@ -87,7 +87,7 @@ public class PlayerScript : MonoBehaviour
             //currentDirection.GetComponent<Animator>().SetBool("playAttack", false);
 
             attacking = true;
-            wasAttacking = true;
+            //wasAttacking = true;
             lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, attackingLightHitBox, attackingGrowSpeed * Time.deltaTime);
             candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, originalLightSize*2, attackingGrowSpeed * Time.deltaTime);
         }
@@ -99,7 +99,7 @@ public class PlayerScript : MonoBehaviour
             right.GetComponent<Animator>().SetBool("playAttacking", false);
 
             attacking = false;
-            wasAttacking = false;
+            //wasAttacking = false;
             lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, startingLightHitBox, attackingGrowSpeed * 2 * Time.deltaTime);
             candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, originalLightSize, attackingGrowSpeed * 2 * Time.deltaTime);
         }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class fountainInteract : MonoBehaviour
 {
     //bool lit;
-    bool used;
-    float waxLeft;
+    //bool used;
+    //float waxLeft;
 
     public PlayerScript playerScript;
     public GameObject lightGameObject;
@@ -21,13 +21,18 @@ public class fountainInteract : MonoBehaviour
         
         lightGameObject.SetActive(false); // default disables light
 
-        used = false;
-        waxLeft = 0.0f;
+        //used = false;
+        //waxLeft = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (playerScript.getWaxCurrent() <= 0)
+        {
+            lightGameObject.SetActive(false);
+        }
+
         if (currentObject && Input.GetKey(KeyCode.E))
         {
             lightGameObject.SetActive(true);

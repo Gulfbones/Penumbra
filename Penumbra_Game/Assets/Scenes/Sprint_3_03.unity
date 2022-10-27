@@ -81777,17 +81777,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2294137859835618632, guid: 45ecd51f943c78f47aa1cf1258d575ba, type: 3}
-      propertyPath: _nextLevelName
-      value: Default_Scene
-      objectReference: {fileID: 0}
     - target: {fileID: 7254301910251794108, guid: 45ecd51f943c78f47aa1cf1258d575ba, type: 3}
       propertyPath: m_RootOrder
       value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7254301910251794108, guid: 45ecd51f943c78f47aa1cf1258d575ba, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 10.982882
       objectReference: {fileID: 0}
     - target: {fileID: 7254301910251794108, guid: 45ecd51f943c78f47aa1cf1258d575ba, type: 3}
       propertyPath: m_LocalPosition.x
