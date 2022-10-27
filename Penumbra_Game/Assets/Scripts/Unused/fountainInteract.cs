@@ -16,11 +16,9 @@ public class fountainInteract : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //activeRadius = GetComponent<Rigidbody2D>();
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         lightGameObject = transform.GetChild(0).gameObject;
-        //lanternLight = lightGameObject.GetComponent<Light2D>();
-        //lanternLight.enabled = false;
+        
         lightGameObject.SetActive(false); // default disables light
 
         used = false;
@@ -30,35 +28,15 @@ public class fountainInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (currentObject && Input.GetKey(KeyCode.E))
+        if (currentObject && Input.GetKey(KeyCode.E))
         {
-
             lightGameObject.SetActive(true);
             playerScript.addWax();
-        }*/
-        useFunction(currentObject);
+        }
 
     }
 
-    public bool useFunction(GameObject current)
-    {
-        if (current!=null && Input.GetKeyDown(KeyCode.E) && !used && !playerScript.getAttacking() && !playerScript.getBusy())
-        {
-            waxLeft = 0.5f * playerScript.getWaxMax();
-            used = true;
-            lightGameObject.SetActive(true);
-        }
-        if (used && waxLeft > 0.0f)
-        {
-            waxLeft -= playerScript.getWaxMax()/3000.0f;
-            if (current)
-            {
-                playerScript.setWaxCurrent(playerScript.getWaxCurrent() + playerScript.getWaxMax()/3000.0f);
-            }
-        }
-        return used;
-    }
-
+    
     void OnTriggerEnter2D(Collider2D other)
     {
 
@@ -82,17 +60,5 @@ public class fountainInteract : MonoBehaviour
 
 
     }
-    /*
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        //Debug.Log("In radius");
-        //Debug.Log(other.tag);
-        if (other.CompareTag("Player") && Input.GetKey(KeyCode.E)) // While the player is within the radius of the lantern
-        {
-            Debug.Log("Using Fountain");
-            //lit = true;
-            playerScript.addWax();
-        }
-    }
-    */
+    
 }
