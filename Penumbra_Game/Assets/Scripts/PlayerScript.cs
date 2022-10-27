@@ -6,10 +6,7 @@ using System.Diagnostics;
 using System.Dynamic;
 using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
-using UnityEngine.Experimental.Rendering.LWRP;
 using UnityEngine.Experimental.Rendering.Universal;
-using UnityEngine.XR;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -18,8 +15,10 @@ public class PlayerScript : MonoBehaviour
     float standardWaxLost;
     float attackingWaxLost;
 
+    public PlayerMovementScript playerMovementScript;
+
     [SerializeField] GameObject lightHitBox;
-    [SerializeField] UnityEngine.Experimental.Rendering.Universal.Light2D candleLight;
+    [SerializeField] Light2D candleLight;
     float originalLightSize;
     //GameObject lightHitBox;
     Vector3 startingLightHitBox;
@@ -31,10 +30,16 @@ public class PlayerScript : MonoBehaviour
     bool busy;
     //bool canInteractFountain;
     //bool canInteractLantern;
+    public GameObject down;
+    public GameObject up;
+    public GameObject left;
+    public GameObject right;
+    //public MeshRenderer currentDirection;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerMovementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementScript>();
         //lightHitBox = GameObject.Find("Light_Hitbox");
         waxCurrent = waxMax;
         standardWaxLost = 1.0f; //.5
@@ -48,11 +53,17 @@ public class PlayerScript : MonoBehaviour
         attacking = false;
         busy = false;
 
+        down = gameObject.transform.GetChild(1).gameObject;//.GetComponent<MeshRenderer>();
+        up = gameObject.transform.GetChild(2).gameObject;//.GetComponent<MeshRenderer>();
+        left = gameObject.transform.GetChild(3).gameObject;//.GetComponent<MeshRenderer>();
+        right = gameObject.transform.GetChild(4).gameObject;//.GetComponent<MeshRenderer>();
+        //currentDirection = right;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //currentDirection = playerMovementScript.getCurrentDirection();
         isAttacking();
         waxMeter();
     }
@@ -60,17 +71,21 @@ public class PlayerScript : MonoBehaviour
 
     public bool isAttacking()
     {
+        //UnityEngine.Debug.Log(currentDirection.GetComponent<Animator>().GetBool("playAttacking"));
+        //UnityEngine.Debug.Log("currentDirection:" + currentDirection.transform.name);
         //Check if pc is attacking
         if (Input.GetKey(KeyCode.UpArrow) && !busy)
         {
-            if(!wasAttacking)
-            {
-                //play starting attack animation
-            }
-            else
-            {
-                //play middle attack animation
-            }
+            
+            //play starting attack animation
+            up.GetComponent<Animator>().SetBool("playAttacking", true);
+            down.GetComponent<Animator>().SetBool("playAttacking", true);
+            left.GetComponent<Animator>().SetBool("playAttacking", true);
+            right.GetComponent<Animator>().SetBool("playAttacking", true);
+            
+            //play middle attack animation
+            //currentDirection.GetComponent<Animator>().SetBool("playAttack", false);
+
             attacking = true;
             wasAttacking = true;
             lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, attackingLightHitBox, attackingGrowSpeed * Time.deltaTime);
@@ -78,10 +93,11 @@ public class PlayerScript : MonoBehaviour
         }
         else
         {
-            if (wasAttacking)
-            {
-                //play ending attack animation
-            }
+            up.GetComponent<Animator>().SetBool("playAttacking", false);
+            down.GetComponent<Animator>().SetBool("playAttacking", false);
+            left.GetComponent<Animator>().SetBool("playAttacking", false);
+            right.GetComponent<Animator>().SetBool("playAttacking", false);
+
             attacking = false;
             wasAttacking = false;
             lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, startingLightHitBox, attackingGrowSpeed * 2 * Time.deltaTime);

@@ -18,7 +18,7 @@ public class PlayerMovementScript : MonoBehaviour
     public GameObject up;
     public GameObject left;
     public GameObject right;
-    public GameObject currentDirection;
+    //public MeshRenderer currentDirection;
 
     public SpriteRenderer PlayerSpriteRenderer;
     public SpriteRenderer PlayerCandleSpriteRenderer;
@@ -46,11 +46,12 @@ public class PlayerMovementScript : MonoBehaviour
         //Gets the the SpriteRenderer of the first childs, first child of the main player
         PlayerCandleSpriteRenderer = playerObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
 
-        down = OriginalGameObject.transform.GetChild(1).gameObject;
-        up = OriginalGameObject.transform.GetChild(2).gameObject;
-        left = OriginalGameObject.transform.GetChild(3).gameObject;
-        right = OriginalGameObject.transform.GetChild(4).gameObject;
-        currentDirection = right;
+
+        down = OriginalGameObject.transform.GetChild(1).gameObject;//.GetComponent<MeshRenderer>();
+        up = OriginalGameObject.transform.GetChild(2).gameObject;//.GetComponent<MeshRenderer>();
+        left = OriginalGameObject.transform.GetChild(3).gameObject;//.GetComponent<MeshRenderer>();
+        right = OriginalGameObject.transform.GetChild(4).gameObject;//.GetComponent<MeshRenderer>();
+        //currentDirection = right;
 
         rightMovement = new Vector3(10, 0, 0);  // x, y, z
         leftMovement = new Vector3(-10, 0, 0);  // x, y, z
@@ -66,14 +67,19 @@ public class PlayerMovementScript : MonoBehaviour
     void ClearActive(string direction)
     {
         if(direction != "up")
-            up.SetActive(false);
+            foreach(var rend in up.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
+            //up.GetComponentsInChildren<Renderer>().enabled = (false);
         if (direction != "down")
-            down.SetActive(false);
+            foreach (var rend in down.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
+        //down.GetComponentsInChildren<Renderer>().enabled = (false);
         if (direction != "left")
-            left.SetActive(false);
+            foreach (var rend in left.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
+        //left.GetComponentsInChildren<Renderer>().enabled = (false);
         if (direction != "right")
-            right.SetActive(false);
+            foreach (var rend in right.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
+        //right.GetComponentsInChildren<Renderer>().enabled = (false);
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -82,27 +88,27 @@ public class PlayerMovementScript : MonoBehaviour
         // Can only move LEFT or RIGHT
         if (Input.GetKey(KeyCode.D)) // RIGHT
         {
-            if (moving == false)
-            {
+            
                 moving = true;
-                currentDirection = down;
-                right.SetActive(true);
-                ClearActive("right");
+            //currentDirection = right;
+            //right.GetComponentInChildren<Renderer>().enabled = (true);
+            foreach (var rend in right.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
+            ClearActive("right");
                 playerObject.transform.rotation = Quaternion.Euler(0, 0, 0); // Sets the Rotation of the child object "Player Object" which also rotates all other children objects
-            }
+            
             playerPhysicsEngine.velocity = new Vector3(rightMovement.x, playerPhysicsEngine.velocity.y, 0); // Adds Velocity which causes movement
 
         }
         else if (Input.GetKey(KeyCode.A)) // LEFT
         {
-            if (moving == false)
-            {
+            
                 moving = true;
-                currentDirection = down;
-                left.SetActive(true);
-                ClearActive("left");
+            //currentDirection = left;
+            //left.GetComponentInChildren<Renderer>().enabled = (true);
+            foreach (var rend in left.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
+            ClearActive("left");
                 playerObject.transform.rotation = Quaternion.Euler(0, 0, 180); 
-            }
+            
             playerPhysicsEngine.velocity = new Vector3(leftMovement.x, playerPhysicsEngine.velocity.y, 0);
 
 
@@ -114,14 +120,14 @@ public class PlayerMovementScript : MonoBehaviour
         // Can only move UP or DOWN
         if (Input.GetKey(KeyCode.W)) // UP
         {
-            if (moving == false)
-            {
+            
                 moving = true;
-                currentDirection = down;
-                up.SetActive(true);
-                ClearActive("up");
+            //currentDirection = up;
+            //up.GetComponentInChildren<Renderer>().enabled = (true);
+            foreach (var rend in up.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
+            ClearActive("up");
             playerObject.transform.rotation = Quaternion.Euler(0, 0, 90); 
-            }
+            
                 playerPhysicsEngine.velocity = new Vector3(playerPhysicsEngine.velocity.x, upMovement.y, 0);
 
 
@@ -129,14 +135,14 @@ public class PlayerMovementScript : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.S)) // DOWN
         {
-            if (moving == false)
-            {
+            
                 moving = true;
-                currentDirection = down;
-                down.SetActive(true);
-                ClearActive("down");
+            //currentDirection = down;
+            //down.GetComponentInChildren<Renderer>().enabled = (true);
+            foreach (var rend in down.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
+            ClearActive("down");
                 playerObject.transform.rotation = Quaternion.Euler(0, 0, -90);
-            }
+            
             playerPhysicsEngine.velocity = new Vector3(playerPhysicsEngine.velocity.x, downMovement.y, 0);
 
         }
@@ -145,19 +151,27 @@ public class PlayerMovementScript : MonoBehaviour
             moving = false;
         }
         // if velocity > animTriggerSpeed, play animation
-        if (down.gameObject.activeSelf)
+        
+        if (playerPhysicsEngine.velocity.x > animTriggerVelocity || playerPhysicsEngine.velocity.y > animTriggerVelocity
+            || playerPhysicsEngine.velocity.x < -animTriggerVelocity || playerPhysicsEngine.velocity.y < -animTriggerVelocity)
         {
-            if (playerPhysicsEngine.velocity.x > animTriggerVelocity || playerPhysicsEngine.velocity.y > animTriggerVelocity
-                || playerPhysicsEngine.velocity.x < -animTriggerVelocity || playerPhysicsEngine.velocity.y < -animTriggerVelocity)
-            {
-                //currentDirection.GetComponent<Animator>().SetBool("playWalk",true);
-               // Debug.Log("playing walk");
-                down.GetComponent<Animator>().SetBool("playWalk", true);
-            }
-            else down.GetComponent<Animator>().SetBool("playWalk", false);
-            //else currentDirection.GetComponent<Animator>().SetBool("playWalk",false); 
+            up.GetComponent<Animator>().SetBool("playWalk", true);
+            down.GetComponent<Animator>().SetBool("playWalk", true);
+            left.GetComponent<Animator>().SetBool("playWalk", true);
+            right.GetComponent<Animator>().SetBool("playWalk", true);
+            // Debug.Log("playing walk");
+            //down.GetComponent<Animator>().SetBool("playWalk", true);
         }
-        //move
+        //else down.GetComponent<Animator>().SetBool("playWalk", false);
+        else
+        {
+            up.GetComponent<Animator>().SetBool("playWalk", false);
+            down.GetComponent<Animator>().SetBool("playWalk", false);
+            left.GetComponent<Animator>().SetBool("playWalk", false);
+            right.GetComponent<Animator>().SetBool("playWalk", false);
+        }
+        
+        
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
