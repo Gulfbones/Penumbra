@@ -82007,14 +82007,74 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 650126165949514270, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 650126167125916386, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099758867782433880, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099758867782433880, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 1099758868959036580, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1662847834063979726, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 1322430457}
+    - target: {fileID: 1745978511463038339, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745978513038132607, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148036292743784148, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148036294318595624, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3566478892291410695, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3566478893329626107, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3749757426681278320, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3749757427652368268, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5460213667743285615, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
       propertyPath: waxBottle
       value: 
       objectReference: {fileID: 1105616246}
+    - target: {fileID: 7217140842674375287, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7217140843314131595, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7729669047708655473, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
       propertyPath: m_Name
       value: Player Main
@@ -82061,6 +82121,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7729669047708655487, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660271334693801395, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660271335664940367, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8737464206462721181, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8737464207299372129, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

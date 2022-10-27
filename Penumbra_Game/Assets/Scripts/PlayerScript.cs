@@ -10,7 +10,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class PlayerScript : MonoBehaviour
 {
-    float waxMax = 120.0f; // This float value represents amount of seconds the candle can burn
+    float waxMax = 160.0f; // This float value represents amount of seconds the candle can burn
     float waxCurrent;
     float standardWaxLost;
     float attackingWaxLost;
