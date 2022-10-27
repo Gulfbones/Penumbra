@@ -74,7 +74,7 @@ public class PlayerScript : MonoBehaviour
         //UnityEngine.Debug.Log(currentDirection.GetComponent<Animator>().GetBool("playAttacking"));
         //UnityEngine.Debug.Log("currentDirection:" + currentDirection.transform.name);
         //Check if pc is attacking
-        if (Input.GetKey(KeyCode.UpArrow) && !busy)
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.K) && !busy)
         {
             
             //play starting attack animation
@@ -126,6 +126,8 @@ public class PlayerScript : MonoBehaviour
         {
             //UnityEngine.Debug.Log("Game Over");
             //Destroy(gameObject); // Destroys player game object
+            lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, attackingLightHitBox*0, attackingGrowSpeed * 3 * Time.deltaTime);
+            candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, 0, attackingGrowSpeed * 3 * Time.deltaTime);
         }
     }
     // addRate: rate at which wax meter increases
@@ -138,6 +140,10 @@ public class PlayerScript : MonoBehaviour
         // If player touches a hazard
         if (other.CompareTag("Hazard")) {
             waxCurrent -= 20.0f;
+            if(waxCurrent <= 0)
+            {
+
+            }
         }
         
     }
