@@ -46,6 +46,7 @@ public class fountainInteract : MonoBehaviour
         {
             waxLeft = 0.5f * playerScript.getWaxMax();
             used = true;
+            lightGameObject.SetActive(true);
         }
         if (used && waxLeft > 0.0f)
         {
