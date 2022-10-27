@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class fountainInteract : MonoBehaviour
 {
-    bool lit;
+    //bool lit;
+    bool used;
+    float waxLeft;
+
     public PlayerScript playerScript;
     public GameObject lightGameObject;
     GameObject currentObject = null;
@@ -19,17 +22,40 @@ public class fountainInteract : MonoBehaviour
         //lanternLight = lightGameObject.GetComponent<Light2D>();
         //lanternLight.enabled = false;
         lightGameObject.SetActive(false); // default disables light
+
+        used = false;
+        waxLeft = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currentObject && Input.GetKey(KeyCode.E))
+        /*if (currentObject && Input.GetKey(KeyCode.E))
         {
 
             lightGameObject.SetActive(true);
             playerScript.addWax();
+        }*/
+        useFunction(currentObject);
+
+    }
+
+    public bool useFunction(GameObject current)
+    {
+        if (current!=null && Input.GetKeyDown(KeyCode.E) && !used && !playerScript.getAttacking())
+        {
+            waxLeft = 0.5f * playerScript.getWaxMax();
+            used = true;
         }
+        if (used && waxLeft > 0.0f)
+        {
+            waxLeft -= playerScript.getWaxMax()/3000.0f;
+            if (current)
+            {
+                playerScript.setWaxCurrent(playerScript.getWaxCurrent() + playerScript.getWaxMax()/3000.0f);
+            }
+        }
+        return used;
     }
 
     void OnTriggerEnter2D(Collider2D other)
