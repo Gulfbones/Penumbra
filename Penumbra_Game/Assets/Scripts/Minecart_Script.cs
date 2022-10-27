@@ -8,7 +8,10 @@ public class Minecart_Script : MonoBehaviour
     public SpriteRenderer sprite;
     public GameObject mainGameObject;
     //public GameObject cart;
-    public Rigidbody2D CartPhysicsEngine;
+    [SerializeField] Sprite upSprite;
+    [SerializeField] Sprite sideSprite;
+    private Rigidbody2D CartPhysicsEngine;
+    //private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +21,8 @@ public class Minecart_Script : MonoBehaviour
         //cart = mainGameObject.transform.GetChild(0).gameObject;
         CartPhysicsEngine = GetComponent<Rigidbody2D>();
         Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Enemy").GetComponent<Collider2D>(), GetComponent<Collider2D>());
-
+        //spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        //gameObject.get
     }
 
     // Update is called once per frame
@@ -26,13 +30,16 @@ public class Minecart_Script : MonoBehaviour
     {
         //Debug.Log("CartPhysicsEngine.velocity.x = " + CartPhysicsEngine.velocity.x);
         //Debug.Log("CartPhysicsEngine.velocity.y = " + CartPhysicsEngine.velocity.y);
-        if (CartPhysicsEngine.velocity.x > 0.5 || CartPhysicsEngine.velocity.x < -0.5)
+        if (CartPhysicsEngine.velocity.x > 1.0f || CartPhysicsEngine.velocity.x < -1.0f)
         {
-            mainGameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
+            //CartPhysicsEngine.transform.rotation = Quaternion.Euler(0, 0, 0);
+            gameObject.transform.GetChild(0).gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
+            sprite.sprite = sideSprite;
         }
-        if (CartPhysicsEngine.velocity.y > 0.5 || CartPhysicsEngine.velocity.y < -0.5)
+        if (CartPhysicsEngine.velocity.y > 1.0f || CartPhysicsEngine.velocity.y < -1.0f)
         {
-            mainGameObject.transform.rotation = Quaternion.Euler(0, 0, 180);
+            gameObject.transform.GetChild(0).gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+            sprite.sprite = upSprite;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -50,7 +57,7 @@ public class Minecart_Script : MonoBehaviour
     {
         if (other.gameObject.name == "MineCartPusher")
         {
-            CartPhysicsEngine.velocity = new Vector3(CartPhysicsEngine.velocity.x, CartPhysicsEngine.velocity.x + 5.0f, 0);
+            CartPhysicsEngine.velocity = new Vector3(CartPhysicsEngine.velocity.y, CartPhysicsEngine.velocity.x, 0);
             //Physics2D.IgnoreCollision(GameObject.tag("Player").collider, GetComponent<Collider2D>());
         }
     }
