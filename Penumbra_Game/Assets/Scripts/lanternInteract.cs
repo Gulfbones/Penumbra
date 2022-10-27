@@ -35,7 +35,7 @@ public class lanternInteract : MonoBehaviour
             lightGameObject.SetActive(false);
         }
 
-        if (lit == false && currentObject && Input.GetKey(KeyCode.E))
+        if (lit == false && currentObject && Input.GetKey(KeyCode.E) && !playerScript.getAttacking() && !playerScript.getBusy())
         {
             //currentObject.SetActive(false);
             //playerScript.setWaxCurrent(playerScript.getWaxMax());

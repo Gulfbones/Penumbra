@@ -5,9 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class LevelChanger : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] string _nextLevelName;
+
+    void OnTriggerEnter2D(Collider2D ChangeScene)
     {
-        // To use, enter scene name (pretty simple)
-        //SceneManager.LoadScene();
+        if (ChangeScene.gameObject.CompareTag("Player"))
+        {
+            GoToNextLevel();
+        }
+    }
+
+    void GoToNextLevel()
+    {
+        Debug.Log("Go to level: " + _nextLevelName);
+        SceneManager.LoadScene(_nextLevelName);
     }
 }
