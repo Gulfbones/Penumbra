@@ -5,7 +5,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class lanternInteract : MonoBehaviour
 {
-    bool lit;
+    public bool lit;
     public PlayerScript playerScript;
     //public Light lanternLight;
     public Light2D lanternLight;
@@ -22,7 +22,14 @@ public class lanternInteract : MonoBehaviour
         //lanternLight = lightGameObject.GetComponent<Light2D>();
         //lanternLight.enabled = false;
         lightGameObject.SetActive(false); // default disables light
-        lit = false;
+        if(lit == true)
+        {
+            lightGameObject.SetActive(true);
+        }
+        else
+        {
+            lit = false;
+        }
     }
 
     // Update is called once per frame
