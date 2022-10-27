@@ -42,7 +42,7 @@ public class fountainInteract : MonoBehaviour
 
     public bool useFunction(GameObject current)
     {
-        if (current!=null && Input.GetKeyDown(KeyCode.E) && !used && !playerScript.getAttacking())
+        if (current!=null && Input.GetKeyDown(KeyCode.E) && !used && !playerScript.getAttacking() && !playerScript.getBusy())
         {
             waxLeft = 0.5f * playerScript.getWaxMax();
             used = true;
