@@ -82710,7 +82710,7 @@ GameObject:
   - component: {fileID: 2135118381}
   - component: {fileID: 2135118380}
   m_Layer: 0
-  m_Name: A*
+  m_Name: AStarBrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
