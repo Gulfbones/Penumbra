@@ -7,34 +7,49 @@ using UnityEngine.UIElements;
 using UnityEngine.XR;
 using static UnityEngine.GraphicsBuffer;
 using Random = UnityEngine.Random; // tell script we are using unitys engines
+using Pathfinding;
 
 public class EnemyScript : MonoBehaviour
 {
     
     public Vector3 destination;
-    public int timer = 0;
-    public int attackTimer = 300;
+    //public int timer = 0;
+    //public int attackTimer = 300;
+    private Vector3 defaultScale;
     private Vector3 desiredScale;
     private float moveSpeed;
-    public float stalkMoveSpeed = 12.0f;
-    public float attackMoveSpeed = 10.0f;
-    public float fleeMoveSpeed = -16.0f;
+    //public float stalkMoveSpeed = 12.0f;
+    //public float attackMoveSpeed = 10.0f;
+    //public float fleeMoveSpeed = -16.0f;
     private GameObject OriginalGameObject;
     private Animator animator;
 
+    public AIPath aiPath;
 
     // Start is called before the first frame update
     void Start()
     {
-        moveSpeed = 0.0f;
+        defaultScale = transform.localScale;
+        desiredScale = transform.localScale;
+        moveSpeed = aiPath.maxSpeed;
         OriginalGameObject = gameObject;
         animator = OriginalGameObject.transform.GetChild(0).GetComponent<Animator>();
-        desiredScale = transform.localScale;
+        //aiPath.destination.Set();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(aiPath.desiredVelocity.x >= 0.01f)
+        {
+            desiredScale = new Vector3(defaultScale.x, defaultScale.y, defaultScale.z);
+        }
+        else if (aiPath.desiredVelocity.x <= -0.01f)
+        {
+            desiredScale = new Vector3(defaultScale.x * -1, defaultScale.y, defaultScale.z);
+        }
+        //aiPath
+        /*
         // When time hits -100, change 
         if (timer == -100)
         {
@@ -44,15 +59,16 @@ public class EnemyScript : MonoBehaviour
         {
             Attack();
         }
-        
+        */
         // Moves the enemy toward the destination over time
-        transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
+        //transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
         transform.localScale = Vector3.MoveTowards(transform.localScale, new Vector3(desiredScale.x,desiredScale.y, desiredScale.z), 20.0f * Time.deltaTime);
     }
 
     // Run like Update, but independent of frame rate: 50 tps
     private void FixedUpdate()
     {
+        /*
         timer++;
         // Teleport enemy
         if(timer == 0)
@@ -66,6 +82,7 @@ public class EnemyScript : MonoBehaviour
             //Debug.Log("Timer Tick Stalk");
             Stalk();
         }
+        */
     }
 
     void Flip()
@@ -109,6 +126,7 @@ public class EnemyScript : MonoBehaviour
         return -1.0f;
     }
 
+    
     /*
      * Sets postion to a random spot
      */
@@ -121,7 +139,6 @@ public class EnemyScript : MonoBehaviour
 
     /*
      * Sets random postion to move to
-     */
     public void Stalk()
     {
         moveSpeed = stalkMoveSpeed; // set move speed to stalking
@@ -133,20 +150,20 @@ public class EnemyScript : MonoBehaviour
         }
         Flip();
     }
+     */
 
     /*
      * Sets postion to move to player
-     */
     public void Attack()
     {
         moveSpeed = attackMoveSpeed;
         destination = GameObject.FindGameObjectWithTag("Player").transform.position;
         Flip();
     }
+     */
 
     /*
      * Sets postion to move away from player
-     */
     public void Flee()
     {
         moveSpeed = fleeMoveSpeed;
@@ -164,34 +181,46 @@ public class EnemyScript : MonoBehaviour
 
         }
     }
+    
+     */
 
     void OnTriggerEnter2D(Collider2D other)
     {
         // Debug.Log(other.gameObject.name + "Trigger");
         if (other.gameObject.tag == "Light")
         {
+            //aiPath.
             //  Debug.Log("Contact Flee Light");
-            timer = -100;
+            //timer = -100;
 
         }
 
-        if (other.gameObject.tag == "Player" && timer > 0)
+        if (other.gameObject.tag == "Player" )//&& timer > 0)
         {
             animator.SetTrigger("Attack");
+            Teleport();
             // Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!Enemy Contacted 2 Player!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            timer = -125;
+            //timer = -125;
 
         }
     }
     /*
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+        if (collision.gameObject.tag == "MinecartWall" || collision.gameObject.tag == "Wall" )
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         //Debug.Log(collision.gameObject.name + "Collision");
         if (collision.gameObject.tag == "Player")
         {
             animator.SetTrigger("Attack");
-            Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!Enemy Contacted 1 Player!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            timer = -125;
+            //Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!Enemy Contacted 1 Player!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            //timer = -125;
 
         }
     }

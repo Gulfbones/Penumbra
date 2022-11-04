@@ -11,6 +11,7 @@ TagManager:
   - Interactable
   - candleUIBottom
   - waxbottle
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - MineCart_Colliders
   - Player_Collider
   - Light_Collider
-  - 
+  - Wall
   - 
   - 
   - 
