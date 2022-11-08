@@ -8,7 +8,7 @@ public class plantEnemyScript : MonoBehaviour
 {
     GameObject pcObject;
     PlayerScript pcScript;
-    CircleCollider2D plantAttackCollider;
+    //CircleCollider2D plantAttackCollider;
     CircleCollider2D plantDetectionCollider;
     SpriteRenderer plantSprite;
     bool canHit;
@@ -22,8 +22,8 @@ public class plantEnemyScript : MonoBehaviour
     {
         pcObject = GameObject.FindGameObjectWithTag("Player");
         pcScript = pcObject.GetComponent<PlayerScript>();
-        plantAttackCollider = gameObject.GetComponent<CircleCollider2D>();
-        plantAttackCollider.enabled = false;
+        //plantAttackCollider = gameObject.GetComponent<CircleCollider2D>();
+        //plantAttackCollider.enabled = false;
         plantDetectionCollider = gameObject.transform.GetChild(0).GetComponent<CircleCollider2D>();
         plantSprite = gameObject.GetComponent<SpriteRenderer>();
         plantSprite.enabled = false;
@@ -43,27 +43,29 @@ public class plantEnemyScript : MonoBehaviour
 
     public IEnumerator AttackCoroutine()
     {
-        //while (true)
-        //{
-            coroutineRunning = true;
+        while (true)
+        {
             UnityEngine.Debug.Log("plantEnemyPosition: " + plantEnemyPosition);
             UnityEngine.Debug.Log("playerPosition: " + playerPosition);
             UnityEngine.Debug.Log("Coroutine Running");
-            UnityEngine.Debug.Log("canHit: " + canHit);
-            if (Mathf.Abs(plantEnemyPosition.x) - Mathf.Abs(playerPosition.x) <= 5 && Mathf.Abs(plantEnemyPosition.y) - Mathf.Abs(playerPosition.y) <= 5)
+            if (Mathf.Abs(plantEnemyPosition.x) - Mathf.Abs(playerPosition.x) <= 1.5 && Mathf.Abs(plantEnemyPosition.y) - Mathf.Abs(playerPosition.y) <= 1.5)
             {
                 canHit = true;
             }
-            //yield return new WaitForSeconds(2.0f);
+            else
+            {
+                canHit = false;
+            }
+            UnityEngine.Debug.Log("canHit: " + canHit);
             if (canHit)
             {
                 //Play attack animation
                 //WaitForSeconds (until attack animation ends)
+                yield return new WaitForSeconds(2.0f);
                 pcScript.setWaxCurrent(pcScript.getWaxCurrent() - 10);
             }
-            coroutineRunning = false;
             yield return null;
-        //}
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -75,6 +77,7 @@ public class plantEnemyScript : MonoBehaviour
             plantSprite.enabled = true;
             if (!coroutineRunning)
             {
+                coroutineRunning = true;
                 StartCoroutine(AttackCoroutine());
             }
             UnityEngine.Debug.Log("Coroutine Started");
@@ -86,10 +89,8 @@ public class plantEnemyScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //Play ending animation
-            if (coroutineRunning)
-            {
-                StopCoroutine(AttackCoroutine());
-            }
+            StopCoroutine(AttackCoroutine());
+            coroutineRunning = false;
             UnityEngine.Debug.Log("Coroutine Stopped");
             plantSprite.enabled = false;
         }
