@@ -8,7 +8,6 @@ public class plantEnemyScript : MonoBehaviour
 {
     GameObject pcObject;
     PlayerScript pcScript;
-    //CircleCollider2D plantAttackCollider;
     CircleCollider2D plantDetectionCollider;
     SpriteRenderer plantSprite;
     bool canHit;
@@ -22,12 +21,10 @@ public class plantEnemyScript : MonoBehaviour
     {
         pcObject = GameObject.FindGameObjectWithTag("Player");
         pcScript = pcObject.GetComponent<PlayerScript>();
-        //plantAttackCollider = gameObject.GetComponent<CircleCollider2D>();
-        //plantAttackCollider.enabled = false;
-        plantDetectionCollider = gameObject.transform.GetChild(0).GetComponent<CircleCollider2D>();
+        plantDetectionCollider = gameObject.GetComponent<CircleCollider2D>();
         plantSprite = gameObject.GetComponent<SpriteRenderer>();
         plantSprite.enabled = false;
-        bool canHit = false;
+        canHit = false;
         plantEnemyPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         playerPosition = new Vector3(pcObject.transform.position.x, pcObject.transform.position.y, pcObject.transform.position.z);
         distFromPlayer = new Vector3(0, 0, 0);
@@ -38,35 +35,8 @@ public class plantEnemyScript : MonoBehaviour
     void Update()
     {
         playerPosition = new Vector3(pcObject.transform.position.x, pcObject.transform.position.y, pcObject.transform.position.z);
-
     }
 
-    public IEnumerator AttackCoroutine()
-    {
-        while (true)
-        {
-            UnityEngine.Debug.Log("plantEnemyPosition: " + plantEnemyPosition);
-            UnityEngine.Debug.Log("playerPosition: " + playerPosition);
-            UnityEngine.Debug.Log("Coroutine Running");
-            if (Mathf.Abs(plantEnemyPosition.x) - Mathf.Abs(playerPosition.x) <= 1.5 && Mathf.Abs(plantEnemyPosition.y) - Mathf.Abs(playerPosition.y) <= 1.5)
-            {
-                canHit = true;
-            }
-            else
-            {
-                canHit = false;
-            }
-            UnityEngine.Debug.Log("canHit: " + canHit);
-            if (canHit)
-            {
-                //Play attack animation
-                //WaitForSeconds (until attack animation ends)
-                yield return new WaitForSeconds(2.0f);
-                pcScript.setWaxCurrent(pcScript.getWaxCurrent() - 10);
-            }
-            yield return null;
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -95,6 +65,48 @@ public class plantEnemyScript : MonoBehaviour
             plantSprite.enabled = false;
         }
     }
+
+    public IEnumerator AttackCoroutine()
+    {
+        while (true)
+        {
+            UnityEngine.Debug.Log("plantEnemyPosition: " + plantEnemyPosition);
+            UnityEngine.Debug.Log("playerPosition: " + playerPosition);
+            UnityEngine.Debug.Log("Coroutine Running");
+            if (Mathf.Abs(plantEnemyPosition.x - playerPosition.x) <= 1.5 && Mathf.Abs(plantEnemyPosition.y - playerPosition.y) <= 1.5)
+            {
+                canHit = true;
+            }
+            else
+            {
+                canHit = false;
+            }
+            UnityEngine.Debug.Log("canHit: " + canHit);
+            if (canHit)
+            {
+                //Play attack animation
+                //WaitForSeconds (until attack animation ends)
+                UnityEngine.Debug.Log("Waiting 2 seconds");
+                yield return new WaitForSeconds(2.0f);
+
+                if (Mathf.Abs(plantEnemyPosition.x - playerPosition.x) <= 1.5 && Mathf.Abs(plantEnemyPosition.y - playerPosition.y) <= 1.5)
+                {
+                    canHit = true;
+                }
+                else
+                {
+                    canHit = false;
+                }
+                if (canHit)
+                {
+                    pcScript.setWaxCurrent(pcScript.getWaxCurrent() - 10);
+                    UnityEngine.Debug.Log("Damaged Player");
+                }
+            }
+            yield return null;
+        }
+    }
+
     //subtract plant position from player position to determine if player is close enough to plant for the plant to attack and hit the player
     //instead of using trigger collider and OnTrigger functions
 
