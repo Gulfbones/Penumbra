@@ -13,7 +13,7 @@ public class plantEnemyScript : MonoBehaviour
     bool canHit;
     Vector3 plantEnemyPosition;
     Vector3 playerPosition;
-    Vector3 distFromPlayer;
+    //Vector3 distFromPlayer;
     bool coroutineRunning;
     float attackRange;
 
@@ -28,7 +28,7 @@ public class plantEnemyScript : MonoBehaviour
         canHit = false;
         plantEnemyPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         playerPosition = new Vector3(pcObject.transform.position.x, pcObject.transform.position.y, pcObject.transform.position.z);
-        distFromPlayer = new Vector3(0, 0, 0);
+        //distFromPlayer = new Vector3(0, 0, 0);
         coroutineRunning = false;
         attackRange = 2.0f;
     }
