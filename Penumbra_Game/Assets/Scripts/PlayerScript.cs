@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour
     float waxCurrent;
     float standardWaxLost;
     float attackingWaxLost;
+    float candleDropWaxLost;
 
     public PlayerMovementScript playerMovementScript;
 
@@ -28,6 +29,7 @@ public class PlayerScript : MonoBehaviour
     //bool wasAttacking;
     bool attacking;
     bool busy;
+    bool candleDropping;
     //bool canInteractFountain;
     //bool canInteractLantern;
     public GameObject down;
@@ -44,6 +46,7 @@ public class PlayerScript : MonoBehaviour
         waxCurrent = waxMax;
         standardWaxLost = 1.0f; //.5
         attackingWaxLost = 5.0f; //5.25
+        candleDropWaxLost = 20.0f;
         startingLightHitBox = new Vector3(lightHitBox.transform.localScale.x, lightHitBox.transform.localScale.y, lightHitBox.transform.localScale.z);//new Vector(lightHitBox.transform.localPosition.x, lightHitBox.transform, lightHitBox.transform);
         attackingLightHitBox = new Vector3(lightHitBox.transform.localScale.x*2.0f, lightHitBox.transform.localScale.y*1.5f, lightHitBox.transform.localScale.z);//new Vector3(1.0f,1.0f,0.0f);
         attackingGrowSpeed = 15.0f;
@@ -52,6 +55,7 @@ public class PlayerScript : MonoBehaviour
         //wasAttacking = false;
         attacking = false;
         busy = false;
+        candleDropping = false;
 
         down = gameObject.transform.GetChild(1).gameObject;//.GetComponent<MeshRenderer>();
         up = gameObject.transform.GetChild(2).gameObject;//.GetComponent<MeshRenderer>();
@@ -65,6 +69,7 @@ public class PlayerScript : MonoBehaviour
     {
         //currentDirection = playerMovementScript.getCurrentDirection();
         isAttacking();
+        candleDrop();
         waxMeter();
     }
 
@@ -74,7 +79,7 @@ public class PlayerScript : MonoBehaviour
         //UnityEngine.Debug.Log(currentDirection.GetComponent<Animator>().GetBool("playAttacking"));
         //UnityEngine.Debug.Log("currentDirection:" + currentDirection.transform.name);
         //Check if pc is attacking
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.K) && !busy)
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.K) && !busy && !candleDropping)
         {
             
             //play starting attack animation
@@ -105,10 +110,31 @@ public class PlayerScript : MonoBehaviour
         }
         return attacking;
     }
+
+    public bool candleDrop()
+    {
+        if(Input.GetKeyDown(KeyCode.DownArrow) && !busy && !attacking)
+        {
+            candleDropping = true;
+            UnityEngine.Debug.Log("candleDropping: " + candleDropping);
+            //play animation
+            //create new candle object
+        }
+        else
+        {
+            candleDropping = false;
+        }
+        return candleDropping;
+    }
+
     public void waxMeter()
     {
         //Wax meter logic
-        if (!attacking)
+        if (candleDropping)
+        {
+            waxCurrent -= candleDropWaxLost;
+        }
+        else if (!attacking)
         {
             waxCurrent -= standardWaxLost * Time.deltaTime;
         }
