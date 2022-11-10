@@ -15,6 +15,7 @@ public class plantEnemyScript : MonoBehaviour
     Vector3 playerPosition;
     Vector3 distFromPlayer;
     bool coroutineRunning;
+    float attackRange;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class plantEnemyScript : MonoBehaviour
         playerPosition = new Vector3(pcObject.transform.position.x, pcObject.transform.position.y, pcObject.transform.position.z);
         distFromPlayer = new Vector3(0, 0, 0);
         coroutineRunning = false;
+        attackRange = 2.0f;
     }
 
     // Update is called once per frame
@@ -37,7 +39,7 @@ public class plantEnemyScript : MonoBehaviour
         playerPosition = new Vector3(pcObject.transform.position.x, pcObject.transform.position.y, pcObject.transform.position.z);
     }
 
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         // If player gets within the plant's range
@@ -48,19 +50,35 @@ public class plantEnemyScript : MonoBehaviour
             if (!coroutineRunning)
             {
                 coroutineRunning = true;
+                UnityEngine.Debug.Log("Coroutine Started");
                 StartCoroutine(AttackCoroutine());
             }
-            UnityEngine.Debug.Log("Coroutine Started");
         }
     }
+    
+    /*
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            plantSprite.enabled = true;
+            if(!coroutineRunning)
+            {
+                coroutineRunning=true;
+                UnityEngine.Debug.Log("Coroutine Started");
+                StartCoroutine(AttackCoroutine());
+            }
+        }
+    }
+    */
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             //Play ending animation
-            StopCoroutine(AttackCoroutine());
             coroutineRunning = false;
+            StopCoroutine(AttackCoroutine());
             UnityEngine.Debug.Log("Coroutine Stopped");
             plantSprite.enabled = false;
         }
@@ -73,7 +91,7 @@ public class plantEnemyScript : MonoBehaviour
             UnityEngine.Debug.Log("plantEnemyPosition: " + plantEnemyPosition);
             UnityEngine.Debug.Log("playerPosition: " + playerPosition);
             UnityEngine.Debug.Log("Coroutine Running");
-            if (Mathf.Abs(plantEnemyPosition.x - playerPosition.x) <= 1.5 && Mathf.Abs(plantEnemyPosition.y - playerPosition.y) <= 1.5)
+            if (Mathf.Abs(plantEnemyPosition.x - playerPosition.x) <= attackRange && Mathf.Abs(plantEnemyPosition.y - playerPosition.y) <= attackRange)
             {
                 canHit = true;
             }
@@ -89,7 +107,7 @@ public class plantEnemyScript : MonoBehaviour
                 UnityEngine.Debug.Log("Waiting 2 seconds");
                 yield return new WaitForSeconds(2.0f);
 
-                if (Mathf.Abs(plantEnemyPosition.x - playerPosition.x) <= 1.5 && Mathf.Abs(plantEnemyPosition.y - playerPosition.y) <= 1.5)
+                if (Mathf.Abs(plantEnemyPosition.x - playerPosition.x) <= attackRange && Mathf.Abs(plantEnemyPosition.y - playerPosition.y) <= attackRange)
                 {
                     canHit = true;
                 }
