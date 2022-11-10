@@ -16,6 +16,7 @@ public class plantEnemyScript : MonoBehaviour
     //Vector3 distFromPlayer;
     bool coroutineRunning;
     float attackRange;
+    IEnumerator attack;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class plantEnemyScript : MonoBehaviour
         //distFromPlayer = new Vector3(0, 0, 0);
         coroutineRunning = false;
         attackRange = 2.0f;
+        attack = AttackCoroutine();
     }
 
     // Update is called once per frame
@@ -51,7 +53,7 @@ public class plantEnemyScript : MonoBehaviour
             {
                 coroutineRunning = true;
                 UnityEngine.Debug.Log("Coroutine Started");
-                StartCoroutine(AttackCoroutine());
+                StartCoroutine(attack);
             }
         }
     }
@@ -78,7 +80,7 @@ public class plantEnemyScript : MonoBehaviour
         {
             //Play ending animation
             coroutineRunning = false;
-            StopCoroutine(AttackCoroutine());
+            StopCoroutine(attack);
             UnityEngine.Debug.Log("Coroutine Stopped");
             plantSprite.enabled = false;
         }
