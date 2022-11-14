@@ -45,6 +45,8 @@ public class PlayerScript : MonoBehaviour
     IEnumerator dropFlameWaxCoroutine;
     float dropFlameWax;
 
+    bool coroutineRunning;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -78,6 +80,7 @@ public class PlayerScript : MonoBehaviour
 
         dropFlameWaxCoroutine = dropFlameCoroutine();
         dropFlameWax = 20.0f;
+        coroutineRunning = false;
     }
 
     // Update is called once per frame
@@ -136,16 +139,21 @@ public class PlayerScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.DownArrow) && !busy && !attacking)
         {
+            if(coroutineRunning)
+            {
+                StopCoroutine(dropFlameWaxCoroutine);
+            }
             candleDropping = true;
             UnityEngine.Debug.Log("candleDropping: " + candleDropping);
             //play animation
             //create new candle object
-            if (!dropFlameLight.enabled && !dropFlameSprite.enabled)
+            if (!dropFlameLight.enabled || !dropFlameSprite.enabled)
             {
                 dropFlameLight.enabled = true;
                 dropFlameSprite.enabled = true;
             }
             dropFlame.transform.position = gameObject.transform.position;
+            dropFlameWax = 20.0f;
             StartCoroutine(dropFlameWaxCoroutine);
 
         }
@@ -214,6 +222,7 @@ public class PlayerScript : MonoBehaviour
 
     IEnumerator dropFlameCoroutine()
     {
+        coroutineRunning = true;
         while(true)
         {
             yield return new WaitForSeconds(1);
@@ -221,6 +230,7 @@ public class PlayerScript : MonoBehaviour
             if(dropFlameWax <= 0)
             {
                 dropFlameLight.enabled = false;
+                coroutineRunning = false;
                 StopCoroutine(dropFlameWaxCoroutine);
             }
         }
