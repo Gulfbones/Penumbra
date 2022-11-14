@@ -38,6 +38,13 @@ public class PlayerScript : MonoBehaviour
     public GameObject right;
     //public MeshRenderer currentDirection;
 
+    public GameObject dropFlame;
+    public Light2D dropFlameLight;
+    public SpriteRenderer dropFlameSprite;
+
+    IEnumerator dropFlameWaxCoroutine;
+    float dropFlameWax;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +69,15 @@ public class PlayerScript : MonoBehaviour
         left = gameObject.transform.GetChild(3).gameObject;//.GetComponent<MeshRenderer>();
         right = gameObject.transform.GetChild(4).gameObject;//.GetComponent<MeshRenderer>();
         //currentDirection = right;
+
+        dropFlame = GameObject.FindGameObjectWithTag("Drop Flame");
+        dropFlameLight = dropFlame.GetComponent<Light2D>();
+        dropFlameSprite = dropFlame.GetComponent<SpriteRenderer> ();
+        dropFlameLight.enabled = false;
+        dropFlameSprite.enabled = false;
+
+        dropFlameWaxCoroutine = dropFlameCoroutine();
+        dropFlameWax = 20.0f;
     }
 
     // Update is called once per frame
@@ -71,6 +87,11 @@ public class PlayerScript : MonoBehaviour
         isAttacking();
         candleDrop();
         waxMeter();
+        UnityEngine.Debug.Log("dropFlameLight.enabled: " + dropFlameLight.enabled);
+        UnityEngine.Debug.Log("dropFlameSprite.enabled: " + dropFlameSprite.enabled);
+        UnityEngine.Debug.Log("dropFlame position: " + dropFlame.transform.position);
+
+
     }
 
 
@@ -119,6 +140,14 @@ public class PlayerScript : MonoBehaviour
             UnityEngine.Debug.Log("candleDropping: " + candleDropping);
             //play animation
             //create new candle object
+            if (!dropFlameLight.enabled && !dropFlameSprite.enabled)
+            {
+                dropFlameLight.enabled = true;
+                dropFlameSprite.enabled = true;
+            }
+            dropFlame.transform.position = gameObject.transform.position;
+            StartCoroutine(dropFlameWaxCoroutine);
+
         }
         else
         {
@@ -181,6 +210,20 @@ public class PlayerScript : MonoBehaviour
             waxCurrent -= 10.0f;
         }
     
+    }
+
+    IEnumerator dropFlameCoroutine()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(1);
+            dropFlameWax -= 1.0f;
+            if(dropFlameWax <= 0)
+            {
+                dropFlameLight.enabled = false;
+                StopCoroutine(dropFlameWaxCoroutine);
+            }
+        }
     }
     
     public float getWaxMax()

@@ -12,6 +12,7 @@ TagManager:
   - candleUIBottom
   - waxbottle
   - Wall
+  - Drop Flame
   layers:
   - Default
   - TransparentFX
