@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class button : MonoBehaviour
 {
-    public bool state;
+    [SerializeField] Button_Door door; // the door the button is linked to
+    public bool state; // is it on or off
     // Start is called before the first frame update
     void Start()
     {
-        
+        door = door.GetComponent<Button_Door>();
+        door.increaseNeededButtons();
     }
 
     // Update is called once per frame
@@ -17,6 +19,10 @@ public class button : MonoBehaviour
         
     }
 
+    bool GetState()
+    {
+        return state;
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
 
@@ -25,7 +31,7 @@ public class button : MonoBehaviour
             state = true;
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
             gameObject.transform.GetChild(1).gameObject.SetActive(true);
-
+            door.pressedButton();
         }
 
     }
@@ -41,7 +47,7 @@ public class button : MonoBehaviour
             state = false;
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
             gameObject.transform.GetChild(1).gameObject.SetActive(false);
-
+            door.releasedButton();
         }
 
     }
