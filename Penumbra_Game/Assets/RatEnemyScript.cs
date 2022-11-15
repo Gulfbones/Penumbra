@@ -4,20 +4,12 @@ using System.Security.Cryptography;
 using UnityEngine;
 using Pathfinding;
 
-
 public class RatEnemyScript : MonoBehaviour
 {
     private GameObject playerGameObject;
     private PlayerScript playerScript;
     private Animator animator;
-    private Vector3 desiredScale;
-    public AIPath aiPath;
-    private Vector3 defaultScale;
-    public Vector3 destination;
-    private float moveSpeed;
-
-
-
+    private Vector3 scaleChange;
 
 
     // Start is called before the first frame update
@@ -26,11 +18,7 @@ public class RatEnemyScript : MonoBehaviour
         playerGameObject = GameObject.FindGameObjectWithTag("Player");
         playerScript = playerGameObject.GetComponent<PlayerScript>();
         animator = gameObject.GetComponent<Animator>();
-        desiredScale = transform.localScale;
-        defaultScale = transform.localScale;
-        moveSpeed = aiPath.maxSpeed;
-
-
+        scaleChange = new Vector3 (gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
 
     }
 
@@ -38,7 +26,7 @@ public class RatEnemyScript : MonoBehaviour
     void Update()
     {
         /*within attacking range of player*/
-        if (Mathf.Abs(playerGameObject.transform.position.x - playerGameObject.transform.position.x) <= 2 && Mathf.Abs(playerGameObject.transform.position.y - playerGameObject.transform.position.y) <= 2)
+        if (Mathf.Abs(playerGameObject.transform.position.x - gameObject.transform.position.x) <= 2 && Mathf.Abs(playerGameObject.transform.position.y - gameObject.transform.position.y) <= 2)
         {
             animator.SetBool("inAttackRange", true);
             //play attack animation
@@ -58,35 +46,16 @@ public class RatEnemyScript : MonoBehaviour
             animator.SetBool("moving", false);
         }
 
-        //copied from stalker enemy
-        if (aiPath.desiredVelocity.x >= 0.01f)
+        /*if (playerGameObject.transform.position.x > gameObject.transform.position.x || playerGameObject.transform.localScale.x < 0)
         {
-            desiredScale = new Vector3(defaultScale.x, defaultScale.y, defaultScale.z);
+            scaleChange = new Vector3 (-1*gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+            gameObject.transform.localScale = scaleChange;
         }
-        else if (aiPath.desiredVelocity.x <= -0.01f)
+        else if (playerGameObject.transform.position.x < gameObject.transform.position.x || playerGameObject.transform.localScale.x > 0)
         {
-            desiredScale = new Vector3(defaultScale.x * -1, defaultScale.y, defaultScale.z);
-        }
-
+            scaleChange = new Vector3 (gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+            gameObject.transform.localScale = scaleChange;
+        }*/
     }
 
-    //copied from stalker enemy
-    void Flip()
-    {
-        // Filps the enemies scale to face the destination
-        if ((transform.position).x > destination.x && desiredScale.x > 0) // On right side
-        {
-            //transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-            //desiredScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-            desiredScale = new Vector3(desiredScale.x * -1, desiredScale.y, desiredScale.z);
-
-        }
-        if ((transform.position).x < destination.x && desiredScale.x < 0) // On left side
-        {
-            //transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-            //desiredScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-            desiredScale = new Vector3(desiredScale.x * -1, desiredScale.y, desiredScale.z);
-
-        }
-    }
 }
