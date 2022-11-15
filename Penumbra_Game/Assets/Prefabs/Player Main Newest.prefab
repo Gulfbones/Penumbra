@@ -6425,6 +6425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93074792068893349afad2d7f846a6de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waxMax: 160
   playerMovementScript: {fileID: 0}
   lightHitBox: {fileID: 7729669048965583555}
   droppedFlame: {fileID: 3262486041258228337, guid: 40f1739471b3746478d3ae2a42a2c296, type: 3}
