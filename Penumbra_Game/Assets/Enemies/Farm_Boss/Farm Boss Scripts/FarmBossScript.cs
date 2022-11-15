@@ -64,7 +64,7 @@ public class FarmBossScript : MonoBehaviour
         {
             if (damageInterval <= 0)
             {
-                bossHealth -= 250;
+                bossHealth -= 100;
                 Debug.Log("Damage Taken");
                 damageInterval = 1.5f;
             }
