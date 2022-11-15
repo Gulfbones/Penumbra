@@ -39,13 +39,16 @@ public class PlayerScript : MonoBehaviour
     //public MeshRenderer currentDirection;
 
     public GameObject dropFlame;
+    public GameObject dropFlameChild;
     public Light2D dropFlameLight;
-    public SpriteRenderer dropFlameSprite;
+    //public SpriteRenderer dropFlameSprite;
 
     IEnumerator dropFlameWaxCoroutine;
-    float dropFlameWax;
+    private float dropFlameWax;
+    private Animator animator;
 
-    bool coroutineRunning;
+
+    private bool coroutineRunning;
 
     // Start is called before the first frame update
     void Start()
@@ -74,9 +77,16 @@ public class PlayerScript : MonoBehaviour
 
         dropFlame = GameObject.FindGameObjectWithTag("Drop Flame");
         dropFlameLight = dropFlame.GetComponent<Light2D>();
-        dropFlameSprite = dropFlame.GetComponent<SpriteRenderer> ();
+        //dropFlameSprite = dropFlame.GetComponent<SpriteRenderer> ();
         dropFlameLight.enabled = false;
-        dropFlameSprite.enabled = false;
+        //dropFlameSprite.enabled = false;
+
+        dropFlameChild = dropFlame.transform.GetChild(0).gameObject;
+        
+        animator = dropFlameChild.GetComponent<Animator>();
+        animator.enabled = false;
+
+        dropFlameChild.SetActive(false);
 
         dropFlameWaxCoroutine = dropFlameCoroutine();
         dropFlameWax = 20.0f;
@@ -144,13 +154,18 @@ public class PlayerScript : MonoBehaviour
                 StopCoroutine(dropFlameWaxCoroutine);
             }
             candleDropping = true;
+            dropFlameChild.SetActive(true);
+
             UnityEngine.Debug.Log("candleDropping: " + candleDropping);
             //play animation
             //create new candle object
-            if (!dropFlameLight.enabled || !dropFlameSprite.enabled)
+            if (!dropFlameLight.enabled)
             {
                 dropFlameLight.enabled = true;
-                dropFlameSprite.enabled = true;
+            }
+            if (!animator.enabled)
+            {
+                animator.enabled = true;
             }
             dropFlame.transform.position = gameObject.transform.position;
             dropFlameWax = 20.0f;
@@ -232,6 +247,8 @@ public class PlayerScript : MonoBehaviour
                 dropFlameLight.enabled = false;
                 coroutineRunning = false;
                 StopCoroutine(dropFlameWaxCoroutine);
+                dropFlameChild.SetActive(false);
+
             }
         }
     }
