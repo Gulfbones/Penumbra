@@ -78,7 +78,7 @@ public class PlayerScript : MonoBehaviour
         right = gameObject.transform.GetChild(4).gameObject;//.GetComponent<MeshRenderer>();
         //currentDirection = right;
         dropCoolDown = 0.0f;
-        dropCoolDownTimer = 10.0f;
+        dropCoolDownTimer = 5.0f;
         //dropFlame = GameObject.FindGameObjectWithTag("Drop Flame");
         //dropFlameLight = dropFlame.GetComponent<Light2D>();
         ////dropFlameSprite = dropFlame.GetComponent<SpriteRenderer> ();
@@ -160,7 +160,7 @@ public class PlayerScript : MonoBehaviour
         dropCoolDown -= 1.0f * Time.deltaTime;
         if(Input.GetKeyDown(KeyCode.DownArrow) && !busy && !attacking &&  dropCoolDown < 0.0f)
         {
-            Instantiate(droppedFlame,transform.position,Quaternion.identity);
+            Instantiate(droppedFlame,new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z),Quaternion.identity);
             waxCurrent -= dropFlameWax;
             dropCoolDown = dropCoolDownTimer;
             /**

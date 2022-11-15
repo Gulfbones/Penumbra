@@ -11,7 +11,7 @@ public class Dropped_Flame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lifeTimer = 10.0f;
+        lifeTimer = 15.0f;
         trigger = gameObject.transform.GetChild(1).gameObject;
         ogPos = trigger.transform.position;
         offSetPos = new Vector3(trigger.transform.position.x, trigger.transform.position.y - 5.0f, trigger.transform.position.z);

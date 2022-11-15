@@ -50,4 +50,8 @@ public class Button_Door : MonoBehaviour
         buttonsPressed--;
         check();
     }
+    public bool GetOpen()
+    {
+        return open;
+    }
 }
