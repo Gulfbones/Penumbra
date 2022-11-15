@@ -31090,6 +31090,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 880043935
       objectReference: {fileID: 0}
+    - target: {fileID: 1609239517550481762, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -31154,6 +31158,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 880043935
       objectReference: {fileID: 0}
+    - target: {fileID: 6501766645619076603, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 6783906395005202005, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -31162,6 +31170,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 880043935
       objectReference: {fileID: 0}
+    - target: {fileID: 6783906395005202005, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 7668997569416923082, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -31170,6 +31182,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 880043935
       objectReference: {fileID: 0}
+    - target: {fileID: 7668997569416923082, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 7795448359090569785, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -31178,6 +31194,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 880043935
       objectReference: {fileID: 0}
+    - target: {fileID: 7795448359090569785, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 8768557053580462783, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -31186,6 +31206,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 880043935
       objectReference: {fileID: 0}
+    - target: {fileID: 8768557053580462783, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 8914223972323331508, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -31194,6 +31218,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 880043935
       objectReference: {fileID: 0}
+    - target: {fileID: 8914223972323331508, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
 --- !u!1 &1082398262
@@ -32184,27 +32212,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2068703417150083292, guid: d7c12625b1b73eb499511eaff01e9822, type: 3}
   m_PrefabInstance: {fileID: 1281442972}
   m_PrefabAsset: {fileID: 0}
---- !u!50 &1281442974
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281442973}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &1281442975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82528,7 +82535,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 5}
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 30
 --- !u!50 &2076004238
 Rigidbody2D:
   serializedVersion: 4

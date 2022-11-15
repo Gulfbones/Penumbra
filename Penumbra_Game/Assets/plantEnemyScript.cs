@@ -9,7 +9,7 @@ public class plantEnemyScript : MonoBehaviour
     GameObject pcObject;
     PlayerScript pcScript;
     CircleCollider2D plantDetectionCollider;
-    SpriteRenderer plantSprite;
+    //SpriteRenderer plantSprite;
     bool canHit;
     Vector3 plantEnemyPosition;
     Vector3 playerPosition;
@@ -17,6 +17,8 @@ public class plantEnemyScript : MonoBehaviour
     bool coroutineRunning;
     float attackRange;
     IEnumerator attack;
+    private Animator animator;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +26,8 @@ public class plantEnemyScript : MonoBehaviour
         pcObject = GameObject.FindGameObjectWithTag("Player");
         pcScript = pcObject.GetComponent<PlayerScript>();
         plantDetectionCollider = gameObject.GetComponent<CircleCollider2D>();
-        plantSprite = gameObject.GetComponent<SpriteRenderer>();
-        plantSprite.enabled = false;
+        //plantSprite = gameObject.GetComponent<SpriteRenderer>();
+        //plantSprite.enabled = false;
         canHit = false;
         plantEnemyPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         playerPosition = new Vector3(pcObject.transform.position.x, pcObject.transform.position.y, pcObject.transform.position.z);
@@ -33,6 +35,8 @@ public class plantEnemyScript : MonoBehaviour
         coroutineRunning = false;
         attackRange = 2.0f;
         attack = AttackCoroutine();
+        animator = gameObject.GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -48,7 +52,9 @@ public class plantEnemyScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //Play starting animation
-            plantSprite.enabled = true;
+            //plantSprite.enabled = true;
+            animator.SetBool("inRange", true);
+
             if (!coroutineRunning)
             {
                 coroutineRunning = true;
@@ -79,15 +85,20 @@ public class plantEnemyScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //Play ending animation
+            animator.SetBool("inRange", false);
+
             coroutineRunning = false;
             StopCoroutine(attack);
             UnityEngine.Debug.Log("Coroutine Stopped");
-            plantSprite.enabled = false;
+            //plantSprite.enabled = false;
         }
     }
 
     public IEnumerator AttackCoroutine()
     {
+        yield return new WaitForSeconds(0.9f);
+        yield return new WaitForSeconds(1.917f);
+
         while (true)
         {
             UnityEngine.Debug.Log("plantEnemyPosition: " + plantEnemyPosition);
@@ -105,23 +116,29 @@ public class plantEnemyScript : MonoBehaviour
             if (canHit)
             {
                 //Play attack animation
+                animator.SetBool("attacking", true);
                 //WaitForSeconds (until attack animation ends)
-                UnityEngine.Debug.Log("Waiting 2 seconds");
-                yield return new WaitForSeconds(2.0f);
+                yield return new WaitForSeconds(0.917f);
 
                 if (Mathf.Abs(plantEnemyPosition.x - playerPosition.x) <= attackRange && Mathf.Abs(plantEnemyPosition.y - playerPosition.y) <= attackRange)
                 {
                     canHit = true;
+
                 }
                 else
                 {
                     canHit = false;
+
                 }
                 if (canHit)
                 {
                     pcScript.setWaxCurrent(pcScript.getWaxCurrent() - 10);
                     UnityEngine.Debug.Log("Damaged Player");
                 }
+            }
+            else
+            {
+                animator.SetBool("attacking", false);
             }
             yield return null;
         }

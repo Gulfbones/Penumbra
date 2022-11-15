@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class RatEnemyScript : MonoBehaviour
@@ -21,13 +22,22 @@ public class RatEnemyScript : MonoBehaviour
         /*within attacking range of player*/
         if (Mathf.Abs(playerGameObject.transform.position.x - playerGameObject.transform.position.x) <= 2 && Mathf.Abs(playerGameObject.transform.position.y - playerGameObject.transform.position.y) <= 2)
         {
-            animator.SetBool("playAttacking", true);
+            animator.SetBool("inAttackRange", true);
             //play attack animation
             //attack the player
         }
         else
         {
-            animator.SetBool("playAttacking", false);
+            animator.SetBool("inAttackRange", false);
+        }
+
+        if(transform.hasChanged)
+        {
+            animator.SetBool("moving", true);
+        }
+        else
+        {
+            animator.SetBool("moving", false);
         }
         
     }
