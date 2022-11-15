@@ -90,9 +90,9 @@ public class PlayerScript : MonoBehaviour
         isAttacking();
         candleDrop();
         waxMeter();
-        UnityEngine.Debug.Log("dropFlameLight.enabled: " + dropFlameLight.enabled);
-        UnityEngine.Debug.Log("dropFlameSprite.enabled: " + dropFlameSprite.enabled);
-        UnityEngine.Debug.Log("dropFlame position: " + dropFlame.transform.position);
+        //UnityEngine.Debug.Log("dropFlameLight.enabled: " + dropFlameLight.enabled);
+        //UnityEngine.Debug.Log("dropFlameSprite.enabled: " + dropFlameSprite.enabled);
+        //UnityEngine.Debug.Log("dropFlame position: " + dropFlame.transform.position);
 
 
     }
