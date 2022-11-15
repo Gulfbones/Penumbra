@@ -27,7 +27,7 @@ public class Minecart_Script : MonoBehaviour
         sprite = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
         //cart = mainGameObject.transform.GetChild(0).gameObject;
         CartPhysicsEngine = GetComponent<Rigidbody2D>();
-        Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Enemy").GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        //Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Enemy").GetComponent<Collider2D>(), GetComponent<Collider2D>());
         //spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         //gameObject.get
     }
