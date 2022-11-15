@@ -6375,8 +6375,8 @@ MonoBehaviour:
   left: {fileID: 0}
   right: {fileID: 0}
   dropFlame: {fileID: 0}
+  dropFlameChild: {fileID: 0}
   dropFlameLight: {fileID: 0}
-  dropFlameSprite: {fileID: 0}
 --- !u!81 &365045078442730896
 AudioListener:
   m_ObjectHideFlags: 0
