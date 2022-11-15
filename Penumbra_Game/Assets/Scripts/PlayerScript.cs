@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour
     public PlayerMovementScript playerMovementScript;
 
     [SerializeField] GameObject lightHitBox;
+    [SerializeField] GameObject droppedFlame;
     [SerializeField] Light2D candleLight;
     float originalLightSize;
     //GameObject lightHitBox;
@@ -86,11 +87,11 @@ public class PlayerScript : MonoBehaviour
         animator = dropFlameChild.GetComponent<Animator>();
         animator.enabled = false;
 
-        dropFlameChild.SetActive(false);
+        //dropFlameChild.SetActive(false);
 
-        dropFlameWaxCoroutine = dropFlameCoroutine();
+        //dropFlameWaxCoroutine = dropFlameCoroutine();
         dropFlameWax = 20.0f;
-        coroutineRunning = false;
+        //coroutineRunning = false;
     }
 
     // Update is called once per frame
@@ -149,6 +150,8 @@ public class PlayerScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.DownArrow) && !busy && !attacking)
         {
+            Instantiate(droppedFlame,transform.position,Quaternion.identity);
+            /**
             if(coroutineRunning)
             {
                 StopCoroutine(dropFlameWaxCoroutine);
@@ -170,7 +173,7 @@ public class PlayerScript : MonoBehaviour
             dropFlame.transform.position = gameObject.transform.position;
             dropFlameWax = 20.0f;
             StartCoroutine(dropFlameWaxCoroutine);
-
+            */
         }
         else
         {
@@ -235,6 +238,7 @@ public class PlayerScript : MonoBehaviour
     
     }
 
+    /*
     IEnumerator dropFlameCoroutine()
     {
         coroutineRunning = true;
@@ -252,7 +256,7 @@ public class PlayerScript : MonoBehaviour
             }
         }
     }
-    
+    */
     public float getWaxMax()
     {
         return waxMax;
