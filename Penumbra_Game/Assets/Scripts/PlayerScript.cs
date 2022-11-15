@@ -26,6 +26,8 @@ public class PlayerScript : MonoBehaviour
     Vector3 startingLightHitBox;
     Vector3 attackingLightHitBox;
     float attackingGrowSpeed;
+    public float dropCoolDown;
+    public float dropCoolDownTimer;
 
     //bool wasAttacking;
     bool attacking;
@@ -75,6 +77,13 @@ public class PlayerScript : MonoBehaviour
         left = gameObject.transform.GetChild(3).gameObject;//.GetComponent<MeshRenderer>();
         right = gameObject.transform.GetChild(4).gameObject;//.GetComponent<MeshRenderer>();
         //currentDirection = right;
+        dropCoolDown = 0.0f;
+        dropCoolDownTimer = 10.0f;
+        //dropFlame = GameObject.FindGameObjectWithTag("Drop Flame");
+        //dropFlameLight = dropFlame.GetComponent<Light2D>();
+        ////dropFlameSprite = dropFlame.GetComponent<SpriteRenderer> ();
+        //dropFlameLight.enabled = false;
+        ////dropFlameSprite.enabled = false;
 
         dropFlame = GameObject.FindGameObjectWithTag("Drop Flame");
         //dropFlameLight = dropFlame.GetComponent<Light2D>();
@@ -148,11 +157,12 @@ public class PlayerScript : MonoBehaviour
 
     public bool candleDrop()
     {
-        if(Input.GetKeyDown(KeyCode.DownArrow) && !busy && !attacking)
+        dropCoolDown -= 1.0f * Time.deltaTime;
+        if(Input.GetKeyDown(KeyCode.DownArrow) && !busy && !attacking &&  dropCoolDown < 0.0f)
         {
             Instantiate(droppedFlame,transform.position,Quaternion.identity);
-            waxCurrent -= dropFlameWax; //for some reason this doesn't actually work
-            candleDropping = true;
+            waxCurrent -= dropFlameWax;
+            dropCoolDown = dropCoolDownTimer;
             /**
             if(coroutineRunning)
             {

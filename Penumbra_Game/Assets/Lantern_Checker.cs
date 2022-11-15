@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Light_Puzzle_Checker : MonoBehaviour
+public class Lantern_Checker : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public Puzzle_Lantern[] lanterns;
+    public lanternInteract[] lanterns;
     public bool solved;
     public float timer;
 
     void Start()
     {
-        lanterns = gameObject.GetComponentsInChildren<Puzzle_Lantern>();
+        lanterns = gameObject.GetComponentsInChildren<lanternInteract>();
         solved = false;
     }
 
@@ -35,24 +34,19 @@ public class Light_Puzzle_Checker : MonoBehaviour
     {
 
         bool checking = true;
-        for(int i = 0; i < lanterns.Length; ++i)
+        for (int i = 0; i < lanterns.Length; ++i)
         {
-            if (lanterns[i].GetLit() == false)
+            if (lanterns[i].lit == false)
             {
                 checking = false;
             }
         }
-        if(checking == true)
+        if (checking == true)
         {
-            //lock all lights and solve
-            for (int i = 0; i < lanterns.Length; ++i)
-            {
-                lanterns[i].LockLights();
-            }
-            solved = true;
+            Destroy(GameObject.Find("ShadowWall"));
         }
     }
-    
+
     bool GetSolved()
     {
         return solved;
