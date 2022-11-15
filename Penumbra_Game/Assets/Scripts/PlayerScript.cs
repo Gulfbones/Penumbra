@@ -77,15 +77,15 @@ public class PlayerScript : MonoBehaviour
         //currentDirection = right;
 
         dropFlame = GameObject.FindGameObjectWithTag("Drop Flame");
-        dropFlameLight = dropFlame.GetComponent<Light2D>();
+        //dropFlameLight = dropFlame.GetComponent<Light2D>();
         //dropFlameSprite = dropFlame.GetComponent<SpriteRenderer> ();
-        dropFlameLight.enabled = false;
+        //dropFlameLight.enabled = false;
         //dropFlameSprite.enabled = false;
 
-        dropFlameChild = dropFlame.transform.GetChild(0).gameObject;
+        //dropFlameChild = dropFlame.transform.GetChild(0).gameObject;
         
-        animator = dropFlameChild.GetComponent<Animator>();
-        animator.enabled = false;
+        //animator = dropFlameChild.GetComponent<Animator>();
+        //animator.enabled = false;
 
         //dropFlameChild.SetActive(false);
 
@@ -151,7 +151,8 @@ public class PlayerScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.DownArrow) && !busy && !attacking)
         {
             Instantiate(droppedFlame,transform.position,Quaternion.identity);
-            waxCurrent -= dropFlameWax;
+            waxCurrent -= dropFlameWax; //for some reason this doesn't actually work
+            candleDropping = true;
             /**
             if(coroutineRunning)
             {

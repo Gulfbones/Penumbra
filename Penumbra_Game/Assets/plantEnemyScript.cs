@@ -62,6 +62,8 @@ public class plantEnemyScript : MonoBehaviour
                 StartCoroutine(attack);
             }
         }
+
+
     }
     
     /*

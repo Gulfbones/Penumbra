@@ -21,10 +21,10 @@ public class LevelChanger : MonoBehaviour
         SceneManager.LoadScene(_nextLevelName);
     }
 
-    public void StartLevel()
-    {
-        SceneManager.LoadScene("Sprint_3_03");
-    }
+    //public void StartLevel()
+    //{
+    //    SceneManager.LoadScene("Sprint_3_03");
+    //}
 
     public void QuitGame()
     {

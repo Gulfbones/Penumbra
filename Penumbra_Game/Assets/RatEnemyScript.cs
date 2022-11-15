@@ -10,6 +10,8 @@ public class RatEnemyScript : MonoBehaviour
     private PlayerScript playerScript;
     private Animator animator;
     private Vector3 scaleChange;
+    private IEnumerator attack;
+    private bool coroutineRunning;
 
 
     // Start is called before the first frame update
@@ -19,6 +21,8 @@ public class RatEnemyScript : MonoBehaviour
         playerScript = playerGameObject.GetComponent<PlayerScript>();
         animator = gameObject.GetComponent<Animator>();
         scaleChange = new Vector3 (gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+        attack = AttackCoroutine();
+        coroutineRunning = false;
 
     }
 
@@ -31,13 +35,21 @@ public class RatEnemyScript : MonoBehaviour
             animator.SetBool("inAttackRange", true);
             //play attack animation
             //attack the player
+            if (!coroutineRunning)
+            {
+                coroutineRunning = true;
+                StartCoroutine(attack);
+            }
         }
         else
         {
             animator.SetBool("inAttackRange", false);
+            StopCoroutine(attack);
+            coroutineRunning = false;
+
         }
 
-        if(transform.hasChanged)
+        if (transform.hasChanged)
         {
             animator.SetBool("moving", true);
         }
@@ -46,16 +58,49 @@ public class RatEnemyScript : MonoBehaviour
             animator.SetBool("moving", false);
         }
 
-        /*if (playerGameObject.transform.position.x > gameObject.transform.position.x || playerGameObject.transform.localScale.x < 0)
+        if (playerGameObject.transform.position.x < gameObject.transform.position.x)
         {
-            scaleChange = new Vector3 (-1*gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
-            gameObject.transform.localScale = scaleChange;
+            if (gameObject.transform.localScale.x > 0)
+            {
+                scaleChange = new Vector3(-1 * gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+                gameObject.transform.localScale = scaleChange;
+            }
+            else
+            {
+                scaleChange = new Vector3(gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+                gameObject.transform.localScale = scaleChange;
+            }
         }
-        else if (playerGameObject.transform.position.x < gameObject.transform.position.x || playerGameObject.transform.localScale.x > 0)
+        else if (playerGameObject.transform.position.x > gameObject.transform.position.x)
         {
-            scaleChange = new Vector3 (gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
-            gameObject.transform.localScale = scaleChange;
-        }*/
+            if (gameObject.transform.localScale.x < 0)
+            {
+                scaleChange = new Vector3(-1 * gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+                gameObject.transform.localScale = scaleChange;
+            }
+            else
+            {
+                scaleChange = new Vector3(gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+                gameObject.transform.localScale = scaleChange;
+            }
+        }
     }
+    public IEnumerator AttackCoroutine()
+    {
+        yield return new WaitForSeconds(1.133f);
+        while (true)
+        {
+            yield return new WaitForSeconds(2.15f);
+            playerScript.setWaxCurrent(playerScript.getWaxCurrent() - 10);
+            yield return null;
 
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Drop Flame") || other.gameObject.CompareTag("Player"))
+        {
+            gameObject.SetActive(false);
+        }
+    }
 }

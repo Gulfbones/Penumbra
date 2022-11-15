@@ -13,6 +13,7 @@ public class FarmBossScript : MonoBehaviour
     public GameObject head2;
     public GameObject head3;
     public GameObject head4;
+    public GameObject blocker;
 
     private Animator anim;
     // Start is called before the first frame update
@@ -50,6 +51,11 @@ public class FarmBossScript : MonoBehaviour
             head3.SetActive(false);
             head4.SetActive(true);
         }
+        if(bossHealth <= 0)
+        {
+            gameObject.SetActive(false);
+            blocker.SetActive(false);
+        }
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -58,7 +64,7 @@ public class FarmBossScript : MonoBehaviour
         {
             if (damageInterval <= 0)
             {
-                bossHealth -= 50;
+                bossHealth -= 250;
                 Debug.Log("Damage Taken");
                 damageInterval = 1.5f;
             }
