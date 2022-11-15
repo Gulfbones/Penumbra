@@ -7,6 +7,7 @@ public class Puzzle_Lantern : MonoBehaviour
 {
     // Start is called before the first frame update
     public bool lit;
+    private bool locked;
     private PlayerScript playerScript;
     private Puzzle_Lantern targetLantern;
     private Light2D lanternLight;
@@ -21,6 +22,7 @@ public class Puzzle_Lantern : MonoBehaviour
         ownCollider = gameObject.GetComponent<Collider2D>();
         lightGameObject = transform.GetChild(0).gameObject;
         lightGameObject.SetActive(false); // default disables light
+        locked = false;
         if (lit == true)
         {
             lightGameObject.SetActive(true);
@@ -41,7 +43,7 @@ public class Puzzle_Lantern : MonoBehaviour
             lightGameObject.SetActive(false);
         }
 
-        if (currentObject && Input.GetKeyDown(KeyCode.E) && !playerScript.getAttacking() && !playerScript.getBusy())
+        if (locked == false && currentObject && Input.GetKeyDown(KeyCode.E) && !playerScript.getAttacking() && !playerScript.getBusy())
         {
             //currentObject.SetActive(false);
             //playerScript.setWaxCurrent(playerScript.getWaxMax());
@@ -102,6 +104,15 @@ public class Puzzle_Lantern : MonoBehaviour
             lit = true;
             lightGameObject.SetActive(true);
         }
+        //GameObject.Find("Lantern_Puzzle_Checker").GetComponent<Light_Puzzle_Checker>().check();
+    }
+    public void LockLights()
+    {
+        locked = true;
+    }
+    public bool GetLit()
+    {
+        return lit;
     }
 
     //
