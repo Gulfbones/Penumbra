@@ -13,8 +13,9 @@ public class idleFBehavior : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        rand = 0;
         timer = Random.Range(minTime, maxTime);
-        rand = Random.Range(0, 3);
+        rand = Random.Range(0, 301);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -22,15 +23,17 @@ public class idleFBehavior : StateMachineBehaviour
     {
         if (timer <= 0)
         {
-            if (rand == 0)
+            int num = rand;
+            Debug.Log(num);
+            if (rand <= 100)
             {
                 animator.SetTrigger("rAttack");
             }
-            else if (rand == 1)
+            else if ((rand > 100) && (rand <= 200))
             {
                 animator.SetTrigger("lAttack");
             }
-            else
+            else if (rand > 200)
             {
                 animator.SetTrigger("dAttack");
             }
@@ -44,6 +47,8 @@ public class idleFBehavior : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        animator.ResetTrigger("rAttack");
+        animator.ResetTrigger("lAttack");
+        animator.ResetTrigger("dAttack");
     }
 }

@@ -52054,6 +52054,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2294137859835618632, guid: 45ecd51f943c78f47aa1cf1258d575ba, type: 3}
+      propertyPath: _nextLevelName
+      value: Boss_Fight
+      objectReference: {fileID: 0}
     - target: {fileID: 7254301910251794108, guid: 45ecd51f943c78f47aa1cf1258d575ba, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -52101,6 +52105,10 @@ PrefabInstance:
     - target: {fileID: 7254301910251794110, guid: 45ecd51f943c78f47aa1cf1258d575ba, type: 3}
       propertyPath: m_Name
       value: LevelChangeBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 8651431422880714179, guid: 45ecd51f943c78f47aa1cf1258d575ba, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.34
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45ecd51f943c78f47aa1cf1258d575ba, type: 3}
