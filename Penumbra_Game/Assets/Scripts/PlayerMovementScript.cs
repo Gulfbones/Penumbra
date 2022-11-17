@@ -25,6 +25,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     public GameObject OriginalGameObject;
     public GameObject playerObject;
+    private int wasFacing;
     
     // Start is called before the first frame update
     void Start()
@@ -62,6 +63,9 @@ public class PlayerMovementScript : MonoBehaviour
         // Probably not needed \/
         //Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("MinecartWall").GetComponent<Collider2D>(), GetComponent<Collider2D>());
 
+        wasFacing = 0;
+        //using 0=up, 1=right, 2=down, 3=left
+
     }
     // Clears all the player game objects
     void ClearActive(string direction)
@@ -88,7 +92,7 @@ public class PlayerMovementScript : MonoBehaviour
         // Can only move LEFT or RIGHT
         if (Input.GetKey(KeyCode.D)) // RIGHT
         {
-            
+            slowTurn();
                 moving = true;
             //currentDirection = right;
             //right.GetComponentInChildren<Renderer>().enabled = (true);
@@ -97,11 +101,11 @@ public class PlayerMovementScript : MonoBehaviour
                 playerObject.transform.rotation = Quaternion.Euler(0, 0, 0); // Sets the Rotation of the child object "Player Object" which also rotates all other children objects
             
             playerPhysicsEngine.velocity = new Vector3(rightMovement.x, playerPhysicsEngine.velocity.y, 0); // Adds Velocity which causes movement
-
+            wasFacing = 1;
         }
         else if (Input.GetKey(KeyCode.A)) // LEFT
         {
-            
+            slowTurn();
                 moving = true;
             //currentDirection = left;
             //left.GetComponentInChildren<Renderer>().enabled = (true);
@@ -111,7 +115,7 @@ public class PlayerMovementScript : MonoBehaviour
             
             playerPhysicsEngine.velocity = new Vector3(leftMovement.x, playerPhysicsEngine.velocity.y, 0);
 
-
+            wasFacing = 3;
         }
         if(Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A))
         {
@@ -120,7 +124,7 @@ public class PlayerMovementScript : MonoBehaviour
         // Can only move UP or DOWN
         if (Input.GetKey(KeyCode.W)) // UP
         {
-            
+            slowTurn();
                 moving = true;
             //currentDirection = up;
             //up.GetComponentInChildren<Renderer>().enabled = (true);
@@ -131,11 +135,11 @@ public class PlayerMovementScript : MonoBehaviour
                 playerPhysicsEngine.velocity = new Vector3(playerPhysicsEngine.velocity.x, upMovement.y, 0);
 
 
-
+            wasFacing = 0;
         }
         else if (Input.GetKey(KeyCode.S)) // DOWN
         {
-            
+            slowTurn();
                 moving = true;
             //currentDirection = down;
             //down.GetComponentInChildren<Renderer>().enabled = (true);
@@ -144,7 +148,7 @@ public class PlayerMovementScript : MonoBehaviour
                 playerObject.transform.rotation = Quaternion.Euler(0, 0, -90);
             
             playerPhysicsEngine.velocity = new Vector3(playerPhysicsEngine.velocity.x, downMovement.y, 0);
-
+            wasFacing = 2;
         }
         if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
         {
@@ -172,6 +176,92 @@ public class PlayerMovementScript : MonoBehaviour
         }
         
         
+    }
+
+    private void slowTurn()
+    {
+        if (Input.GetKey(KeyCode.W)) //if holding up input
+        {
+            if (wasFacing == 1) //if they were facing right
+            {
+                gameObject.transform.eulerAngles = new Vector3(0, 40, 0);
+                UnityEngine.Debug.Log("whoo slow turn baby!");
+            }
+            else if (wasFacing == 2) //if they were facing down
+            {
+
+            }
+            else if (wasFacing == 3) //if they were facing left
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+        else if (Input.GetKey(KeyCode.D)) //if holding right input
+        {
+            if (wasFacing == 0) //if they were facing up
+            {
+
+            }
+            else if (wasFacing == 2) //if they were facing down
+            {
+
+            }
+            else if (wasFacing == 3) //if they were facing left
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+        else if (Input.GetKey(KeyCode.S)) //if holding down input
+        {
+            if (wasFacing == 0) //if they were facing up
+            {
+
+            }
+            else if (wasFacing == 1) //if they were facing right
+            {
+
+            }
+            else if (wasFacing == 3) //if they were facing left
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+        else if (Input.GetKey(KeyCode.A)) //if holding left input
+        {
+            if (wasFacing == 0) //if they were facing up
+            {
+
+            }
+            else if (wasFacing == 1) //if they were facing right
+            {
+
+            }
+            else if (wasFacing == 2) //if they were facing down
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+        else
+        {
+
+
+        }
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
