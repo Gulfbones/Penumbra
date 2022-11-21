@@ -82122,21 +82122,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3345348214965620050, guid: eb24cd33c0ec89b43aced3e9ca44c07a, type: 3}
-      propertyPath: aiPath
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3345348214965620050, guid: eb24cd33c0ec89b43aced3e9ca44c07a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3345348214965620051, guid: eb24cd33c0ec89b43aced3e9ca44c07a, type: 3}
       propertyPath: m_Name
       value: Stalker Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 3345348214965620051, guid: eb24cd33c0ec89b43aced3e9ca44c07a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3345348214965620054, guid: eb24cd33c0ec89b43aced3e9ca44c07a, type: 3}
       propertyPath: m_RootOrder
@@ -82182,10 +82170,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3345348214965620055, guid: eb24cd33c0ec89b43aced3e9ca44c07a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb24cd33c0ec89b43aced3e9ca44c07a, type: 3}
 --- !u!1001 &6345699668825451138
@@ -82201,11 +82185,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6345699667731384741, guid: 125e52f33e7516241bdf686e1392fe7e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.2
+      value: -1.6
       objectReference: {fileID: 0}
     - target: {fileID: 6345699667731384741, guid: 125e52f33e7516241bdf686e1392fe7e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.6
+      value: -60.2
       objectReference: {fileID: 0}
     - target: {fileID: 6345699667731384741, guid: 125e52f33e7516241bdf686e1392fe7e, type: 3}
       propertyPath: m_LocalPosition.z
