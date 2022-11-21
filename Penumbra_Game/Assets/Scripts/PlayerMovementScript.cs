@@ -67,7 +67,7 @@ public class PlayerMovementScript : MonoBehaviour
         // Probably not needed \/
         //Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("MinecartWall").GetComponent<Collider2D>(), GetComponent<Collider2D>());
         desiredAngle = playerObject.transform.rotation;
-        //StartCoroutine(rotateCoroutine());
+        StartCoroutine(rotateCoroutine());
     }
     // Clears all the player game objects
     void ClearActive(string direction)
@@ -90,7 +90,7 @@ public class PlayerMovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerObject.transform.rotation = Quaternion.Lerp(playerObject.transform.rotation, desiredAngle, 10.0f * Time.deltaTime);
+        //playerObject.transform.rotation = Quaternion.Lerp(playerObject.transform.rotation, desiredAngle, 10.0f * Time.deltaTime);
         //start coroutine
         /*
         if (coroutineStarted == false)
@@ -185,7 +185,8 @@ public class PlayerMovementScript : MonoBehaviour
         {
             //Debug.Log("yaaay. coroutine ran. tick tock");
             //yield return new WaitForSeconds(4);
-            desiredAngleVal = desiredAngle.z;
+            //desiredAngleVal = desiredAngle.z;
+            playerObject.transform.rotation = Quaternion.Lerp(playerObject.transform.rotation, desiredAngle, 10.0f * Time.deltaTime);
             yield return null;
 
             //Debug.Log("yaaay. timer is up");
