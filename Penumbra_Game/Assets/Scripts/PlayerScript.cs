@@ -170,6 +170,13 @@ public class PlayerScript : MonoBehaviour
             Instantiate(droppedFlame,new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z),Quaternion.identity);
             waxCurrent -= dropFlameWax;
             dropCoolDown = dropCoolDownTimer;
+
+            // Playing Flame drop Animation
+            up.GetComponent<Animator>().SetTrigger("triggerFlamePlace");
+            down.GetComponent<Animator>().SetTrigger("triggerFlamePlace");
+            left.GetComponent<Animator>().SetTrigger("triggerFlamePlace");
+            right.GetComponent<Animator>().SetTrigger("triggerFlamePlace");
+            //animator.SetTrigger("triggerFlamePlace");
             /**
             if(coroutineRunning)
             {
