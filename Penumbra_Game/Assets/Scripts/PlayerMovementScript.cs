@@ -6,39 +6,23 @@ using UnityEngine;
 public class PlayerMovementScript : MonoBehaviour
 {
 
-    public Vector3 rightMovement;
-    public Vector3 leftMovement;
-    public Vector3 upMovement;
-    public Vector3 downMovement;
-
-    public float desiredAngleVal;
-    public Vector3 desiredAngleVec;
+    public Vector3 rightMovement, leftMovement, upMovement, downMovement;
     public Quaternion desiredAngle;
 
-    public float animTriggerVelocity = 9.5f; // How fast you need to move to trigger walk animation
-    public Rigidbody2D playerPhysicsEngine;
-
-    public GameObject down;
-    public GameObject up;
-    public GameObject left;
-    public GameObject right;
-    //public MeshRenderer currentDirection;
-
-    public SpriteRenderer PlayerSpriteRenderer;
-    public SpriteRenderer PlayerCandleSpriteRenderer;
-
-    public GameObject OriginalGameObject;
+    public GameObject down, up, left, right;
     public GameObject playerObject;
 
-    bool coroutineStarted = false;
+    public Rigidbody2D playerPhysicsEngine;
+
+    public float animTriggerVelocity = 9.5f; // How fast you need to move to trigger walk animation
+    
+    public SpriteRenderer PlayerSpriteRenderer;
+    public SpriteRenderer PlayerCandleSpriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Start ran");
-
-        // not GetComponent<GameObject>(); b/c itself is not a game object
-        OriginalGameObject = gameObject;
 
         // Getting sprite Animation and rendering for player
         PlayerSpriteRenderer = GetComponent<SpriteRenderer>();
@@ -47,64 +31,42 @@ public class PlayerMovementScript : MonoBehaviour
         playerPhysicsEngine = GetComponent<Rigidbody2D>();
 
         // Gets the first child gameObject of the main player 
-        playerObject = OriginalGameObject.transform.GetChild(0).gameObject;
+        playerObject = gameObject.transform.GetChild(0).gameObject;
          
-        //Gets the the SpriteRenderer of the first childs, first child of the main player
+        // Gets the the SpriteRenderer of the first childs, first child of the main player
         PlayerCandleSpriteRenderer = playerObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
 
-
-        down = OriginalGameObject.transform.GetChild(1).gameObject;//.GetComponent<MeshRenderer>();
-        up = OriginalGameObject.transform.GetChild(2).gameObject;//.GetComponent<MeshRenderer>();
-        left = OriginalGameObject.transform.GetChild(3).gameObject;//.GetComponent<MeshRenderer>();
-        right = OriginalGameObject.transform.GetChild(4).gameObject;//.GetComponent<MeshRenderer>();
-        //currentDirection = right;
+        // Setting GameObject directions
+        down = gameObject.transform.GetChild(1).gameObject;
+        up = gameObject.transform.GetChild(2).gameObject;
+        left = gameObject.transform.GetChild(3).gameObject;
+        right = gameObject.transform.GetChild(4).gameObject;
 
         rightMovement = new Vector3(10, 0, 0);  // x, y, z
         leftMovement = new Vector3(-10, 0, 0);  // x, y, z
         upMovement = new Vector3(0, 10, 0);     // x, y, z
         downMovement = new Vector3(0, -10, 0);  // x, y, z
 
-        // Probably not needed \/
-        //Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("MinecartWall").GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        // Sets desired Angle to current
         desiredAngle = playerObject.transform.rotation;
         StartCoroutine(rotateCoroutine());
     }
     // Clears all the player game objects
     void ClearActive(string direction)
     {
-        if(direction != "up")
-            foreach(var rend in up.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
-            //up.GetComponentsInChildren<Renderer>().enabled = (false);
-        if (direction != "down")
-            foreach (var rend in down.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
-        //down.GetComponentsInChildren<Renderer>().enabled = (false);
-        if (direction != "left")
-            foreach (var rend in left.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
-        //left.GetComponentsInChildren<Renderer>().enabled = (false);
-        if (direction != "right")
-            foreach (var rend in right.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
-        //right.GetComponentsInChildren<Renderer>().enabled = (false);
+        if (direction != "up")      foreach(var rend in up.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
+        if (direction != "down")    foreach (var rend in down.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
+        if (direction != "left")    foreach (var rend in left.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
+        if (direction != "right")   foreach (var rend in right.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
     }
     
 
     // Update is called once per frame
     void Update()
     {
-        //playerObject.transform.rotation = Quaternion.Lerp(playerObject.transform.rotation, desiredAngle, 10.0f * Time.deltaTime);
-        //start coroutine
-        /*
-        if (coroutineStarted == false)
-        {
-            coroutineStarted = true;
-        }
-        */
         // Can only move LEFT or RIGHT
         if (Input.GetKey(KeyCode.D)) // RIGHT
         {
-            
-            
-            //currentDirection = right;
-            //right.GetComponentInChildren<Renderer>().enabled = (true);
             foreach (var rend in right.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
             ClearActive("right");
             //playerObject.transform.rotation = Quaternion.Euler(0, 0, 0); // Sets the Rotation of the child object "Player Object" which also rotates all other children objects
@@ -115,9 +77,6 @@ public class PlayerMovementScript : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.A)) // LEFT
         {
-            
-            //currentDirection = left;
-            //left.GetComponentInChildren<Renderer>().enabled = (true);
             foreach (var rend in left.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
             ClearActive("left");
             //playerObject.transform.rotation = Quaternion.Euler(0, 0, 180); // LEFT
@@ -131,9 +90,6 @@ public class PlayerMovementScript : MonoBehaviour
         // Can only move UP or DOWN
         if (Input.GetKey(KeyCode.W)) // UP
         {
-            
-            //currentDirection = up;
-            //up.GetComponentInChildren<Renderer>().enabled = (true);
             foreach (var rend in up.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
             ClearActive("up");
             //playerObject.transform.rotation = Quaternion.Euler(0, 0, 90); // UP
@@ -145,9 +101,6 @@ public class PlayerMovementScript : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.S)) // DOWN
         {
-            
-            //currentDirection = down;
-            //down.GetComponentInChildren<Renderer>().enabled = (true);
             foreach (var rend in down.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
             ClearActive("down");
             //playerObject.transform.rotation = Quaternion.Euler(0, 0, 270); // DOWN
@@ -156,18 +109,16 @@ public class PlayerMovementScript : MonoBehaviour
             playerPhysicsEngine.velocity = new Vector3(playerPhysicsEngine.velocity.x, downMovement.y, 0);
         }
         
-        // if velocity > animTriggerSpeed, play 
+        // If velocity > animTriggerSpeed, play 
         if (playerPhysicsEngine.velocity.x > animTriggerVelocity || playerPhysicsEngine.velocity.y > animTriggerVelocity
             || playerPhysicsEngine.velocity.x < -animTriggerVelocity || playerPhysicsEngine.velocity.y < -animTriggerVelocity)
         {
+            // Debug.Log("playing walk");
             up.GetComponent<Animator>().SetBool("playWalk", true);
             down.GetComponent<Animator>().SetBool("playWalk", true);
             left.GetComponent<Animator>().SetBool("playWalk", true);
             right.GetComponent<Animator>().SetBool("playWalk", true);
-            // Debug.Log("playing walk");
-            //down.GetComponent<Animator>().SetBool("playWalk", true);
         }
-        //else down.GetComponent<Animator>().SetBool("playWalk", false);
         else
         {
             up.GetComponent<Animator>().SetBool("playWalk", false);
@@ -180,20 +131,13 @@ public class PlayerMovementScript : MonoBehaviour
     }
     public IEnumerator rotateCoroutine()
     {
-        //Debug.Log("yaaay. coroutine ran. tick tock");
         while (true)
         {
-            //Debug.Log("yaaay. coroutine ran. tick tock");
+            //Debug.Log("yaaay. coroutine ran.");
             //yield return new WaitForSeconds(4);
-            //desiredAngleVal = desiredAngle.z;
             playerObject.transform.rotation = Quaternion.Lerp(playerObject.transform.rotation, desiredAngle, 10.0f * Time.deltaTime);
             yield return null;
-
-            //Debug.Log("yaaay. timer is up");
-            //SceneManager.LoadScene("Level2");
         }
-        //yield return null;
-        //Debug.Log("yaaay. timer is up");
     }
     
     
