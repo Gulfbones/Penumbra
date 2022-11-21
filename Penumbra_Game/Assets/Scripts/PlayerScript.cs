@@ -52,8 +52,8 @@ public class PlayerScript : MonoBehaviour
 
     private bool coroutineRunning;
 
-    public GameObject mainCamera;
-    public GameObject inRangeInteractableUI;
+    //public GameObject mainCamera;
+    //public GameObject inRangeInteractableUI;
 
     // Start is called before the first frame update
     void Start()
@@ -104,10 +104,11 @@ public class PlayerScript : MonoBehaviour
         dropFlameWax = 20.0f;
         //coroutineRunning = false;
 
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        inRangeInteractableUI = mainCamera.transform.GetChild(1).gameObject;
-        UnityEngine.Debug.Log("mainCamera: " + mainCamera);
-        UnityEngine.Debug.Log("inRangeInteractableUI: " + inRangeInteractableUI);
+        /* Whats this do?? */
+        //mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        //inRangeInteractableUI = mainCamera.transform.GetChild(1).gameObject;
+        //UnityEngine.Debug.Log("mainCamera: " + mainCamera);
+        //UnityEngine.Debug.Log("inRangeInteractableUI: " + inRangeInteractableUI);
     }
 
     // Update is called once per frame
@@ -246,7 +247,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (!other.CompareTag("Light"))
         {
-            UnityEngine.Debug.Log("collider: " + other);
+            //UnityEngine.Debug.Log("collider: " + other);
         }
         // If player touches a hazard
         if (other.CompareTag("Hazard")) {
@@ -256,12 +257,13 @@ public class PlayerScript : MonoBehaviour
                 //?
             }
         }
+        /*
         if (other.CompareTag("Interactable"))
         {
             inRangeInteractableUI.GetComponent<SpriteRenderer>().enabled = true;
-            UnityEngine.Debug.Log("sprite enabled: " + inRangeInteractableUI.GetComponent<SpriteRenderer>().enabled);
+            //UnityEngine.Debug.Log("sprite enabled: " + inRangeInteractableUI.GetComponent<SpriteRenderer>().enabled);
         }
-
+        */
     }
     private void OnTriggerEnter2D(Collider2D other) 
     {
@@ -277,6 +279,7 @@ public class PlayerScript : MonoBehaviour
         }*/
 
     }
+    /*
     private void OnTriggerExit2D(Collider2D other)
     {
         if(other.CompareTag("Interactable"))
@@ -285,7 +288,7 @@ public class PlayerScript : MonoBehaviour
             UnityEngine.Debug.Log("sprite enabled: " + inRangeInteractableUI.GetComponent<SpriteRenderer>().enabled);
         }
     }
-
+    */
     /*
     IEnumerator dropFlameCoroutine()
     {
