@@ -11,153 +11,89 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class PlayerScript : MonoBehaviour
 {
     public float waxMax = 160.0f; // This float value represents amount of seconds the candle can burn
-    float waxCurrent;
-    float standardWaxLost;
-    float attackingWaxLost;
-    float candleDropWaxLost;
+    //public float waxCurrent;
+    private float standardWaxLost, attackingWaxLost, candleDropWaxLost, attackingGrowSpeed, dropFlameWaxCost;
+    public float waxCurrent, dropCoolDown, dropCoolDownTimer;
 
     public PlayerMovementScript playerMovementScript;
 
     [SerializeField] GameObject lightHitBox;
     [SerializeField] GameObject droppedFlame;
     [SerializeField] Light2D candleLight;
-    float originalLightSize;
-    //GameObject lightHitBox;
-    Vector3 startingLightHitBox;
-    Vector3 attackingLightHitBox;
-    float attackingGrowSpeed;
-    public float dropCoolDown;
-    public float dropCoolDownTimer;
+    private float originalLightSize;
+    private Vector3 startingLightHitBox, attackingLightHitBox;
 
     //bool wasAttacking;
-    bool attacking;
-    bool busy;
-    bool candleDropping;
-    //bool canInteractFountain;
-    //bool canInteractLantern;
-    public GameObject down;
-    public GameObject up;
-    public GameObject left;
-    public GameObject right;
-    //public MeshRenderer currentDirection;
-
-    public GameObject dropFlame;
-    public GameObject dropFlameChild;
-    public Light2D dropFlameLight;
-    //public SpriteRenderer dropFlameSprite;
-
-    IEnumerator dropFlameWaxCoroutine;
-    private float dropFlameWax;
-    private Animator animator;
-
-    private bool coroutineRunning;
-
-    //public GameObject mainCamera;
-    //public GameObject inRangeInteractableUI;
+    bool attacking, busy, candleDropping;
+    public GameObject down, up, left, right;
 
     // Start is called before the first frame update
     void Start()
     {
         playerMovementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementScript>();
-        //lightHitBox = GameObject.Find("Light_Hitbox");
+
         waxCurrent = waxMax;
-        standardWaxLost = 1.0f; //.5
-        attackingWaxLost = 5.0f; //5.25
+        standardWaxLost = 1.0f;     //.5
+        attackingWaxLost = 5.0f;    //5.25
         candleDropWaxLost = 20.0f;
-        startingLightHitBox = new Vector3(lightHitBox.transform.localScale.x, lightHitBox.transform.localScale.y, lightHitBox.transform.localScale.z);//new Vector(lightHitBox.transform.localPosition.x, lightHitBox.transform, lightHitBox.transform);
-        attackingLightHitBox = new Vector3(lightHitBox.transform.localScale.x*2.0f, lightHitBox.transform.localScale.y*1.5f, lightHitBox.transform.localScale.z);//new Vector3(1.0f,1.0f,0.0f);
+        startingLightHitBox = new Vector3(lightHitBox.transform.localScale.x, lightHitBox.transform.localScale.y, lightHitBox.transform.localScale.z);
+        attackingLightHitBox = new Vector3(lightHitBox.transform.localScale.x*2.0f, lightHitBox.transform.localScale.y*1.5f, lightHitBox.transform.localScale.z);
         attackingGrowSpeed = 15.0f;
         originalLightSize = candleLight.pointLightOuterRadius;
 
-        //wasAttacking = false;
         attacking = false;
         busy = false;
         candleDropping = false;
 
-        down = gameObject.transform.GetChild(1).gameObject;//.GetComponent<MeshRenderer>();
-        up = gameObject.transform.GetChild(2).gameObject;//.GetComponent<MeshRenderer>();
-        left = gameObject.transform.GetChild(3).gameObject;//.GetComponent<MeshRenderer>();
-        right = gameObject.transform.GetChild(4).gameObject;//.GetComponent<MeshRenderer>();
-        //currentDirection = right;
-        dropCoolDown = 0.0f;
-        dropCoolDownTimer = 5.0f;
-        //dropFlame = GameObject.FindGameObjectWithTag("Drop Flame");
-        //dropFlameLight = dropFlame.GetComponent<Light2D>();
-        ////dropFlameSprite = dropFlame.GetComponent<SpriteRenderer> ();
-        //dropFlameLight.enabled = false;
-        ////dropFlameSprite.enabled = false;
-
-        dropFlame = GameObject.FindGameObjectWithTag("Drop Flame");
-        //dropFlameLight = dropFlame.GetComponent<Light2D>();
-        //dropFlameSprite = dropFlame.GetComponent<SpriteRenderer> ();
-        //dropFlameLight.enabled = false;
-        //dropFlameSprite.enabled = false;
-
-        //dropFlameChild = dropFlame.transform.GetChild(0).gameObject;
+        down = gameObject.transform.GetChild(1).gameObject;
+        up = gameObject.transform.GetChild(2).gameObject;
+        left = gameObject.transform.GetChild(3).gameObject;
+        right = gameObject.transform.GetChild(4).gameObject;
         
-        //animator = dropFlameChild.GetComponent<Animator>();
-        //animator.enabled = false;
-
-        //dropFlameChild.SetActive(false);
-
-        //dropFlameWaxCoroutine = dropFlameCoroutine();
-        dropFlameWax = 20.0f;
-        //coroutineRunning = false;
-
-        /* Whats this do?? */
-        //mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        //inRangeInteractableUI = mainCamera.transform.GetChild(1).gameObject;
-        //UnityEngine.Debug.Log("mainCamera: " + mainCamera);
-        //UnityEngine.Debug.Log("inRangeInteractableUI: " + inRangeInteractableUI);
+        dropCoolDown = 5.0f;        // Time it takes for drop to recharge
+        dropCoolDownTimer = 0.0f;   // actual timer drop ability
+        dropFlameWaxCost = 20.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //currentDirection = playerMovementScript.getCurrentDirection();
         isAttacking();
         candleDrop();
         waxMeter();
-        //UnityEngine.Debug.Log("dropFlameLight.enabled: " + dropFlameLight.enabled);
-        //UnityEngine.Debug.Log("dropFlameSprite.enabled: " + dropFlameSprite.enabled);
-        //UnityEngine.Debug.Log("dropFlame position: " + dropFlame.transform.position);
-
-
     }
-
-
+    
     public bool isAttacking()
     {
-        //UnityEngine.Debug.Log(currentDirection.GetComponent<Animator>().GetBool("playAttacking"));
-        //UnityEngine.Debug.Log("currentDirection:" + currentDirection.transform.name);
-        //Check if pc is attacking
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.K) && !busy && !candleDropping)
+        //Check if play is attacking
+        if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.K)) && !busy && !candleDropping) // Is attacking
         {
+            attacking = true;
             
-            //play starting attack animation
+            // Play attack animation
             up.GetComponent<Animator>().SetBool("playAttacking", true);
             down.GetComponent<Animator>().SetBool("playAttacking", true);
             left.GetComponent<Animator>().SetBool("playAttacking", true);
             right.GetComponent<Animator>().SetBool("playAttacking", true);
-            
-            //play middle attack animation
-            //currentDirection.GetComponent<Animator>().SetBool("playAttack", false);
 
-            attacking = true;
-            //wasAttacking = true;
+            // Grows light hit box size
             lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, attackingLightHitBox, attackingGrowSpeed * Time.deltaTime);
+            // Grows light size
             candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, originalLightSize*2, attackingGrowSpeed * Time.deltaTime);
         }
-        else
+        else // Not attacking
         {
+            attacking = false;
+
+            // Stop attack animation
             up.GetComponent<Animator>().SetBool("playAttacking", false);
             down.GetComponent<Animator>().SetBool("playAttacking", false);
             left.GetComponent<Animator>().SetBool("playAttacking", false);
             right.GetComponent<Animator>().SetBool("playAttacking", false);
-
-            attacking = false;
-            //wasAttacking = false;
+            
+            // Shrinks light hit box size
             lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, startingLightHitBox, attackingGrowSpeed * 2 * Time.deltaTime);
+            // Shrinks light size
             candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, originalLightSize, attackingGrowSpeed * 2 * Time.deltaTime);
         }
         return attacking;
@@ -165,42 +101,23 @@ public class PlayerScript : MonoBehaviour
 
     public bool candleDrop()
     {
-        dropCoolDown -= 1.0f * Time.deltaTime;
-        if(Input.GetKeyDown(KeyCode.DownArrow) && !busy && !attacking &&  dropCoolDown < 0.0f)
+        // While drop timer is not less than 0
+        if (dropCoolDownTimer >= -0.5f)
         {
-            Instantiate(droppedFlame,new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z),Quaternion.identity);
-            waxCurrent -= dropFlameWax;
-            dropCoolDown = dropCoolDownTimer;
+            dropCoolDownTimer -= 1.0f * Time.deltaTime;
+        }
+        if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.L)) && !busy && !attacking && (dropCoolDownTimer <= 0.0f))
+        {
+            // Creates drop flame object
+            Instantiate(droppedFlame, new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z), Quaternion.identity);
+            waxCurrent -= dropFlameWaxCost;
+            dropCoolDownTimer = dropCoolDown; // Sets drop timer to 5
 
             // Playing Flame drop Animation
             up.GetComponent<Animator>().SetTrigger("triggerFlamePlace");
             down.GetComponent<Animator>().SetTrigger("triggerFlamePlace");
             left.GetComponent<Animator>().SetTrigger("triggerFlamePlace");
             right.GetComponent<Animator>().SetTrigger("triggerFlamePlace");
-            //animator.SetTrigger("triggerFlamePlace");
-            /**
-            if(coroutineRunning)
-            {
-                StopCoroutine(dropFlameWaxCoroutine);
-            }
-            candleDropping = true;
-            dropFlameChild.SetActive(true);
-
-            UnityEngine.Debug.Log("candleDropping: " + candleDropping);
-            //play animation
-            //create new candle object
-            if (!dropFlameLight.enabled)
-            {
-                dropFlameLight.enabled = true;
-            }
-            if (!animator.enabled)
-            {
-                animator.enabled = true;
-            }
-            dropFlame.transform.position = gameObject.transform.position;
-            dropFlameWax = 20.0f;
-            StartCoroutine(dropFlameWaxCoroutine);
-            */
         }
         else
         {
@@ -234,15 +151,20 @@ public class PlayerScript : MonoBehaviour
         {
             //UnityEngine.Debug.Log("Game Over");
             //Destroy(gameObject); // Destroys player game object
-            lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, attackingLightHitBox*0, attackingGrowSpeed * 3 * Time.deltaTime);
+            lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, attackingLightHitBox * 0, attackingGrowSpeed * 3 * Time.deltaTime);
             candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, 0, attackingGrowSpeed * 3 * Time.deltaTime);
         }
     }
-    // addRate: rate at which wax meter increases
+
+    /* 
+     * addRate: rate at which wax meter increases.
+     * Defaults to 10 
+     */
     public void addWax(float addRate = 10.0f)
     {
         waxCurrent += (addRate) * Time.deltaTime;
     }
+
     void OnTriggerStay2D(Collider2D other)
     {
         if (!other.CompareTag("Light"))
@@ -257,13 +179,7 @@ public class PlayerScript : MonoBehaviour
                 //?
             }
         }
-        /*
-        if (other.CompareTag("Interactable"))
-        {
-            inRangeInteractableUI.GetComponent<SpriteRenderer>().enabled = true;
-            //UnityEngine.Debug.Log("sprite enabled: " + inRangeInteractableUI.GetComponent<SpriteRenderer>().enabled);
-        }
-        */
+        
     }
     private void OnTriggerEnter2D(Collider2D other) 
     {
@@ -272,11 +188,6 @@ public class PlayerScript : MonoBehaviour
         {
             waxCurrent -= 10.0f;
         }
-        /*if (other.CompareTag("Interactable"))
-        {
-            inRangeInteractableUI.GetComponent<SpriteRenderer>().enabled = true;
-            UnityEngine.Debug.Log("sprite enabled: " + inRangeInteractableUI.GetComponent<SpriteRenderer>().enabled);
-        }*/
 
     }
     /*
@@ -289,25 +200,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
     */
-    /*
-    IEnumerator dropFlameCoroutine()
-    {
-        coroutineRunning = true;
-        while(true)
-        {
-            yield return new WaitForSeconds(1);
-            dropFlameWax -= 1.0f;
-            if(dropFlameWax <= 0)
-            {
-                dropFlameLight.enabled = false;
-                coroutineRunning = false;
-                StopCoroutine(dropFlameWaxCoroutine);
-                dropFlameChild.SetActive(false);
-
-            }
-        }
-    }
-    */
+    
     public float getWaxMax()
     {
         return waxMax;

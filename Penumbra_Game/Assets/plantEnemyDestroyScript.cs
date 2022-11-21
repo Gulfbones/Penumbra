@@ -14,7 +14,7 @@ public class plantEnemyDestroyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UnityEngine.Debug.Log("plant active: " + gameObject.activeInHierarchy);
+        //UnityEngine.Debug.Log("plant active: " + gameObject.activeInHierarchy);
     }
     private void OnTriggerStay2D(Collider2D other)
     {
