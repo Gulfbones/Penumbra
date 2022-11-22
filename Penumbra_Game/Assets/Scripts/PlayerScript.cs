@@ -27,6 +27,7 @@ public class PlayerScript : MonoBehaviour
     bool attacking, busy, candleDropping;
     public GameObject down, up, left, right;
     public GameObject interactUI;
+    public SpriteRenderer interactSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +57,8 @@ public class PlayerScript : MonoBehaviour
         dropFlameWaxCost = 20.0f;
         interactUI = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(1).gameObject;
         interactUI.SetActive(false);
+
+        interactSprite = interactUI.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -64,6 +67,7 @@ public class PlayerScript : MonoBehaviour
         isAttacking();
         candleDrop();
         waxMeter();
+        UnityEngine.Debug.Log("interactSprite: " + interactSprite.enabled);
     }
     
     public bool isAttacking()
