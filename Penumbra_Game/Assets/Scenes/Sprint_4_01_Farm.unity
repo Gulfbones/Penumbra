@@ -59350,28 +59350,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5592523284339287965, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
   m_PrefabInstance: {fileID: 299165363}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2114883699 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7729669047454600222, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
-  m_PrefabInstance: {fileID: 7729669047280646677}
-  m_PrefabAsset: {fileID: 0}
 --- !u!20 &2114883702 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 7729669047454600219, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
   m_PrefabInstance: {fileID: 7729669047280646677}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2114883703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2114883699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c83b7fe12da6ee640828bfd779ab8094, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2136235233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59691,22 +59674,6 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 1322430457}
-    - target: {fileID: 7729669047454600219, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
-      propertyPath: m_AllowDynamicResolution
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7729669047454600219, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
-      propertyPath: m_NormalizedViewPortRect.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7729669047454600219, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
-      propertyPath: m_NormalizedViewPortRect.width
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7729669047454600219, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
-      propertyPath: m_NormalizedViewPortRect.height
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7729669047708655473, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
       propertyPath: m_Name
       value: Player Main
