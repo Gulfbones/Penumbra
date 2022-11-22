@@ -28,10 +28,12 @@ public class PlayerScript : MonoBehaviour
     public GameObject down, up, left, right;
     public GameObject interactUI;
     public SpriteRenderer interactSprite;
+    private GameObject deathAnim;
 
     // Start is called before the first frame update
     void Start()
     {
+
         playerMovementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementScript>();
 
         waxCurrent = waxMax;
@@ -55,10 +57,13 @@ public class PlayerScript : MonoBehaviour
         dropCoolDown = 5.0f;        // Time it takes for drop to recharge
         dropCoolDownTimer = 0.0f;   // actual timer drop ability
         dropFlameWaxCost = 20.0f;
-        interactUI = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(1).gameObject;
-        interactUI.SetActive(false);
 
-        interactSprite = interactUI.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>();
+        interactUI = GameObject.Find("Canvas").transform.GetChild(0).gameObject;
+        interactUI.SetActive(false);
+        deathAnim = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
+        deathAnim.SetActive(false);
+
+        //interactSprite = interactUI.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -155,6 +160,7 @@ public class PlayerScript : MonoBehaviour
         // No wax left
         if (waxCurrent <= 0)
         {
+            deathAnim.SetActive(true);
             //UnityEngine.Debug.Log("Game Over");
             //Destroy(gameObject); // Destroys player game object
             lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, attackingLightHitBox * 0, attackingGrowSpeed * 3 * Time.deltaTime);
