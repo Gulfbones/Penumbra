@@ -26,6 +26,8 @@ public class PlayerScript : MonoBehaviour
     //bool wasAttacking;
     bool attacking, busy, candleDropping;
     public GameObject down, up, left, right;
+    public GameObject mainCamera;
+    public GameObject inRangeInteractableUI;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +55,8 @@ public class PlayerScript : MonoBehaviour
         dropCoolDown = 5.0f;        // Time it takes for drop to recharge
         dropCoolDownTimer = 0.0f;   // actual timer drop ability
         dropFlameWaxCost = 20.0f;
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        inRangeInteractableUI = mainCamera.transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
@@ -179,8 +183,14 @@ public class PlayerScript : MonoBehaviour
                 //?
             }
         }
-        
+        if (other.CompareTag("Interactable"))
+        {
+            inRangeInteractableUI.GetComponent<SpriteRenderer>().enabled = true;
+            //UnityEngine.Debug.Log("sprite enabled: " + inRangeInteractableUI.GetComponent<SpriteRenderer>().enabled);
+        }
+
     }
+
     private void OnTriggerEnter2D(Collider2D other) 
     {
         // If enemy gets too close to player
@@ -190,7 +200,7 @@ public class PlayerScript : MonoBehaviour
         }
 
     }
-    /*
+    
     private void OnTriggerExit2D(Collider2D other)
     {
         if(other.CompareTag("Interactable"))
@@ -199,7 +209,7 @@ public class PlayerScript : MonoBehaviour
             UnityEngine.Debug.Log("sprite enabled: " + inRangeInteractableUI.GetComponent<SpriteRenderer>().enabled);
         }
     }
-    */
+    
     
     public float getWaxMax()
     {
