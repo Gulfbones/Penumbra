@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,11 +8,12 @@ public class button : MonoBehaviour
 {
     [SerializeField] Button_Door door; // the door the button is linked to
     public bool state; // is it on or off
-    public int objectOn;
+    public int objectsOnButton;
+    public int buttonValue = 1; // How much "value" a button is worth (mostly only changed when you need an exit button)
     // Start is called before the first frame update
     void Start()
     {
-        objectOn = 0;
+        objectsOnButton = 0;
         door = door.GetComponent<Button_Door>();
         door.increaseNeededButtons();
     }
@@ -29,14 +31,14 @@ public class button : MonoBehaviour
 
     void checkObjectOn()
     {
-        if (state == false && objectOn > 0)
+        if (state == false && objectsOnButton > 0)
         {
             state = true;
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
             gameObject.transform.GetChild(1).gameObject.SetActive(true);
             door.pressedButton();
         }
-        else if(objectOn <= 0)
+        else if(objectsOnButton <= 0)
         {
             state = false;
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -49,7 +51,7 @@ public class button : MonoBehaviour
 
         if (other.gameObject.CompareTag("Object"))
         {
-            objectOn++;
+            objectsOnButton++;
             checkObjectOn();
 
 
@@ -66,7 +68,7 @@ public class button : MonoBehaviour
             //{
             //    currentObject = null;
             //}.
-            objectOn--;
+            objectsOnButton--;
             checkObjectOn();
         }
 

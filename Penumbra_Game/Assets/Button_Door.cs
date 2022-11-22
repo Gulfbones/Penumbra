@@ -40,14 +40,14 @@ public class Button_Door : MonoBehaviour
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
-    public void pressedButton()
+    public void pressedButton(int buttonValue = 1)
     {
-        buttonsPressed++;
+        buttonsPressed += buttonValue;
         check();
     }
-    public void releasedButton()
+    public void releasedButton(int buttonValue = 1)
     {
-        buttonsPressed--;
+        buttonsPressed -= buttonValue;
         check();
     }
     public bool GetOpen()
