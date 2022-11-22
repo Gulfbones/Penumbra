@@ -7,6 +7,9 @@ public class lanternInteract : MonoBehaviour
 {
     public bool lit;
     public PlayerScript playerScript;
+    public SpriteRenderer currentSprite;
+    [SerializeField] Sprite litSprite;
+    [SerializeField] Sprite unlitSprite;
     //public Light lanternLight;
     public Light2D lanternLight;
     public GameObject lightGameObject;
@@ -16,6 +19,8 @@ public class lanternInteract : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentSprite = gameObject.GetComponent<SpriteRenderer>();
+
         //activeRadius = GetComponent<Rigidbody2D>();
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         lightGameObject = transform.GetChild(0).gameObject;
@@ -24,10 +29,12 @@ public class lanternInteract : MonoBehaviour
         lightGameObject.SetActive(false); // default disables light
         if(lit == true)
         {
+            currentSprite.sprite = litSprite;
             lightGameObject.SetActive(true);
         }
         else
         {
+            currentSprite.sprite = unlitSprite;
             lit = false;
         }
     }
@@ -40,6 +47,7 @@ public class lanternInteract : MonoBehaviour
         if (playerScript.getWaxCurrent()<=0)
         {
             lightGameObject.SetActive(false);
+            currentSprite.sprite = unlitSprite;
         }
 
         if (lit == false && currentObject && Input.GetKey(KeyCode.E) && !playerScript.getAttacking() && !playerScript.getBusy())
@@ -48,7 +56,7 @@ public class lanternInteract : MonoBehaviour
             //playerScript.setWaxCurrent(playerScript.getWaxMax());
             lit = true;
             lightGameObject.SetActive(true);
-
+            currentSprite.sprite = litSprite;
         }
     }
 

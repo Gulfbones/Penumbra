@@ -14,10 +14,14 @@ public class Puzzle_Lantern : MonoBehaviour
     private GameObject lightGameObject;
     GameObject currentObject = null;
     private Collider2D ownCollider;
+    public SpriteRenderer currentSprite;
+    [SerializeField] Sprite litSprite;
+    [SerializeField] Sprite unlitSprite;
 
     // Start is called before the first frame update
     void Start()
     {
+        currentSprite = gameObject.GetComponent<SpriteRenderer>();
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         ownCollider = gameObject.GetComponent<Collider2D>();
         lightGameObject = transform.GetChild(0).gameObject;
@@ -26,10 +30,12 @@ public class Puzzle_Lantern : MonoBehaviour
         if (lit == true)
         {
             lightGameObject.SetActive(true);
+            currentSprite.sprite = litSprite;
         }
         else
         {
             lit = false;
+            currentSprite.sprite = unlitSprite;
         }
     }
 
@@ -98,11 +104,13 @@ public class Puzzle_Lantern : MonoBehaviour
         {
             lit = false;
             lightGameObject.SetActive(false);
+            currentSprite.sprite = unlitSprite;
         }
         else
         {
             lit = true;
             lightGameObject.SetActive(true);
+            currentSprite.sprite = litSprite;
         }
         //GameObject.Find("Lantern_Puzzle_Checker").GetComponent<Light_Puzzle_Checker>().check();
     }

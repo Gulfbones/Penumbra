@@ -355,7 +355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6343583263637116681}
   m_Layer: 0
-  m_Name: Candle UI 1
+  m_Name: Candle UI NEW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
