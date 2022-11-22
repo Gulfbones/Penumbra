@@ -3,7 +3,7 @@ guid: 89126bd471f1b1c4d99837d19192ae6f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -24,7 +24,6 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,7 +62,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -744,37 +742,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      d ani 1_1: -1858848639
-      d ani 1_9: 1490473196
-      d ani 1_16: -2009471627
-      d ani 1_18: 243256902
-      d ani 1_24: -1282599874
-      d ani 1_3: 1373207965
-      d ani 1_28: -2040188063
-      d ani 1_14: -1851535736
-      d ani 1_0: 508971333
-      d ani 1_29: -1148246725
-      d ani 1_22: -705030726
-      d ani 1_27: 679579924
-      d ani 1_17: -524958663
-      d ani 1_5: 481303259
-      d ani 1_26: -837069652
-      d ani 1_13: -1842340935
-      d ani 1_15: -2141810718
-      d ani 1_23: 1725844700
-      d ani 1_25: -2000856733
-      d ani 1_20: -1976449290
-      d ani 1_6: 1284465387
-      d ani 1_7: -1340229631
-      d ani 1_12: 1433728765
-      d ani 1_21: -346685596
-      d ani 1_19: -963946580
-      d ani 1_2: -225424182
-      d ani 1_8: -1185843607
-      d ani 1_11: 1812480454
-      d ani 1_10: 625889077
-      d ani 1_4: -1212122905
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
