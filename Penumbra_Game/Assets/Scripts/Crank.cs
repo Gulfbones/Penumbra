@@ -26,6 +26,7 @@ public class Crank : MonoBehaviour
     public void CollectHandle()
     {
         handleCollected = true;
+        gameObject.tag = "Interactable";
         // Changes Sprite to add handle
         spriteRenderer.sprite = newSprite;
     }

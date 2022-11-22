@@ -200,7 +200,7 @@ public class PlayerScript : MonoBehaviour
         {
             waxCurrent -= 10.0f;
         }
-        if (other.CompareTag("Interactable"))
+        if (other.CompareTag("Interactable") || other.CompareTag("Lantern"))
         {
             interactUI.SetActive(true);
         }
@@ -208,7 +208,7 @@ public class PlayerScript : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.CompareTag("Interactable"))
+        if(other.CompareTag("Interactable") || other.CompareTag("Lantern"))
         {
             interactUI.SetActive(false);
         }

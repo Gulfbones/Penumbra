@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6345699667731384746}
   m_Layer: 8
   m_Name: Test wax Fountain
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
