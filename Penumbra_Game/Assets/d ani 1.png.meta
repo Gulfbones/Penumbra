@@ -1,0 +1,783 @@
+fileFormatVersion: 2
+guid: 89126bd471f1b1c4d99837d19192ae6f
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: d ani 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4988
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fde7a46b162d7bd4b9c4f2658943037d
+      internalID: 508971333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_1
+      rect:
+        serializedVersion: 2
+        x: 1665
+        y: 4988
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d55438420c702a1458c96ece1acb48c6
+      internalID: -1858848639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_2
+      rect:
+        serializedVersion: 2
+        x: 3330
+        y: 4988
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e164bd6f4dd9524d898323fbab3a93b
+      internalID: -225424182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_3
+      rect:
+        serializedVersion: 2
+        x: 4995
+        y: 4988
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 818e09eddd7d74d448506340c727f41b
+      internalID: 1373207965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_4
+      rect:
+        serializedVersion: 2
+        x: 6660
+        y: 4988
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd9ceafd04df5f24b9af1bd8140a4c76
+      internalID: -1212122905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_5
+      rect:
+        serializedVersion: 2
+        x: 8325
+        y: 4988
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be62579f2873e284494a06032224268c
+      internalID: 481303259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3741
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d40680a7754a074f8bcc1a0fc731466
+      internalID: 1284465387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_7
+      rect:
+        serializedVersion: 2
+        x: 1665
+        y: 3741
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed3889499a79e4e44a8be169adc17672
+      internalID: -1340229631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_8
+      rect:
+        serializedVersion: 2
+        x: 3330
+        y: 3741
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d8a86be22b80d64f899544b443f3dce
+      internalID: -1185843607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_9
+      rect:
+        serializedVersion: 2
+        x: 4995
+        y: 3741
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba42d94d7924d00419e5413595d9b4f6
+      internalID: 1490473196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_10
+      rect:
+        serializedVersion: 2
+        x: 6660
+        y: 3741
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f1ae9adcf4715047ac6ae30caa2649c
+      internalID: 625889077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_11
+      rect:
+        serializedVersion: 2
+        x: 8325
+        y: 3741
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e244db498f88cd4cbfa6271694a56b9
+      internalID: 1812480454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2494
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdadc7190b21afa4f94fc720aa6acef9
+      internalID: 1433728765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_13
+      rect:
+        serializedVersion: 2
+        x: 1665
+        y: 2494
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 315d542dc03326647839ceab16170688
+      internalID: -1842340935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_14
+      rect:
+        serializedVersion: 2
+        x: 3330
+        y: 2494
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b3986543d0b30941a0d0365ed8458b7
+      internalID: -1851535736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_15
+      rect:
+        serializedVersion: 2
+        x: 4995
+        y: 2494
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b998793e408d3b439d3551ccfaf8b35
+      internalID: -2141810718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_16
+      rect:
+        serializedVersion: 2
+        x: 6660
+        y: 2494
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d377c8e4ac4d2324f81b17cedab3963b
+      internalID: -2009471627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_17
+      rect:
+        serializedVersion: 2
+        x: 8325
+        y: 2494
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a617663bc8f3e3142b5ce272d6c02139
+      internalID: -524958663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1247
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ead72bcda0a0ad4888edc3b8544b630
+      internalID: 243256902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_19
+      rect:
+        serializedVersion: 2
+        x: 1665
+        y: 1247
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75d62d97d8b06ea4b9707c29d1eb2e5a
+      internalID: -963946580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_20
+      rect:
+        serializedVersion: 2
+        x: 3330
+        y: 1247
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3caceb636cba024a9691b644727414f
+      internalID: -1976449290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_21
+      rect:
+        serializedVersion: 2
+        x: 4995
+        y: 1247
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f434d7f8155292b43b0730231a421ef9
+      internalID: -346685596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_22
+      rect:
+        serializedVersion: 2
+        x: 6660
+        y: 1247
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2521cd28c91da6144a37850e86e6870e
+      internalID: -705030726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_23
+      rect:
+        serializedVersion: 2
+        x: 8325
+        y: 1247
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29b32a72bc89e0c4ca98bfe71506471b
+      internalID: 1725844700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f35b331fe85a7db4daec50e1a9f9d1c5
+      internalID: -1282599874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_25
+      rect:
+        serializedVersion: 2
+        x: 1665
+        y: 0
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56e62439c2b42c54692c4d580d321f12
+      internalID: -2000856733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_26
+      rect:
+        serializedVersion: 2
+        x: 3330
+        y: 0
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19fa3f84ef0026640ab26bbb79073747
+      internalID: -837069652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_27
+      rect:
+        serializedVersion: 2
+        x: 4995
+        y: 0
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 975d60dc1d314dd44bbfafff404876b3
+      internalID: 679579924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_28
+      rect:
+        serializedVersion: 2
+        x: 6660
+        y: 0
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f300014ce4139249be8deb0dfbef672
+      internalID: -2040188063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: d ani 1_29
+      rect:
+        serializedVersion: 2
+        x: 8325
+        y: 0
+        width: 1665
+        height: 1247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61305e7622b22d4418f557d1297e0b4d
+      internalID: -1148246725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      d ani 1_1: -1858848639
+      d ani 1_9: 1490473196
+      d ani 1_16: -2009471627
+      d ani 1_18: 243256902
+      d ani 1_24: -1282599874
+      d ani 1_3: 1373207965
+      d ani 1_28: -2040188063
+      d ani 1_14: -1851535736
+      d ani 1_0: 508971333
+      d ani 1_29: -1148246725
+      d ani 1_22: -705030726
+      d ani 1_27: 679579924
+      d ani 1_17: -524958663
+      d ani 1_5: 481303259
+      d ani 1_26: -837069652
+      d ani 1_13: -1842340935
+      d ani 1_15: -2141810718
+      d ani 1_23: 1725844700
+      d ani 1_25: -2000856733
+      d ani 1_20: -1976449290
+      d ani 1_6: 1284465387
+      d ani 1_7: -1340229631
+      d ani 1_12: 1433728765
+      d ani 1_21: -346685596
+      d ani 1_19: -963946580
+      d ani 1_2: -225424182
+      d ani 1_8: -1185843607
+      d ani 1_11: 1812480454
+      d ani 1_10: 625889077
+      d ani 1_4: -1212122905
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
