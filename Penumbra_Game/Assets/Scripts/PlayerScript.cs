@@ -67,7 +67,6 @@ public class PlayerScript : MonoBehaviour
         isAttacking();
         candleDrop();
         waxMeter();
-        UnityEngine.Debug.Log("interactSprite: " + interactSprite.enabled);
     }
     
     public bool isAttacking()
