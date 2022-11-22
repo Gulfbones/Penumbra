@@ -15,6 +15,7 @@ TagManager:
   - Drop Flame
   - Lantern
   - Object
+  - Canvas
   layers:
   - Default
   - TransparentFX
