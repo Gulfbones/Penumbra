@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 using UnityEngine.XR;
 using static UnityEngine.GraphicsBuffer;
 using Random = UnityEngine.Random; // tell script we are using unitys engines
-using Pathfinding;
+//using Pathfinding;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -33,7 +33,7 @@ public class EnemyScript : MonoBehaviour
         desiredScale = transform.localScale;
         //moveSpeed = aiPath.maxSpeed;
         OriginalGameObject = gameObject;
-        animator = OriginalGameObject.transform.GetChild(0).GetComponent<Animator>();
+        animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
         //aiPath.destination.Set();
     }
 
@@ -79,7 +79,7 @@ public class EnemyScript : MonoBehaviour
             Teleport();
         }
         // Calls stalk every 2 seconds
-        if (timer > 0 && timer < attackTimer && timer % 100 == 0)
+        if (timer > 0 && timer < attackTimer && timer % 200 == 0)
         { // 0 seconds
             //Debug.Log("Timer Tick Stalk");
             Stalk();
@@ -171,7 +171,7 @@ public class EnemyScript : MonoBehaviour
     {
         moveSpeed = fleeMoveSpeed;
         destination = GameObject.FindGameObjectWithTag("Player").transform.position;
-
+        
         // Correctly set flip for fleeing
         if ((transform.position).x > destination.x && desiredScale.x < 0) // On right side
         {
@@ -183,6 +183,8 @@ public class EnemyScript : MonoBehaviour
             desiredScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 
         }
+        /*
+        */
     }
     
 
@@ -200,7 +202,7 @@ public class EnemyScript : MonoBehaviour
         if (other.gameObject.tag == "Player" )//&& timer > 0)
         {
             animator.SetTrigger("Attack");
-            Teleport();
+            //Teleport();
             // Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!Enemy Contacted 2 Player!!!!!!!!!!!!!!!!!!!!!!!!!!");
             timer = -125;
 
