@@ -63,6 +63,9 @@ TagManager:
   - name: Foreground
     uniqueID: 1868475665
     locked: 0
+  - name: Stalls
+    uniqueID: 257036801
+    locked: 0
   - name: UI
     uniqueID: 1909330347
     locked: 0
