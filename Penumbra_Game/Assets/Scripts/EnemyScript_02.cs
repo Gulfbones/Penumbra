@@ -105,7 +105,7 @@ public class EnemyScript_02 : MonoBehaviour
                 }
                 else // If not within distance, begin going back to sleep
                 {
-                    animator.SetFloat("Waking speed", -(0.5f));
+                    animator.SetFloat("Waking speed", -(0.25f));
                     sleeping = true;
                 }
                 if (animator.GetCurrentAnimatorStateInfo(0).IsName("PenubraStalkerIdle")) // if animation moved to idle, wake up
@@ -270,7 +270,7 @@ public class EnemyScript_02 : MonoBehaviour
             if (state == Enemy_State.WAKING)
             {
                 state = Enemy_State.SLEEPING;
-                animator.SetFloat("Waking speed", -1);
+                animator.SetFloat("Waking speed", -(0.25f));
                 sleeping = true;
                 animator.SetBool("Sleeping", sleeping);
             }
