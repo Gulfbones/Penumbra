@@ -93,6 +93,12 @@ public class EnemyScript_02 : MonoBehaviour
                 }
                 break;
             case Enemy_State.SLEEPING:
+                if (animator.GetFloat("Waking speed") < 0.0f && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.1f && animator.GetCurrentAnimatorStateInfo(0).IsName("stalker waking"))
+                {
+                    Debug.Log("gong to sleep ");
+                    animator.Play("stalkerSleepingIdle");
+                    //sleeping = true;
+                }
                 //eyesGameObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0);
                 // DO NOTHING
                 break;
@@ -108,6 +114,7 @@ public class EnemyScript_02 : MonoBehaviour
                     animator.SetFloat("Waking speed", -(0.25f));
                     sleeping = true;
                 }
+                
                 if (animator.GetCurrentAnimatorStateInfo(0).IsName("PenubraStalkerIdle")) // if animation moved to idle, wake up
                 {
                     animator.SetFloat("Waking speed", 1);
@@ -127,7 +134,7 @@ public class EnemyScript_02 : MonoBehaviour
         // Moves the enemy toward the destination over time
         //GameObject.Find("Dev_Square").gameObject.transform.position = destination; // Moves a square to where the desired location is
         transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
-        transform.localScale = Vector3.MoveTowards(transform.localScale, new Vector3(desiredScale.x,desiredScale.y, desiredScale.z), 20.0f * Time.deltaTime);
+        transform.localScale = Vector3.MoveTowards(transform.localScale, new Vector3(desiredScale.x,desiredScale.y, desiredScale.z), 30.0f * Time.deltaTime);
     }
     public IEnumerator StalkCoroutine()
     {

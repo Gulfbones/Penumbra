@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class button : MonoBehaviour
 {
-    [SerializeField] Button_Door door; // the door the button is linked to
+    [SerializeField] private Button_Door door; // the door the button is linked to // Private SerializedField generally better
     public bool state; // is it on or off
     public int objectsOnButton;
     public int buttonValue = 1; // How much "value" a button is worth (mostly only changed when you need an exit button)
