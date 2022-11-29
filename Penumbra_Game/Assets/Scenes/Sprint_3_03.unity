@@ -1072,6 +1072,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7729669047686338610, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7729669047708655473, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
       propertyPath: m_Name
       value: Player Main Newest
@@ -1123,6 +1127,18 @@ PrefabInstance:
     - target: {fileID: 7729669047708655487, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729669048237849209, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729669048237849211, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729669049169391006, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8530819573341726523, guid: a1093884089a6874f91ae2ea0e0b4a46, type: 3}
       propertyPath: m_Enabled
@@ -1501,6 +1517,9 @@ MonoBehaviour:
   timer: 0
   attackTimer: 10
   desiredScale: {x: 0, y: 0, z: 0}
+  desiredEyeScale: {x: 0, y: 0, z: 0}
+  closedEyeScale: {x: 0, y: 0, z: 0}
+  originalEyeScale: {x: 0, y: 0, z: 0}
   stalkMoveSpeed: 12
   attackMoveSpeed: 10
   fleeMoveSpeed: -16
@@ -82260,6 +82279,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3345348214827188825, guid: eb24cd33c0ec89b43aced3e9ca44c07a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3345348214965620051, guid: eb24cd33c0ec89b43aced3e9ca44c07a, type: 3}
       propertyPath: m_Name
       value: Stalker Enemy

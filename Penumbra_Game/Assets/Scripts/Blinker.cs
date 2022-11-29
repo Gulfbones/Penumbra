@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Blinker : MonoBehaviour
 {
-    private GameObject eyes;
+    //private GameObject eyes;
     private Vector3 posBeforeBlink;
     public float blinkTime;
     public float blinkSpeed = 20.0f; // How fast eyes scale (arbitrary speed value)
@@ -12,9 +12,10 @@ public class Blinker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("this gameObject:" + gameObject.name);
         blinkTime = 5.0f;
-        eyes = gameObject;
-        posBeforeBlink = eyes.transform.localScale;
+        //eyes = gameObject;
+        posBeforeBlink = transform.localScale;
     }
 
     // Update is called once per frame
@@ -25,19 +26,20 @@ public class Blinker : MonoBehaviour
         if(blinkTime <= 0.35f && blinkTime >= 0.25f) // Close eyes
         {
             // Scales eyes Down
-            eyes.transform.localScale = Vector3.MoveTowards(eyes.transform.localScale, new Vector3(1,0,1), blinkSpeed * Time.deltaTime);
+            transform.localScale = Vector3.MoveTowards(transform.localScale, new Vector3(1,0,1), blinkSpeed * Time.deltaTime);
         }
-        else
+        else //if(blinkTime <= 0.25f)
         {
             // Scales eyes Up
             //eyes.transform.localScale = Vector3.MoveTowards(eyes.transform.localScale, new Vector3(1, 1, 1), blinkSpeed * Time.deltaTime);
-            eyes.transform.localScale = Vector3.MoveTowards(eyes.transform.localScale, posBeforeBlink, blinkSpeed * Time.deltaTime);
+            transform.localScale = Vector3.MoveTowards(transform.localScale, posBeforeBlink, blinkSpeed * Time.deltaTime);
+            //Debug.Log("opening");
         }
         if(blinkTime <= 0.0f)
         {
             // Resets blink time somewhere between 2 - 10 seconds
-            blinkTime = Random.Range(2.0f, 10.0f);
-            posBeforeBlink = eyes.transform.localScale;
+            blinkTime = Random.Range(3.0f, 10.0f);
+            posBeforeBlink = transform.localScale;
         }
 
         

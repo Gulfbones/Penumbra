@@ -17,6 +17,9 @@ public class EnemyScript_02 : MonoBehaviour
     public int attackTimer = 10;
     private Vector3 defaultScale;
     public Vector3 desiredScale;
+    public Vector3 desiredEyeScale;
+    public Vector3 closedEyeScale;
+    public Vector3 originalEyeScale;
     private float moveSpeed;
     public float stalkMoveSpeed = 12.0f;
     public float attackMoveSpeed = 10.0f;
@@ -50,6 +53,7 @@ public class EnemyScript_02 : MonoBehaviour
         { 
             state = Enemy_State.SLEEPING;
             animator.SetBool("Sleeping", true);
+            eyesGameObject.GetComponent<Blinker>().enabled = false;
             //eyesGameObject.transform.localScale = new Vector3(1, 0.25f,1); // Sets eye scale to halfish
         }
         else
@@ -57,7 +61,10 @@ public class EnemyScript_02 : MonoBehaviour
         timer = 0;
         defaultScale = transform.localScale;
         desiredScale = defaultScale;
-        
+        originalEyeScale = eyesGameObject.transform.localScale;
+        closedEyeScale = new Vector3(originalEyeScale.x, 0.05f, originalEyeScale.z);
+
+
     }
     
     // Update is called once per frame
@@ -93,26 +100,36 @@ public class EnemyScript_02 : MonoBehaviour
                 }
                 break;
             case Enemy_State.SLEEPING:
+                //desiredEyeScale = new Vector3(originalEyeScale.x,0.25f, originalEyeScale.z);
+                
                 if (animator.GetFloat("Waking speed") < 0.0f && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.1f && animator.GetCurrentAnimatorStateInfo(0).IsName("stalker waking"))
                 {
                     Debug.Log("gong to sleep ");
                     animator.Play("stalkerSleepingIdle");
+
                     //sleeping = true;
                 }
+                eyesGameObject.transform.localScale = Vector3.MoveTowards(eyesGameObject.transform.localScale, closedEyeScale, 0.25f * Time.deltaTime);
+                //Vector3.ler
+                //Debug.Log("sleeping");
                 //eyesGameObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0);
                 // DO NOTHING
                 break;
             case Enemy_State.WAKING:
                 dist = Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position);
+
+                //desiredEyeScale = new Vector3(eyesGameObject.transform.localScale.x, eyesGameObject.transform.localScale.y, eyesGameObject.transform.localScale.z);
                 if (dist < triggerDistance) // If within distance, begin waking up
                 {
                     animator.SetFloat("Waking speed", (triggerDistance - dist) / triggerDistance);
                     sleeping = false;
+                    eyesGameObject.transform.localScale = Vector3.MoveTowards(eyesGameObject.transform.localScale, originalEyeScale, ((((triggerDistance - dist) / triggerDistance)) * 1.0f) * Time.deltaTime);
                 }
                 else // If not within distance, begin going back to sleep
                 {
                     animator.SetFloat("Waking speed", -(0.25f));
                     sleeping = true;
+                    //eyesGameObject.transform.localScale = Vector3.MoveTowards(eyesGameObject.transform.localScale, closedEyeScale, 0.5f * Time.deltaTime);
                 }
                 
                 if (animator.GetCurrentAnimatorStateInfo(0).IsName("PenubraStalkerIdle")) // if animation moved to idle, wake up
@@ -120,11 +137,13 @@ public class EnemyScript_02 : MonoBehaviour
                     animator.SetFloat("Waking speed", 1);
                     sleeping = false;
                     state = Enemy_State.FLEEING;
+                    eyesGameObject.GetComponent<Blinker>().enabled = true;
                     //eyesGameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
                 }
                 animator.SetBool("Sleeping", sleeping);
+                //eyesGameObject.transform.localScale = Vector3.Lerp(originalEyeScale, originalEyeScale, 0.01f);
                 //float eyeVal = (animator.GetCurrentAnimatorStateInfo(0).normalizedTime / animator.GetCurrentAnimatorStateInfo(0).length);//animator.GetFloat("Waking speed");//Mathf.MoveTowards(, 0,  3 * Time.deltaTime);
-                //Debug.Log("eye: " +eyeVal);
+                //Debug.Log("waking");
                 //eyesGameObject.GetComponent<SpriteRenderer>().color = new Color(eyeVal, eyeVal, eyeVal);
                 break;
             default:
