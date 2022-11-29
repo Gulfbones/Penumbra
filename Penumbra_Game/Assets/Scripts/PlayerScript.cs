@@ -12,7 +12,7 @@ public class PlayerScript : MonoBehaviour
 {
     public float waxMax = 160.0f; // This float value represents amount of seconds the candle can burn
     //public float waxCurrent;
-    private float standardWaxLost, attackingWaxLost, candleDropWaxLost, attackingGrowSpeed, dropFlameWaxCost;
+    private float standardWaxLost, attackingWaxLost, candleDropWaxLost, attackingGrowSpeed, hidingShrinkSpeed, dropFlameWaxCost;
     public float waxCurrent, dropCoolDown, dropCoolDownTimer;
 
     public PlayerMovementScript playerMovementScript;
@@ -21,7 +21,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] GameObject droppedFlame;
     [SerializeField] Light2D candleLight;
     private float originalLightSize;
-    private Vector3 startingLightHitBox, attackingLightHitBox;
+    private Vector3 startingLightHitBox, attackingLightHitBox, hidingLightHitBox;
 
     //bool wasAttacking;
     bool attacking, busy, candleDropping, hidingFlame;
@@ -41,8 +41,10 @@ public class PlayerScript : MonoBehaviour
         attackingWaxLost = 5.0f;    //5.25
         candleDropWaxLost = 20.0f;
         startingLightHitBox = new Vector3(lightHitBox.transform.localScale.x, lightHitBox.transform.localScale.y, lightHitBox.transform.localScale.z);
-        attackingLightHitBox = new Vector3(lightHitBox.transform.localScale.x*2.0f, lightHitBox.transform.localScale.y*1.5f, lightHitBox.transform.localScale.z);
+        attackingLightHitBox = new Vector3(lightHitBox.transform.localScale.x * 2.0f, lightHitBox.transform.localScale.y * 1.5f, lightHitBox.transform.localScale.z);
+        hidingLightHitBox = new Vector3(lightHitBox.transform.localScale.x * 0.5f, lightHitBox.transform.localScale.y * 0.67f, lightHitBox.transform.localScale.z);
         attackingGrowSpeed = 15.0f;
+        hidingShrinkSpeed = 20.0f;
         originalLightSize = candleLight.pointLightOuterRadius;
 
         attacking = false;
@@ -73,14 +75,15 @@ public class PlayerScript : MonoBehaviour
         isAttacking();
         candleDrop();
         waxMeter();
-        hideFlame();
+        //hideFlame();
 
     }
-    
+
+
     public bool isAttacking()
     {
-        //Check if play is attacking
-        if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.K)) && !busy && !candleDropping) // Is attacking
+        //Check if player is attacking
+        if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.K)) && !busy && !candleDropping && !hidingFlame) // Is attacking
         {
             attacking = true;
             
@@ -120,7 +123,7 @@ public class PlayerScript : MonoBehaviour
         {
             dropCoolDownTimer -= 1.0f * Time.deltaTime;
         }
-        if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.L)) && !busy && !attacking && (dropCoolDownTimer <= 0.0f))
+        if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.L)) && !busy && !attacking && !hidingFlame && (dropCoolDownTimer <= 0.0f))
         {
             // Creates drop flame object
             Instantiate(droppedFlame, new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z), Quaternion.identity);
@@ -142,16 +145,26 @@ public class PlayerScript : MonoBehaviour
 
     public bool hideFlame()
     {
-        if (Input.GetKey(KeyCode.RightArrow))
+        if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.M)) && !busy && !attacking && !candleDropping)
         {
             hidingFlame = true;
-            //play hide flame animation
-            //make light hitbox smaller
 
+            //play hide flame animation
+
+            // Shrinks light hit box size
+            lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, hidingLightHitBox, hidingShrinkSpeed * Time.deltaTime);
+            // Shrinks light size
+            candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, originalLightSize * 0.5f, hidingShrinkSpeed * Time.deltaTime);
         }
         else
         {
             hidingFlame = false;
+
+            // Grows light hit box size
+            lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, startingLightHitBox, hidingShrinkSpeed * 2 * Time.deltaTime);
+            // Grows light size
+            candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, originalLightSize, hidingShrinkSpeed * 2 * Time.deltaTime);
+        
         }
 
         return hidingFlame;
