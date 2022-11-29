@@ -54,80 +54,85 @@ public class PlayerMovementScript : MonoBehaviour
     // Clears all the player game objects
     void ClearActive(string direction)
     {
-        if (direction != "up")      foreach(var rend in up.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
-        if (direction != "down")    foreach (var rend in down.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
-        if (direction != "left")    foreach (var rend in left.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
-        if (direction != "right")   foreach (var rend in right.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
+        if (!UIManager.isPaused) //isPaused is from UIManager.cs, also attached to the player
+        { 
+            if (direction != "up") foreach (var rend in up.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
+            if (direction != "down") foreach (var rend in down.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
+            if (direction != "left") foreach (var rend in left.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
+            if (direction != "right") foreach (var rend in right.GetComponentsInChildren<Renderer>(true)) rend.enabled = false;
+        }
     }
     
 
     // Update is called once per frame
     void Update()
     {
-        // Can only move LEFT or RIGHT
-        if (Input.GetKey(KeyCode.D)) // RIGHT
+        if (!UIManager.isPaused) //isPaused is from UIManager.cs, also attached to the player
         {
-            foreach (var rend in right.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
-            ClearActive("right");
-            //playerObject.transform.rotation = Quaternion.Euler(0, 0, 0); // Sets the Rotation of the child object "Player Object" which also rotates all other children objects
-            desiredAngle = Quaternion.Euler(0, 0, 0);
-            
+            // Can only move LEFT or RIGHT
+            if (Input.GetKey(KeyCode.D)) // RIGHT
+            {
+                foreach (var rend in right.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
+                ClearActive("right");
+                //playerObject.transform.rotation = Quaternion.Euler(0, 0, 0); // Sets the Rotation of the child object "Player Object" which also rotates all other children objects
+                desiredAngle = Quaternion.Euler(0, 0, 0);
 
-            playerPhysicsEngine.velocity = new Vector3(rightMovement.x, playerPhysicsEngine.velocity.y, 0); // Adds Velocity which causes movement
+
+                playerPhysicsEngine.velocity = new Vector3(rightMovement.x, playerPhysicsEngine.velocity.y, 0); // Adds Velocity which causes movement
+            }
+            else if (Input.GetKey(KeyCode.A)) // LEFT
+            {
+                foreach (var rend in left.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
+                ClearActive("left");
+                //playerObject.transform.rotation = Quaternion.Euler(0, 0, 180); // LEFT
+                desiredAngle = Quaternion.Euler(0, 0, 180); // LEFT
+
+
+                playerPhysicsEngine.velocity = new Vector3(leftMovement.x, playerPhysicsEngine.velocity.y, 0);
+
+            }
+
+            // Can only move UP or DOWN
+            if (Input.GetKey(KeyCode.W)) // UP
+            {
+                foreach (var rend in up.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
+                ClearActive("up");
+                //playerObject.transform.rotation = Quaternion.Euler(0, 0, 90); // UP
+                desiredAngle = Quaternion.Euler(0, 0, 90); // UP
+
+                playerPhysicsEngine.velocity = new Vector3(playerPhysicsEngine.velocity.x, upMovement.y, 0);
+
+
+            }
+            else if (Input.GetKey(KeyCode.S)) // DOWN
+            {
+                foreach (var rend in down.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
+                ClearActive("down");
+                //playerObject.transform.rotation = Quaternion.Euler(0, 0, 270); // DOWN
+                desiredAngle = Quaternion.Euler(0, 0, 270); // DOWN
+
+                playerPhysicsEngine.velocity = new Vector3(playerPhysicsEngine.velocity.x, downMovement.y, 0);
+            }
+
+            // If velocity > animTriggerSpeed, play 
+            if (playerPhysicsEngine.velocity.x > animTriggerVelocity || playerPhysicsEngine.velocity.y > animTriggerVelocity
+                || playerPhysicsEngine.velocity.x < -animTriggerVelocity || playerPhysicsEngine.velocity.y < -animTriggerVelocity)
+            {
+                // Debug.Log("playing walk");
+                up.GetComponent<Animator>().SetBool("playWalk", true);
+                down.GetComponent<Animator>().SetBool("playWalk", true);
+                left.GetComponent<Animator>().SetBool("playWalk", true);
+                right.GetComponent<Animator>().SetBool("playWalk", true);
+            }
+            else
+            {
+                up.GetComponent<Animator>().SetBool("playWalk", false);
+                down.GetComponent<Animator>().SetBool("playWalk", false);
+                left.GetComponent<Animator>().SetBool("playWalk", false);
+                right.GetComponent<Animator>().SetBool("playWalk", false);
+            }
+
         }
-        else if (Input.GetKey(KeyCode.A)) // LEFT
-        {
-            foreach (var rend in left.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
-            ClearActive("left");
-            //playerObject.transform.rotation = Quaternion.Euler(0, 0, 180); // LEFT
-            desiredAngle = Quaternion.Euler(0, 0, 180); // LEFT
-            
-
-            playerPhysicsEngine.velocity = new Vector3(leftMovement.x, playerPhysicsEngine.velocity.y, 0);
-
-        }
-        
-        // Can only move UP or DOWN
-        if (Input.GetKey(KeyCode.W)) // UP
-        {
-            foreach (var rend in up.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
-            ClearActive("up");
-            //playerObject.transform.rotation = Quaternion.Euler(0, 0, 90); // UP
-            desiredAngle = Quaternion.Euler(0, 0, 90); // UP
-
-            playerPhysicsEngine.velocity = new Vector3(playerPhysicsEngine.velocity.x, upMovement.y, 0);
-
-
-        }
-        else if (Input.GetKey(KeyCode.S)) // DOWN
-        {
-            foreach (var rend in down.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
-            ClearActive("down");
-            //playerObject.transform.rotation = Quaternion.Euler(0, 0, 270); // DOWN
-            desiredAngle = Quaternion.Euler(0, 0, 270); // DOWN
-
-            playerPhysicsEngine.velocity = new Vector3(playerPhysicsEngine.velocity.x, downMovement.y, 0);
-        }
-        
-        // If velocity > animTriggerSpeed, play 
-        if (playerPhysicsEngine.velocity.x > animTriggerVelocity || playerPhysicsEngine.velocity.y > animTriggerVelocity
-            || playerPhysicsEngine.velocity.x < -animTriggerVelocity || playerPhysicsEngine.velocity.y < -animTriggerVelocity)
-        {
-            // Debug.Log("playing walk");
-            up.GetComponent<Animator>().SetBool("playWalk", true);
-            down.GetComponent<Animator>().SetBool("playWalk", true);
-            left.GetComponent<Animator>().SetBool("playWalk", true);
-            right.GetComponent<Animator>().SetBool("playWalk", true);
-        }
-        else
-        {
-            up.GetComponent<Animator>().SetBool("playWalk", false);
-            down.GetComponent<Animator>().SetBool("playWalk", false);
-            left.GetComponent<Animator>().SetBool("playWalk", false);
-            right.GetComponent<Animator>().SetBool("playWalk", false);
-        }
-        
-        
     }
     public IEnumerator rotateCoroutine()
     {

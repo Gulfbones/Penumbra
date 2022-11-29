@@ -16,6 +16,7 @@ TagManager:
   - Lantern
   - Object
   - Canvas
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

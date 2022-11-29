@@ -24,7 +24,7 @@ public class PlayerScript : MonoBehaviour
     private Vector3 startingLightHitBox, attackingLightHitBox;
 
     //bool wasAttacking;
-    bool attacking, busy, candleDropping;
+    bool attacking, busy, candleDropping, hidingFlame;
     public GameObject down, up, left, right;
     public GameObject interactUI;
     public SpriteRenderer interactSprite;
@@ -48,6 +48,7 @@ public class PlayerScript : MonoBehaviour
         attacking = false;
         busy = false;
         candleDropping = false;
+        hidingFlame = false;
 
         down = gameObject.transform.GetChild(1).gameObject;
         up = gameObject.transform.GetChild(2).gameObject;
@@ -72,6 +73,8 @@ public class PlayerScript : MonoBehaviour
         isAttacking();
         candleDrop();
         waxMeter();
+        hideFlame();
+
     }
     
     public bool isAttacking()
@@ -137,16 +140,21 @@ public class PlayerScript : MonoBehaviour
         return candleDropping;
     }
 
-    public bool hideCandle()
+    public bool hideFlame()
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
+            hidingFlame = true;
             //play hide flame animation
             //make light hitbox smaller
 
         }
+        else
+        {
+            hidingFlame = false;
+        }
 
-        return true; //temp
+        return hidingFlame;
     }
 
     public void waxMeter()

@@ -5,10 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject pauseMenu, canvas;
 
     public static bool isPaused;
 
+    void Start()
+    {
+        canvas = GameObject.FindGameObjectWithTag("Canvas");
+        pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -22,13 +27,13 @@ public class UIManager : MonoBehaviour
     {
         if (isPaused)
         {
-            pauseMenu.SetActive(true);
+            canvas.transform.GetChild(2).gameObject.SetActive(true);
             Time.timeScale = 0f;
         }
 
         else
         {
-            pauseMenu.SetActive(false);
+            canvas.transform.GetChild(2).gameObject.SetActive(false);
             Time.timeScale = 1;
         }
     }
