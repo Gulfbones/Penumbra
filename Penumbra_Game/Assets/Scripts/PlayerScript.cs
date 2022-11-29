@@ -137,6 +137,18 @@ public class PlayerScript : MonoBehaviour
         return candleDropping;
     }
 
+    public bool hideCandle()
+    {
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            //play hide flame animation
+            //make light hitbox smaller
+
+        }
+
+        return true; //temp
+    }
+
     public void waxMeter()
     {
         //Wax meter logic
