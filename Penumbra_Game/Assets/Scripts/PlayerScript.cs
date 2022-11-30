@@ -12,7 +12,7 @@ public class PlayerScript : MonoBehaviour
 {
     public float waxMax = 160.0f; // This float value represents amount of seconds the candle can burn
     //public float waxCurrent;
-    private float standardWaxLost, attackingWaxLost, candleDropWaxLost, attackingGrowSpeed, hidingShrinkSpeed, dropFlameWaxCost;
+    private float standardWaxLost, attackingWaxLost, candleDropWaxLost, hidingWaxLost, attackingGrowSpeed, hidingShrinkSpeed;//, dropFlameWaxCost;
     public float waxCurrent, dropCoolDown, dropCoolDownTimer;
 
     public PlayerMovementScript playerMovementScript;
@@ -40,6 +40,7 @@ public class PlayerScript : MonoBehaviour
         standardWaxLost = 1.0f;     //.5
         attackingWaxLost = 5.0f;    //5.25
         candleDropWaxLost = 20.0f;
+        hidingWaxLost = 0.75f;
         startingLightHitBox = new Vector3(lightHitBox.transform.localScale.x, lightHitBox.transform.localScale.y, lightHitBox.transform.localScale.z);
         attackingLightHitBox = new Vector3(lightHitBox.transform.localScale.x * 2.0f, lightHitBox.transform.localScale.y * 1.5f, lightHitBox.transform.localScale.z);
         hidingLightHitBox = new Vector3(lightHitBox.transform.localScale.x * 0.5f, lightHitBox.transform.localScale.y * 0.67f, lightHitBox.transform.localScale.z);
@@ -59,7 +60,7 @@ public class PlayerScript : MonoBehaviour
         
         dropCoolDown = 5.0f;        // Time it takes for drop to recharge
         dropCoolDownTimer = 0.0f;   // actual timer drop ability
-        dropFlameWaxCost = 20.0f;
+        //dropFlameWaxCost = 20.0f;
 
         interactUI = GameObject.Find("Canvas").transform.GetChild(0).gameObject;
         interactUI.SetActive(false);
@@ -129,7 +130,7 @@ public class PlayerScript : MonoBehaviour
         {
             // Creates drop flame object
             Instantiate(droppedFlame, new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z), Quaternion.identity);
-            waxCurrent -= dropFlameWaxCost;
+            waxCurrent -= candleDropWaxLost;// dropFlameWaxCost;
             dropCoolDownTimer = dropCoolDown; // Sets drop timer to 5
 
             // Playing Flame drop Animation
@@ -186,13 +187,17 @@ public class PlayerScript : MonoBehaviour
         {
             waxCurrent -= candleDropWaxLost;
         }
-        else if (!attacking)
+        else if (attacking)
         {
-            waxCurrent -= standardWaxLost * Time.deltaTime;
+            waxCurrent -= attackingWaxLost * Time.deltaTime;
+        }
+        else if(hidingFlame)
+        {
+            waxCurrent -= hidingWaxLost * Time.deltaTime;
         }
         else
         {
-            waxCurrent -= attackingWaxLost * Time.deltaTime;
+            waxCurrent -= standardWaxLost * Time.deltaTime;
         }
         // Makes sure current player wax doesn't go over maximum wax amount
         if (waxCurrent > waxMax)
