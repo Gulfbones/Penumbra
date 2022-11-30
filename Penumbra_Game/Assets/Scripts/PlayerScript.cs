@@ -72,15 +72,15 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isAttacking();
+        //isAttacking();
         candleDrop();
         waxMeter();
-        //hideFlame();
+        hideFlame();
 
     }
 
 
-    public bool isAttacking()
+    /*public bool isAttacking()
     {
         //Check if player is attacking
         if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.K)) && !busy && !candleDropping && !hidingFlame) // Is attacking
@@ -114,7 +114,7 @@ public class PlayerScript : MonoBehaviour
             candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, originalLightSize, attackingGrowSpeed * 2 * Time.deltaTime);
         }
         return attacking;
-    }
+    }*/
 
     public bool candleDrop()
     {
@@ -155,16 +155,20 @@ public class PlayerScript : MonoBehaviour
             lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, hidingLightHitBox, hidingShrinkSpeed * Time.deltaTime);
             // Shrinks light size
             candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, originalLightSize * 0.5f, hidingShrinkSpeed * Time.deltaTime);
+            UnityEngine.Debug.Log("lightHitBox.transform.localScale: " + lightHitBox.transform.localScale);
+            UnityEngine.Debug.Log("candleLight.pointLightOuterRadius: " + candleLight.pointLightOuterRadius);
+
         }
         else
         {
             hidingFlame = false;
-
             // Grows light hit box size
             lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, startingLightHitBox, hidingShrinkSpeed * 2 * Time.deltaTime);
             // Grows light size
             candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, originalLightSize, hidingShrinkSpeed * 2 * Time.deltaTime);
-        
+            UnityEngine.Debug.Log("lightHitBox.transform.localScale: " + lightHitBox.transform.localScale);
+            UnityEngine.Debug.Log("candleLight.pointLightOuterRadius: " + candleLight.pointLightOuterRadius);
+
         }
 
         return hidingFlame;
