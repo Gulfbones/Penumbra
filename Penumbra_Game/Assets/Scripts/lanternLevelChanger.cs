@@ -12,6 +12,8 @@ public class lanternLevelChanger : MonoBehaviour
     public GameObject lightGameObject;
     public GameObject levelChangeBox;
     GameObject currentObject = null;
+    public GameObject player;
+    public GameObject lantern;
     //public Rigidbody2D activeRadius;
 
     // Start is called before the first frame update
@@ -20,6 +22,9 @@ public class lanternLevelChanger : MonoBehaviour
         //activeRadius = GetComponent<Rigidbody2D>();
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         lightGameObject = transform.GetChild(0).gameObject;
+
+        player = GameObject.FindGameObjectWithTag("Player");
+        lantern = GameObject.FindGameObjectWithTag("Lantern");
         //lanternLight = lightGameObject.GetComponent<Light2D>();
         //lanternLight.enabled = false;
         lightGameObject.SetActive(false); // default disables light
@@ -53,6 +58,21 @@ public class lanternLevelChanger : MonoBehaviour
             levelChangeBox.SetActive(true);
 
         }
+
+        // check player location in relation to lantern and adjust layer accordingly
+/*        if (currentObject)
+        {
+            if (GameObject.FindGameObjectWithTag("Player").transform.position.y > GameObject.FindGameObjectWithTag("Lantern").transform.position.y)
+            {
+                GameObject.FindGameObjectWithTag("Lantern").layer = 3;
+                Debug.Log("Changed lantern layer to 3");
+            }
+            if (GameObject.FindGameObjectWithTag("Player").transform.position y < GameObject.FindGameObjectWithTag("Lantern").transform.position.y)
+            {
+                GameObject.FindGameObjectWithTag("Lantern").layer = 1;
+                Debug.Log("Changed lantern layer to 1");
+            }
+        }*/
     }
 
     //

@@ -58,6 +58,8 @@ public class lanternInteract : MonoBehaviour
             lightGameObject.SetActive(true);
             currentSprite.sprite = litSprite;
         }
+
+
     }
 
     //

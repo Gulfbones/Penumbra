@@ -23,6 +23,7 @@ public class RatEnemyScript : MonoBehaviour
         scaleChange = new Vector3 (gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
         attack = AttackCoroutine();
         coroutineRunning = false;
+        
 
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class NPCscript : MonoBehaviour
 {
@@ -13,19 +14,32 @@ public class NPCscript : MonoBehaviour
     public GameObject contButton;
     public float wordSpeed;
     public bool playerIsClose;
+    bool talking, walking = false;
+    public Animator animator;
+    
+
+    void Start()
+    {
+        animator = gameObject.GetComponent<Animator>();
+        animator.SetBool("talking", false);
+    }
    
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.E) && playerIsClose)
         {
             if(dialoguePanel.activeInHierarchy)
             {
                 zeroText();
+                animator.SetBool("talking", false);
             }
             else
             {
+                animator.SetBool("talking", true);
                 dialoguePanel.SetActive(true);
+                dialogueText.text = "";
                 StartCoroutine(Typing());
                 Debug.Log("she working");
             }
@@ -74,7 +88,18 @@ public class NPCscript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            
             playerIsClose = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player"))
+        {
+            animator.SetBool("talking", false);
+            dialoguePanel.SetActive(false);
+            zeroText();
         }
     }
 
