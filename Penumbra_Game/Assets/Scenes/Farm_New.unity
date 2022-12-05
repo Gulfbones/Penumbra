@@ -593,6 +593,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puzzle Lantern (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Radius
+      value: 1.3355818
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.28499126
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
 --- !u!1001 &179307508
@@ -950,6 +958,14 @@ PrefabInstance:
     - target: {fileID: 5592523284339287966, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
       propertyPath: m_Name
       value: Puzzle Lantern (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Radius
+      value: 1.3355818
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.28499126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
@@ -1493,6 +1509,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puzzle Lantern (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Radius
+      value: 1.3355818
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.28499126
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
 --- !u!1001 &497905240
@@ -1691,6 +1715,14 @@ PrefabInstance:
     - target: {fileID: 5592523284339287966, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
       propertyPath: m_Name
       value: Puzzle Lantern (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Radius
+      value: 1.3355818
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.28499126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
@@ -1897,6 +1929,18 @@ PrefabInstance:
     - target: {fileID: 5592523284339287966, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
       propertyPath: m_Name
       value: Puzzle Lantern (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Radius
+      value: 1.3355818
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.28499126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
@@ -2737,6 +2781,14 @@ PrefabInstance:
     - target: {fileID: 5592523284339287966, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
       propertyPath: m_Name
       value: Puzzle Lantern (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Radius
+      value: 1.3355818
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.28499126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
@@ -5494,7 +5546,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 5
       m_TileMatrixIndex: 3
       m_TileColorIndex: 1
       m_TileObjectToInstantiateIndex: 65535
@@ -5615,14 +5667,14 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: -4744440956178834324, guid: 02ed7d596d2751e40a26487437746ab9, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: a080154ed9d9f5c4eb919ef8ce4bd252, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 105c449c8d6229442b933f4d29c3e628, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -4744440956178834324, guid: 02ed7d596d2751e40a26487437746ab9, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -962414583679676079, guid: 02ed7d596d2751e40a26487437746ab9, type: 3}
   - m_RefCount: 1
@@ -17587,6 +17639,14 @@ PrefabInstance:
     - target: {fileID: 5592523284339287966, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
       propertyPath: m_Name
       value: Puzzle Lantern (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Radius
+      value: 1.3355818
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.28499126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
@@ -41707,6 +41767,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puzzle Lantern (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Radius
+      value: 1.3355818
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.28499126
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
 --- !u!1001 &353375061455556007
@@ -41763,6 +41831,14 @@ PrefabInstance:
     - target: {fileID: 5592523284339287966, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
       propertyPath: m_Name
       value: Puzzle Lantern
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Radius
+      value: 1.3355818
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592523284339287967, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.28499126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eafa17fc4503e074c9c5aced617970b2, type: 3}
