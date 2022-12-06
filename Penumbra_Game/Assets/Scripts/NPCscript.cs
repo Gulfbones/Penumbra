@@ -16,12 +16,17 @@ public class NPCscript : MonoBehaviour
     public bool playerIsClose;
     bool talking, walking = false;
     public Animator animator;
+    public AudioClip ClipTalking;
+    public AudioSource audioSource;
+    
     
 
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
         animator.SetBool("talking", false);
+        audioSource = GetComponent<AudioSource>();
+        //audioSource.PlayOneShot(ClipTalking, 1.0f);
     }
    
     // Update is called once per frame
@@ -37,6 +42,7 @@ public class NPCscript : MonoBehaviour
             }
             else
             {
+                audioSource.PlayOneShot(ClipTalking,1.0f);
                 animator.SetBool("talking", true);
                 dialoguePanel.SetActive(true);
                 dialogueText.text = "";

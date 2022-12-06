@@ -60,19 +60,18 @@ public class lanternLevelChanger : MonoBehaviour
         }
 
         // check player location in relation to lantern and adjust layer accordingly
-/*        if (currentObject)
-        {
+        
             if (GameObject.FindGameObjectWithTag("Player").transform.position.y > GameObject.FindGameObjectWithTag("Lantern").transform.position.y)
             {
-                GameObject.FindGameObjectWithTag("Lantern").layer = 3;
+                GameObject.FindGameObjectWithTag("Lantern").GetComponent<SpriteRenderer>().sortingOrder = 3;
                 Debug.Log("Changed lantern layer to 3");
             }
-            if (GameObject.FindGameObjectWithTag("Player").transform.position y < GameObject.FindGameObjectWithTag("Lantern").transform.position.y)
+            if (GameObject.FindGameObjectWithTag("Player").transform.position.y < GameObject.FindGameObjectWithTag("Lantern").transform.position.y)
             {
-                GameObject.FindGameObjectWithTag("Lantern").layer = 1;
+                GameObject.FindGameObjectWithTag("Lantern").GetComponent<SpriteRenderer>().sortingOrder = 1;
                 Debug.Log("Changed lantern layer to 1");
             }
-        }*/
+        
     }
 
     //
