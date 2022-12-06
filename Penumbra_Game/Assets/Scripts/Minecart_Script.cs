@@ -19,10 +19,13 @@ public class Minecart_Script : MonoBehaviour
     public float shake_intensity = 0.3f;
 
     private float temp_shake_intensity = 0;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.Pause();
         mainGameObject = gameObject;
         sprite = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
         //cart = mainGameObject.transform.GetChild(0).gameObject;
@@ -64,6 +67,7 @@ public class Minecart_Script : MonoBehaviour
         }
         if (temp_shake_intensity > 0)
         {
+            audioSource.UnPause();
             gameObject.transform.GetChild(0).transform.position = originPosition + Random.insideUnitSphere * temp_shake_intensity;
             gameObject.transform.GetChild(0).transform.rotation = new Quaternion(
                 originRotation.x + Random.Range(-temp_shake_intensity, temp_shake_intensity) * .2f,
@@ -71,6 +75,10 @@ public class Minecart_Script : MonoBehaviour
                 originRotation.z + Random.Range(-temp_shake_intensity, temp_shake_intensity) * .2f,
                 originRotation.w + Random.Range(-temp_shake_intensity, temp_shake_intensity) * .2f);
             temp_shake_intensity -= shake_decay;
+        }
+        if (temp_shake_intensity < 0.01)
+        {
+            audioSource.Pause();
         }
     }
     void Shake()
@@ -85,7 +93,7 @@ public class Minecart_Script : MonoBehaviour
         //Debug.Log(collision.gameObject.name);
         if (collision.gameObject.name == "Exit Rock")
         {
-            Debug.LogWarning("YOU WIN!!!!");
+            //Debug.LogWarning("YOU WIN!!!!");
             Destroy(gameObject); // Destroy, Build, Destroy!!!!!!!
             //Destroy(collision.gameObject);
             collision.gameObject.SetActive(false);

@@ -294,7 +294,7 @@ public class PlayerScript : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.CompareTag("Interactable") || other.CompareTag("Lantern"))
+        if(other.CompareTag("Interactable") || other.CompareTag("Lantern") || other.CompareTag("Untagged"))
         {
             interactUI.SetActive(false);
         }

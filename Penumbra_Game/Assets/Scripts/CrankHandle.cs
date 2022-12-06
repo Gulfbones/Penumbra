@@ -21,9 +21,11 @@ public class CrankHandle : MonoBehaviour
         Debug.Log(collision.gameObject.name);
         if (collision.gameObject.tag == "Player")
         {
+            gameObject.GetComponent<AudioSource>().Play();
             Debug.Log("Collected Handle");
             cranker.CollectHandle();
-            Destroy(gameObject);
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            //Destroy(gameObject);
         }
     }
 }
