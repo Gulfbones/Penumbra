@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     {
         canvas = GameObject.FindGameObjectWithTag("Canvas");
         pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
+        isPaused = false;
+        Time.timeScale = 1;
     }
     void Update()
     {

@@ -58,7 +58,7 @@ public class EnemyScript_02 : MonoBehaviour
         eyesGameObject = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0)
             .gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
         Bone_2 = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0)
-            .gameObject.transform.GetChild(0).gameObject.GetComponent<AudioSource>();
+            .gameObject.GetComponent<AudioSource>();
         fleeCoroutineRunning = false;
         if (sleeping)
         {

@@ -2683,14 +2683,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 813848728365736793, guid: 9ae51a0a92a8d36469716d97e3920258, type: 3}
-      propertyPath: m_Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 813848728365736793, guid: 9ae51a0a92a8d36469716d97e3920258, type: 3}
-      propertyPath: m_audioClip
+    - target: {fileID: 115446431244542752, guid: 9ae51a0a92a8d36469716d97e3920258, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8300000, guid: d6fc2191b0f8f0a45b69b293cd9d3676, type: 3}
+      objectReference: {fileID: 7254301910750624796}
     - target: {fileID: 8644834955825047177, guid: 9ae51a0a92a8d36469716d97e3920258, type: 3}
       propertyPath: m_Camera
       value: 
@@ -50006,7 +50002,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2294137859835618632, guid: 45ecd51f943c78f47aa1cf1258d575ba, type: 3}
       propertyPath: _nextLevelName
-      value: Boss_Fight
+      value: HubWorld
       objectReference: {fileID: 0}
     - target: {fileID: 7254301910251794108, guid: 45ecd51f943c78f47aa1cf1258d575ba, type: 3}
       propertyPath: m_RootOrder
@@ -50066,6 +50062,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45ecd51f943c78f47aa1cf1258d575ba, type: 3}
+--- !u!114 &7254301910750624796 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2294137859835618632, guid: 45ecd51f943c78f47aa1cf1258d575ba, type: 3}
+  m_PrefabInstance: {fileID: 7254301910750624795}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e804d8172a795f4f84e2b5f0de6b4cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7704128683335775945
 PrefabInstance:
   m_ObjectHideFlags: 0

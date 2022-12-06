@@ -15,7 +15,7 @@ public class LevelChanger : MonoBehaviour
         }
     }
 
-    void GoToNextLevel()
+    public void GoToNextLevel()
     {
         Debug.Log("Go to level: " + _nextLevelName);
         SceneManager.LoadScene(_nextLevelName);
@@ -25,6 +25,11 @@ public class LevelChanger : MonoBehaviour
     //{
     //    SceneManager.LoadScene("Sprint_3_03");
     //}
+    public void RestartLevel()
+    {
+        string name = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(name);//"Sprint_3_03");
+    }
 
     public void QuitGame()
     {
