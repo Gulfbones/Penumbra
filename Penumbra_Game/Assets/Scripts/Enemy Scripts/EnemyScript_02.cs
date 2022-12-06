@@ -26,6 +26,7 @@ public class EnemyScript_02 : MonoBehaviour
     public float fleeMoveSpeed = -15.0f;
     public float triggerDistance = 15.0f;
     private GameObject eyesGameObject;
+    private GameObject Candle;
     private Animator animator;
     private bool fleeCoroutineRunning;
     public bool sleeping = false;
@@ -45,6 +46,7 @@ public class EnemyScript_02 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Candle = GameObject.Find("Candle");
         animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
         eyesGameObject = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0)
             .gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
@@ -102,7 +104,7 @@ public class EnemyScript_02 : MonoBehaviour
             case Enemy_State.SLEEPING:
                 //desiredEyeScale = new Vector3(originalEyeScale.x,0.25f, originalEyeScale.z);
                 
-                if (animator.GetFloat("Waking speed") < 0.0f && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.1f && animator.GetCurrentAnimatorStateInfo(0).IsName("stalker waking"))
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("stalker waking") && animator.GetFloat("Waking speed") < 0.0f && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.1f)
                 {
                     Debug.Log("gong to sleep ");
                     animator.Play("stalkerSleepingIdle");
@@ -116,7 +118,7 @@ public class EnemyScript_02 : MonoBehaviour
                 // DO NOTHING
                 break;
             case Enemy_State.WAKING:
-                dist = Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position);
+                dist = Vector3.Distance(transform.position, Candle.transform.position);
 
                 //desiredEyeScale = new Vector3(eyesGameObject.transform.localScale.x, eyesGameObject.transform.localScale.y, eyesGameObject.transform.localScale.z);
                 if (dist < triggerDistance) // If within distance, begin waking up
@@ -137,6 +139,7 @@ public class EnemyScript_02 : MonoBehaviour
                     animator.SetFloat("Waking speed", 1);
                     sleeping = false;
                     state = Enemy_State.FLEEING;
+                    attackTimer = 4; // more agressive on wake;
                     eyesGameObject.GetComponent<Blinker>().enabled = true;
                     //eyesGameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
                 }
@@ -268,7 +271,7 @@ public class EnemyScript_02 : MonoBehaviour
         if (other.gameObject.tag == "Light")
         {
             //  Debug.Log("Contact Flee Light");
-            if (state != Enemy_State.SLEEPING)
+            if (state != Enemy_State.SLEEPING) //if not sleeping
             {
                 state = Enemy_State.FLEEING;
             }
@@ -281,11 +284,11 @@ public class EnemyScript_02 : MonoBehaviour
             }
         }
 
-        if (other.gameObject.tag == "Player" )//&& timer > 0)
-        {
-            animator.SetTrigger("Attack");
-            state = Enemy_State.FLEEING;
-        }
+        //if (other.gameObject.tag == "Player" )//&& timer > 0)
+        //{
+            //animator.SetTrigger("Attack");
+            //state = Enemy_State.FLEEING;
+        //}
     }
 
     void OnTriggerExit2D(Collider2D other)

@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!58 &8675476510694337385
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2444975152699188008}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.32, y: 1.74}
+  serializedVersion: 2
+  m_Radius: 8
 --- !u!1 &3345348214827188823
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +123,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3345348214965620054}
   - component: {fileID: 3345348214965620055}
-  - component: {fileID: 3345348214965620052}
   - component: {fileID: 3345348214965620053}
   - component: {fileID: 239672136}
   m_Layer: 0
@@ -183,22 +198,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &3345348214965620052
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3345348214965620051}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!50 &3345348214965620053
 Rigidbody2D:
   serializedVersion: 4
@@ -236,6 +235,9 @@ MonoBehaviour:
   timer: 0
   attackTimer: 10
   desiredScale: {x: 0, y: 0, z: 0}
+  desiredEyeScale: {x: 0, y: 0, z: 0}
+  closedEyeScale: {x: 0, y: 0, z: 0}
+  originalEyeScale: {x: 0, y: 0, z: 0}
   stalkMoveSpeed: 12
   attackMoveSpeed: 10
   fleeMoveSpeed: -16
@@ -251,11 +253,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1117837774694762336, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.7701349
+      value: -0.77013874
       objectReference: {fileID: 0}
     - target: {fileID: 1117837774694762336, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -0.5588722
+      value: -0.5588646
       objectReference: {fileID: 0}
     - target: {fileID: 1117837774694762336, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
       propertyPath: m_Bounds.m_Extent.x
@@ -279,11 +281,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 1117837775236852957, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.4150436
+      value: -0.4150474
       objectReference: {fileID: 0}
     - target: {fileID: 1117837775236852957, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.24615836
+      value: 0.24616599
       objectReference: {fileID: 0}
     - target: {fileID: 1117837775236852957, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
       propertyPath: m_Bounds.m_Extent.x
@@ -296,6 +298,10 @@ PrefabInstance:
     - target: {fileID: 1117837775384650320, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
       propertyPath: m_Name
       value: Penumbra Stalker Sprite side Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117837775384650320, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1117837775384650325, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
       propertyPath: m_RootOrder
@@ -349,9 +355,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1117837775944613362, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1117837775944613364, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0.0036997795
+      value: 0.00369215
       objectReference: {fileID: 0}
     - target: {fileID: 1117837775944613364, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
       propertyPath: m_Bounds.m_Extent.x
@@ -363,11 +373,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 1117837775956133956, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -1.0062714
+      value: -1.0062752
       objectReference: {fileID: 0}
     - target: {fileID: 1117837775956133956, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.41607094
+      value: 0.41607475
       objectReference: {fileID: 0}
     - target: {fileID: 1117837775956133956, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
       propertyPath: m_Bounds.m_Extent.x
@@ -375,17 +385,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1117837775956133956, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 4.2450523
+      value: 4.2450485
       objectReference: {fileID: 0}
     - target: {fileID: 1117837775956133959, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 1117837776322243448, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
 --- !u!4 &2444975153904953861 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1117837775384650325, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
+  m_PrefabInstance: {fileID: 3345348216315545680}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2444975152699188008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1117837776322243448, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
   m_PrefabInstance: {fileID: 3345348216315545680}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2444975153637098822 stripped
