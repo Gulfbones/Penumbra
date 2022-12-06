@@ -26,10 +26,16 @@ public class EnemyScript_02 : MonoBehaviour
     public float fleeMoveSpeed = -15.0f;
     public float triggerDistance = 15.0f;
     private GameObject eyesGameObject;
+    private GameObject Candle;
+    private AudioSource Bone_2;
     private Animator animator;
     private bool fleeCoroutineRunning;
     public bool sleeping = false;
     public float dist;
+    private AudioSource audioSource;
+    //public AudioClip clipDrone;
+    public float droneVol;
+    //public AudioClip clipAttack;
     public enum Enemy_State
     {
         STALKING,
@@ -45,25 +51,34 @@ public class EnemyScript_02 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        droneVol = 0.5f;
+        Candle = GameObject.Find("Candle");
         animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
         eyesGameObject = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0)
             .gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
+        Bone_2 = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0)
+            .gameObject.transform.GetChild(0).gameObject.GetComponent<AudioSource>();
         fleeCoroutineRunning = false;
         if (sleeping)
-        { 
+        {
+            droneVol = 0.1f;
             state = Enemy_State.SLEEPING;
             animator.SetBool("Sleeping", true);
             eyesGameObject.GetComponent<Blinker>().enabled = false;
             //eyesGameObject.transform.localScale = new Vector3(1, 0.25f,1); // Sets eye scale to halfish
         }
         else
-        state = Enemy_State.STALKING;
+        {
+            state = Enemy_State.STALKING;
+            droneVol = 0.5f;
+        }
         timer = 0;
         defaultScale = transform.localScale;
         desiredScale = defaultScale;
         originalEyeScale = eyesGameObject.transform.localScale;
         closedEyeScale = new Vector3(originalEyeScale.x, 0.05f, originalEyeScale.z);
-
+        Bone_2.volume = droneVol;
 
     }
     
@@ -102,7 +117,7 @@ public class EnemyScript_02 : MonoBehaviour
             case Enemy_State.SLEEPING:
                 //desiredEyeScale = new Vector3(originalEyeScale.x,0.25f, originalEyeScale.z);
                 
-                if (animator.GetFloat("Waking speed") < 0.0f && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.1f && animator.GetCurrentAnimatorStateInfo(0).IsName("stalker waking"))
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("stalker waking") && animator.GetFloat("Waking speed") < 0.0f && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.1f)
                 {
                     Debug.Log("gong to sleep ");
                     animator.Play("stalkerSleepingIdle");
@@ -116,7 +131,7 @@ public class EnemyScript_02 : MonoBehaviour
                 // DO NOTHING
                 break;
             case Enemy_State.WAKING:
-                dist = Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position);
+                dist = Vector3.Distance(transform.position, Candle.transform.position);
 
                 //desiredEyeScale = new Vector3(eyesGameObject.transform.localScale.x, eyesGameObject.transform.localScale.y, eyesGameObject.transform.localScale.z);
                 if (dist < triggerDistance) // If within distance, begin waking up
@@ -134,9 +149,11 @@ public class EnemyScript_02 : MonoBehaviour
                 
                 if (animator.GetCurrentAnimatorStateInfo(0).IsName("PenubraStalkerIdle")) // if animation moved to idle, wake up
                 {
-                    animator.SetFloat("Waking speed", 1);
                     sleeping = false;
+                    animator.SetFloat("Waking speed", 1);
                     state = Enemy_State.FLEEING;
+                    Bone_2.volume = 0.5f;
+                    attackTimer = 4; // more agressive on wake;
                     eyesGameObject.GetComponent<Blinker>().enabled = true;
                     //eyesGameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
                 }
@@ -268,7 +285,7 @@ public class EnemyScript_02 : MonoBehaviour
         if (other.gameObject.tag == "Light")
         {
             //  Debug.Log("Contact Flee Light");
-            if (state != Enemy_State.SLEEPING)
+            if (state != Enemy_State.SLEEPING) //if not sleeping
             {
                 state = Enemy_State.FLEEING;
             }
@@ -281,7 +298,7 @@ public class EnemyScript_02 : MonoBehaviour
             }
         }
 
-        if (other.gameObject.tag == "Player" )//&& timer > 0)
+        if (!sleeping && other.gameObject.tag == "Player" )//&& timer > 0)
         {
             animator.SetTrigger("Attack");
             state = Enemy_State.FLEEING;

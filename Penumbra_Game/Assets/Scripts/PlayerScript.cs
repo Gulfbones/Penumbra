@@ -30,10 +30,15 @@ public class PlayerScript : MonoBehaviour
     public SpriteRenderer interactSprite;
     private GameObject deathAnim;
 
+    private AudioSource audioSource;
+    public AudioClip clipFlameBig;
+    public AudioClip clipFlameGoingOut;
+    private bool dead;
+    public AudioClip clipGameOver;
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
         playerMovementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementScript>();
 
         waxCurrent = waxMax;
@@ -45,13 +50,14 @@ public class PlayerScript : MonoBehaviour
         attackingLightHitBox = new Vector3(lightHitBox.transform.localScale.x * 2.0f, lightHitBox.transform.localScale.y * 1.5f, lightHitBox.transform.localScale.z);
         hidingLightHitBox = new Vector3(lightHitBox.transform.localScale.x * 0.5f, lightHitBox.transform.localScale.y * 0.67f, lightHitBox.transform.localScale.z);
         attackingGrowSpeed = 15.0f;
-        hidingShrinkSpeed = 20.0f;
+        hidingShrinkSpeed = 15.0f;
         originalLightSize = candleLight.pointLightOuterRadius;
 
         attacking = false;
         busy = false;
         candleDropping = false;
         hidingFlame = false;
+        dead = false;
 
         down = gameObject.transform.GetChild(1).gameObject;
         up = gameObject.transform.GetChild(2).gameObject;
@@ -74,15 +80,19 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         isAttacking();
+        hideFlame();
         candleDrop();
         waxMeter();
-        hideFlame();
 
     }
 
 
     public bool isAttacking()
     {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            audioSource.PlayOneShot(clipFlameBig, 0.25f);
+        }
         //Check if player is attacking
         if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.K)) && !busy && !candleDropping && !hidingFlame) // Is attacking
         {
@@ -116,6 +126,11 @@ public class PlayerScript : MonoBehaviour
                 candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, originalLightSize, attackingGrowSpeed * 2 * Time.deltaTime);
             }
         }
+        if (Input.GetKeyUp(KeyCode.K))
+        {
+            audioSource.Stop();
+            //GetComponent<AudioSource>();
+        }
         return attacking;
     }
 
@@ -148,7 +163,7 @@ public class PlayerScript : MonoBehaviour
 
     public bool hideFlame()
     {
-        if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.M)) && !busy && !attacking && !candleDropping)
+        if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.J)) && !busy && !attacking && !candleDropping)
         {
             hidingFlame = true;
 
@@ -205,14 +220,38 @@ public class PlayerScript : MonoBehaviour
             waxCurrent = waxMax;
         }
         // No wax left
-        if (waxCurrent <= 0)
+        if (waxCurrent <= 0 && !dead)
         {
-            deathAnim.SetActive(true);
-            //UnityEngine.Debug.Log("Game Over");
-            //Destroy(gameObject); // Destroys player game object
+            StartCoroutine(DieCoroutine());
+        }
+        //{
+        //    dead = true;
+        //    deathAnim.SetActive(true);
+        //    audioSource.PlayOneShot(clipFlameGoingOut, 0.8f);
+        //    GameObject.Find("Game Music").SetActive(false);
+        //    //audioSource.PlayScheduled()
+        //    //UnityEngine.Debug.Log("Game Over");
+        //    //Destroy(gameObject); // Destroys player game object
+        //}
+        if (dead)
+        {
             lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, attackingLightHitBox * 0, attackingGrowSpeed * 3 * Time.deltaTime);
             candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, 0, attackingGrowSpeed * 3 * Time.deltaTime);
         }
+    }
+
+    public IEnumerator DieCoroutine()
+    {
+        dead = true;
+        deathAnim.SetActive(true);
+        audioSource.PlayOneShot(clipFlameGoingOut, 0.6f);
+        GameObject.Find("Game Music").SetActive(false);
+        //moveSpeed = stalkMoveSpeed; // set move speed to stalking
+        //var dist = Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position);
+        //destination = Randomize(dist / 2, dist); // Randomized Distance
+        //Flip();
+        yield return new WaitForSeconds(5);
+        audioSource.PlayOneShot(clipGameOver, 0.6f);
     }
 
     /* 
