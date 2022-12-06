@@ -27,10 +27,15 @@ public class EnemyScript_02 : MonoBehaviour
     public float triggerDistance = 15.0f;
     private GameObject eyesGameObject;
     private GameObject Candle;
+    private AudioSource Bone_2;
     private Animator animator;
     private bool fleeCoroutineRunning;
     public bool sleeping = false;
     public float dist;
+    private AudioSource audioSource;
+    //public AudioClip clipDrone;
+    public float droneVol;
+    //public AudioClip clipAttack;
     public enum Enemy_State
     {
         STALKING,
@@ -46,26 +51,34 @@ public class EnemyScript_02 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        droneVol = 0.5f;
         Candle = GameObject.Find("Candle");
         animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
         eyesGameObject = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0)
             .gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
+        Bone_2 = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0)
+            .gameObject.transform.GetChild(0).gameObject.GetComponent<AudioSource>();
         fleeCoroutineRunning = false;
         if (sleeping)
-        { 
+        {
+            droneVol = 0.1f;
             state = Enemy_State.SLEEPING;
             animator.SetBool("Sleeping", true);
             eyesGameObject.GetComponent<Blinker>().enabled = false;
             //eyesGameObject.transform.localScale = new Vector3(1, 0.25f,1); // Sets eye scale to halfish
         }
         else
-        state = Enemy_State.STALKING;
+        {
+            state = Enemy_State.STALKING;
+            droneVol = 0.5f;
+        }
         timer = 0;
         defaultScale = transform.localScale;
         desiredScale = defaultScale;
         originalEyeScale = eyesGameObject.transform.localScale;
         closedEyeScale = new Vector3(originalEyeScale.x, 0.05f, originalEyeScale.z);
-
+        Bone_2.volume = droneVol;
 
     }
     
@@ -136,9 +149,10 @@ public class EnemyScript_02 : MonoBehaviour
                 
                 if (animator.GetCurrentAnimatorStateInfo(0).IsName("PenubraStalkerIdle")) // if animation moved to idle, wake up
                 {
-                    animator.SetFloat("Waking speed", 1);
                     sleeping = false;
+                    animator.SetFloat("Waking speed", 1);
                     state = Enemy_State.FLEEING;
+                    Bone_2.volume = 0.5f;
                     attackTimer = 4; // more agressive on wake;
                     eyesGameObject.GetComponent<Blinker>().enabled = true;
                     //eyesGameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
@@ -284,11 +298,11 @@ public class EnemyScript_02 : MonoBehaviour
             }
         }
 
-        //if (other.gameObject.tag == "Player" )//&& timer > 0)
-        //{
-            //animator.SetTrigger("Attack");
-            //state = Enemy_State.FLEEING;
-        //}
+        if (!sleeping && other.gameObject.tag == "Player" )//&& timer > 0)
+        {
+            animator.SetTrigger("Attack");
+            state = Enemy_State.FLEEING;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
