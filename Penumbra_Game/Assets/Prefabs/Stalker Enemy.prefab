@@ -236,6 +236,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3345348214965620054}
     m_Modifications:
+    - target: {fileID: 931833599, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
+      propertyPath: m_Pitch
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 931833599, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
+      propertyPath: DopplerLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117837774694762336, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
+      propertyPath: m_Bounds.m_Extent.y
+      value: 5.605982
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117837775236852957, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
+      propertyPath: m_Bounds.m_Center.y
+      value: 0.24615836
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117837775236852957, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
+      propertyPath: m_Bounds.m_Extent.x
+      value: 2.6444635
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117837775236852957, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
+      propertyPath: m_Bounds.m_Extent.y
+      value: 3.70847
+      objectReference: {fileID: 0}
     - target: {fileID: 1117837775384650320, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
       propertyPath: m_Name
       value: Penumbra Stalker Sprite side Variant
@@ -283,6 +307,22 @@ PrefabInstance:
     - target: {fileID: 1117837775384650325, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117837775956133956, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
+      propertyPath: m_Bounds.m_Center.x
+      value: -1.0062714
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117837775956133956, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
+      propertyPath: m_Bounds.m_Center.y
+      value: 0.41607094
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117837775956133956, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
+      propertyPath: m_Bounds.m_Extent.x
+      value: 2.8092608
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117837775956133956, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
+      propertyPath: m_Bounds.m_Extent.y
+      value: 4.2450523
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26ce5b00cb8602248bdfa9090d6d93c7, type: 3}
