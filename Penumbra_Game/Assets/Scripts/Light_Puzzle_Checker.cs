@@ -48,6 +48,7 @@ public class Light_Puzzle_Checker : MonoBehaviour
             for (int i = 0; i < lanterns.Length; ++i)
             {
                 lanterns[i].LockLights();
+                gameObject.GetComponent<AudioSource>().Play();
             }
             solved = true;
         }
