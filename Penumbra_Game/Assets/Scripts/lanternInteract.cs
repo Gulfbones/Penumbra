@@ -57,6 +57,7 @@ public class lanternInteract : MonoBehaviour
             lit = true;
             lightGameObject.SetActive(true);
             currentSprite.sprite = litSprite;
+            gameObject.tag = "Untagged";
         }
 
 
