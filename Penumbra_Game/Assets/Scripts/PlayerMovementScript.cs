@@ -19,6 +19,8 @@ public class PlayerMovementScript : MonoBehaviour
     public SpriteRenderer PlayerSpriteRenderer;
     public SpriteRenderer PlayerCandleSpriteRenderer;
 
+    public bool isMoving = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +74,7 @@ public class PlayerMovementScript : MonoBehaviour
             // Can only move LEFT or RIGHT
             if (Input.GetKey(KeyCode.D)) // RIGHT
             {
+                isMoving = true;
                 foreach (var rend in right.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
                 ClearActive("right");
                 //playerObject.transform.rotation = Quaternion.Euler(0, 0, 0); // Sets the Rotation of the child object "Player Object" which also rotates all other children objects
@@ -82,6 +85,7 @@ public class PlayerMovementScript : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.A)) // LEFT
             {
+                isMoving = true;
                 foreach (var rend in left.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
                 ClearActive("left");
                 //playerObject.transform.rotation = Quaternion.Euler(0, 0, 180); // LEFT
@@ -95,6 +99,7 @@ public class PlayerMovementScript : MonoBehaviour
             // Can only move UP or DOWN
             if (Input.GetKey(KeyCode.W)) // UP
             {
+                isMoving = true;
                 foreach (var rend in up.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
                 ClearActive("up");
                 //playerObject.transform.rotation = Quaternion.Euler(0, 0, 90); // UP
@@ -106,6 +111,7 @@ public class PlayerMovementScript : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.S)) // DOWN
             {
+                isMoving = true;
                 foreach (var rend in down.GetComponentsInChildren<Renderer>(true)) rend.enabled = true;
                 ClearActive("down");
                 //playerObject.transform.rotation = Quaternion.Euler(0, 0, 270); // DOWN
@@ -126,6 +132,7 @@ public class PlayerMovementScript : MonoBehaviour
             }
             else
             {
+                isMoving = false;
                 up.GetComponent<Animator>().SetBool("playWalk", false);
                 down.GetComponent<Animator>().SetBool("playWalk", false);
                 left.GetComponent<Animator>().SetBool("playWalk", false);
