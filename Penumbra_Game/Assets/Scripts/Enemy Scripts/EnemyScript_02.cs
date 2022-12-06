@@ -35,7 +35,7 @@ public class EnemyScript_02 : MonoBehaviour
     private AudioSource audioSource;
     //public AudioClip clipDrone;
     public float droneVol;
-    //public AudioClip clipAttack;
+    public AudioClip clipAttack;
     public enum Enemy_State
     {
         STALKING,
@@ -298,9 +298,10 @@ public class EnemyScript_02 : MonoBehaviour
             }
         }
 
-        if (!sleeping && other.gameObject.tag == "Player" )//&& timer > 0)
+        if (!sleeping && other.gameObject.tag == "Player" && state != Enemy_State.FLEEING)//&& timer > 0)
         {
             animator.SetTrigger("Attack");
+            audioSource.PlayOneShot(clipAttack,0.8f);
             state = Enemy_State.FLEEING;
         }
     }

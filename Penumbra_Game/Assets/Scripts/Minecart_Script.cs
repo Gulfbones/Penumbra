@@ -86,8 +86,11 @@ public class Minecart_Script : MonoBehaviour
         if (collision.gameObject.name == "Exit Rock")
         {
             Debug.LogWarning("YOU WIN!!!!");
-            Destroy(gameObject);
-            Destroy(collision.gameObject);
+            Destroy(gameObject); // Destroy, Build, Destroy!!!!!!!
+            //Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
+            //collision.gameObject.GetPa.GetComponent<AudioSource>().Play();
+            GameObject.Find("exitRocknoiser").GetComponent<AudioSource>().Play();
             //Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         }
     }
