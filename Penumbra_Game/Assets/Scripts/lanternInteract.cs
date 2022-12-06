@@ -17,7 +17,7 @@ public class lanternInteract : MonoBehaviour
 
     private AudioSource audioSource;
  
-    public AudioClip clipFlameBig;
+    //public AudioClip clipFlameBig;
     //public Rigidbody2D activeRadius;
 
     // Start is called before the first frame update

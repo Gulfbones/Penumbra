@@ -5554,7 +5554,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &7729669047708655475
 BoxCollider2D:
@@ -5635,6 +5635,8 @@ MonoBehaviour:
   interactUI: {fileID: 0}
   interactSprite: {fileID: 0}
   clipFlameBig: {fileID: 8300000, guid: 882bf787aff362e4ca8a2d9fbc36b858, type: 3}
+  clipFlameGoingOut: {fileID: 8300000, guid: fde3a63c3ab0fb14db93acd802549a76, type: 3}
+  clipGameOver: {fileID: 8300000, guid: a95bc48ce094a0f4dbc61c216530fef3, type: 3}
 --- !u!81 &365045078442730896
 AudioListener:
   m_ObjectHideFlags: 0

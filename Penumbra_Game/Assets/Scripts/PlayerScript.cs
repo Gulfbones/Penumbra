@@ -32,6 +32,9 @@ public class PlayerScript : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip clipFlameBig;
+    public AudioClip clipFlameGoingOut;
+    private bool dead;
+    public AudioClip clipGameOver;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +57,7 @@ public class PlayerScript : MonoBehaviour
         busy = false;
         candleDropping = false;
         hidingFlame = false;
+        dead = false;
 
         down = gameObject.transform.GetChild(1).gameObject;
         up = gameObject.transform.GetChild(2).gameObject;
@@ -216,14 +220,38 @@ public class PlayerScript : MonoBehaviour
             waxCurrent = waxMax;
         }
         // No wax left
-        if (waxCurrent <= 0)
+        if (waxCurrent <= 0 && !dead)
         {
-            deathAnim.SetActive(true);
-            //UnityEngine.Debug.Log("Game Over");
-            //Destroy(gameObject); // Destroys player game object
+            StartCoroutine(DieCoroutine());
+        }
+        //{
+        //    dead = true;
+        //    deathAnim.SetActive(true);
+        //    audioSource.PlayOneShot(clipFlameGoingOut, 0.8f);
+        //    GameObject.Find("Game Music").SetActive(false);
+        //    //audioSource.PlayScheduled()
+        //    //UnityEngine.Debug.Log("Game Over");
+        //    //Destroy(gameObject); // Destroys player game object
+        //}
+        if (dead)
+        {
             lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, attackingLightHitBox * 0, attackingGrowSpeed * 3 * Time.deltaTime);
             candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, 0, attackingGrowSpeed * 3 * Time.deltaTime);
         }
+    }
+
+    public IEnumerator DieCoroutine()
+    {
+        dead = true;
+        deathAnim.SetActive(true);
+        audioSource.PlayOneShot(clipFlameGoingOut, 0.6f);
+        GameObject.Find("Game Music").SetActive(false);
+        //moveSpeed = stalkMoveSpeed; // set move speed to stalking
+        //var dist = Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position);
+        //destination = Randomize(dist / 2, dist); // Randomized Distance
+        //Flip();
+        yield return new WaitForSeconds(5);
+        audioSource.PlayOneShot(clipGameOver, 0.6f);
     }
 
     /* 
