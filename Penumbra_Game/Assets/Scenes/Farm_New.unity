@@ -1574,6 +1574,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Latern Object (Activated) Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6158623011543907681, guid: 8b056250adb203c46885c19794d2205d, type: 3}
+      propertyPath: MaxDistance
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b056250adb203c46885c19794d2205d, type: 3}
 --- !u!4 &497905241 stripped

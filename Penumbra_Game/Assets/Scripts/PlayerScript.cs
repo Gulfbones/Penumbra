@@ -30,10 +30,12 @@ public class PlayerScript : MonoBehaviour
     public SpriteRenderer interactSprite;
     private GameObject deathAnim;
 
+    private AudioSource audioSource;
+    public AudioClip clipFlameBig;
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
         playerMovementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementScript>();
 
         waxCurrent = waxMax;
@@ -83,6 +85,10 @@ public class PlayerScript : MonoBehaviour
 
     public bool isAttacking()
     {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            audioSource.PlayOneShot(clipFlameBig, 0.25f);
+        }
         //Check if player is attacking
         if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.K)) && !busy && !candleDropping && !hidingFlame) // Is attacking
         {
@@ -115,6 +121,11 @@ public class PlayerScript : MonoBehaviour
                 // Shrinks light size
                 candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, originalLightSize, attackingGrowSpeed * 2 * Time.deltaTime);
             }
+        }
+        if (Input.GetKeyUp(KeyCode.K))
+        {
+            audioSource.Stop();
+            //GetComponent<AudioSource>();
         }
         return attacking;
     }

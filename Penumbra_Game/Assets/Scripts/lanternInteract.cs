@@ -14,6 +14,10 @@ public class lanternInteract : MonoBehaviour
     public Light2D lanternLight;
     public GameObject lightGameObject;
     GameObject currentObject = null;
+
+    private AudioSource audioSource;
+ 
+    public AudioClip clipFlameBig;
     //public Rigidbody2D activeRadius;
 
     // Start is called before the first frame update
