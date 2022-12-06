@@ -45,7 +45,7 @@ public class PlayerScript : MonoBehaviour
         attackingLightHitBox = new Vector3(lightHitBox.transform.localScale.x * 2.0f, lightHitBox.transform.localScale.y * 1.5f, lightHitBox.transform.localScale.z);
         hidingLightHitBox = new Vector3(lightHitBox.transform.localScale.x * 0.5f, lightHitBox.transform.localScale.y * 0.67f, lightHitBox.transform.localScale.z);
         attackingGrowSpeed = 15.0f;
-        hidingShrinkSpeed = 20.0f;
+        hidingShrinkSpeed = 15.0f;
         originalLightSize = candleLight.pointLightOuterRadius;
 
         attacking = false;
@@ -74,9 +74,9 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         isAttacking();
+        hideFlame();
         candleDrop();
         waxMeter();
-        hideFlame();
 
     }
 
@@ -148,7 +148,7 @@ public class PlayerScript : MonoBehaviour
 
     public bool hideFlame()
     {
-        if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.M)) && !busy && !attacking && !candleDropping)
+        if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.J)) && !busy && !attacking && !candleDropping)
         {
             hidingFlame = true;
 
