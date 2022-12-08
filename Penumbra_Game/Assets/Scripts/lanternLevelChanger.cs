@@ -13,7 +13,7 @@ public class lanternLevelChanger : MonoBehaviour
     public GameObject levelChangeBox;
     GameObject currentObject = null;
     public GameObject player;
-    public SpriteRenderer lantern;
+    public GameObject lantern;
     //public Rigidbody2D activeRadius;
 
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class lanternLevelChanger : MonoBehaviour
         lightGameObject = transform.GetChild(0).gameObject;
 
         player = GameObject.FindGameObjectWithTag("Player");
-        lantern = GameObject.FindGameObjectWithTag("Lantern").GetComponent<SpriteRenderer>();
+        lantern = GameObject.FindGameObjectWithTag("Lantern");
         //lanternLight = lightGameObject.GetComponent<Light2D>();
         //lanternLight.enabled = false;
         lightGameObject.SetActive(false); // default disables light
@@ -60,18 +60,15 @@ public class lanternLevelChanger : MonoBehaviour
         }
 
         // check player location in relation to lantern and adjust layer accordingly
-
-        Debug.Log(player.transform.position.y);
-
-
-        if (player.transform.position.y > lantern.transform.position.y)
+        
+            if (GameObject.FindGameObjectWithTag("Player").transform.position.y > GameObject.FindGameObjectWithTag("Lantern").transform.position.y)
             {
-                lantern.GetComponent<SpriteRenderer>().sortingOrder = 12;
-                Debug.Log("Changed lantern layer to 12");
+                GameObject.FindGameObjectWithTag("Lantern").GetComponent<SpriteRenderer>().sortingOrder = 3;
+                Debug.Log("Changed lantern layer to 3");
             }
-            if (player.transform.position.y < lantern.transform.position.y)
+            if (GameObject.FindGameObjectWithTag("Player").transform.position.y < GameObject.FindGameObjectWithTag("Lantern").transform.position.y)
             {
-                lantern.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                GameObject.FindGameObjectWithTag("Lantern").GetComponent<SpriteRenderer>().sortingOrder = 1;
                 Debug.Log("Changed lantern layer to 1");
             }
         
