@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelChanger : MonoBehaviour
 {
     [SerializeField] string _nextLevelName;
+    [SerializeField] private GameObject creditScreen;
 
     void OnTriggerEnter2D(Collider2D ChangeScene)
     {
@@ -35,4 +37,15 @@ public class LevelChanger : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void ShowCredits()
+    {
+        creditScreen.SetActive(true);
+    }
+
+    public void Return()
+    {
+        creditScreen.SetActive(false);   
+    }
+
 }
