@@ -50294,6 +50294,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelChangeBox
       objectReference: {fileID: 0}
+    - target: {fileID: 8651431422880714179, guid: 45ecd51f943c78f47aa1cf1258d575ba, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45ecd51f943c78f47aa1cf1258d575ba, type: 3}
 --- !u!114 &7254301910750624796 stripped
