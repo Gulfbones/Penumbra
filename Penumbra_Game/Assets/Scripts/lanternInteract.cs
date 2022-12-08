@@ -96,7 +96,6 @@ public class lanternInteract : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             currentObject = other.gameObject;
-
         }
 
     }
