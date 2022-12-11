@@ -27,7 +27,7 @@ public class ItemLayerChange : MonoBehaviour
         }
         if (player.transform.position.y < currentSprite.transform.position.y)
         {
-            currentSprite.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            currentSprite.sortingOrder = 1;
             Debug.Log("Changed layer to 1");
         }
 
