@@ -18,6 +18,7 @@ public class NPCscript : MonoBehaviour
     public Animator animator;
     public AudioClip ClipTalking;
     public AudioSource audioSource;
+    public 
     
     
 
@@ -56,6 +57,7 @@ public class NPCscript : MonoBehaviour
         {
             contButton.SetActive(true);   
         }
+
     }
 
     public void zeroText()
