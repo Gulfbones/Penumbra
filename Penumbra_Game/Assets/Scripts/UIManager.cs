@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     {
         canvas = GameObject.FindGameObjectWithTag("Canvas");
         pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
+
         isPaused = false;
         Time.timeScale = 1;
     }
@@ -51,5 +52,6 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 1;
         }
     }
+
 
 }

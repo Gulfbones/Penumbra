@@ -18,6 +18,8 @@ TagManager:
   - Canvas
   - PauseMenu
   - Credits
+  - tutorial
+  - tutorialTrigger
   layers:
   - Default
   - TransparentFX
