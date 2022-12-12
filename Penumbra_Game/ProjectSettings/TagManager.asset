@@ -20,6 +20,9 @@ TagManager:
   - Credits
   - tutorial
   - tutorialTrigger
+  - DespawnBoxR
+  - DespawnBoxL
+  - Boss
   layers:
   - Default
   - TransparentFX
