@@ -23,12 +23,12 @@ public class ItemLayerChange : MonoBehaviour
         if (player.transform.position.y > currentSprite.transform.position.y)
         {
             currentSprite.sortingOrder = 12;
-            Debug.Log("Changed layer to 12");
+            //Debug.Log("Changed layer to 12");
         }
         if (player.transform.position.y < currentSprite.transform.position.y)
         {
             currentSprite.sortingOrder = 1;
-            Debug.Log("Changed layer to 1");
+            //Debug.Log("Changed layer to 1");
         }
 
     }
