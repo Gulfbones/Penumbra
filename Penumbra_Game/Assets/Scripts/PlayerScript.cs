@@ -81,10 +81,14 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isAttacking();
-        hideFlame();
-        candleDrop();
-        waxMeter();
+        if(!dead)
+        {
+            isAttacking();
+            hideFlame();
+            candleDrop();
+            waxMeter();
+        }
+
         if(dead && Input.GetKeyDown(KeyCode.R))
         {
             string name = SceneManager.GetActiveScene().name;
@@ -338,5 +342,8 @@ public class PlayerScript : MonoBehaviour
     {
         return busy;
     }
-    
+    public bool isDead()
+    {
+        return dead;
+    }
 }
