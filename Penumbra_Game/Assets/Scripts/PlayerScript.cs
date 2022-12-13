@@ -309,6 +309,7 @@ public class PlayerScript : MonoBehaviour
     {
         if(other.CompareTag("Interactable") || other.CompareTag("Lantern") || other.CompareTag("Untagged"))
         {
+            if(interactUI != null)
             interactUI.SetActive(false);
         }
     }
