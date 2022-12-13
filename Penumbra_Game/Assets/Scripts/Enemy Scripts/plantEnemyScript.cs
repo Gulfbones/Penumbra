@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -18,6 +19,7 @@ public class plantEnemyScript : MonoBehaviour
     float attackRange;
     IEnumerator attack;
     private Animator animator;
+    private float health;
 
 
     // Start is called before the first frame update
@@ -33,20 +35,47 @@ public class plantEnemyScript : MonoBehaviour
         playerPosition = new Vector3(pcObject.transform.position.x, pcObject.transform.position.y, pcObject.transform.position.z);
         //distFromPlayer = new Vector3(0, 0, 0);
         coroutineRunning = false;
-        attackRange = 2.0f;
+        attackRange = 2.5f;
         attack = AttackCoroutine();
         animator = gameObject.GetComponent<Animator>();
+        health = 300.0f;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+
         playerPosition = new Vector3(pcObject.transform.position.x, pcObject.transform.position.y, pcObject.transform.position.z);
+        if (Mathf.Abs(plantEnemyPosition.x - playerPosition.x) <= 8.0f && Mathf.Abs(plantEnemyPosition.y - playerPosition.y) <= 6.0f)
+        {
+            animator.SetBool("inRange", true);
+            if (!coroutineRunning)
+            {
+                coroutineRunning = true;
+                UnityEngine.Debug.Log("Coroutine Started");
+                StartCoroutine(attack);
+            }
+        }
+        else
+        {
+            if (coroutineRunning)
+            {
+                coroutineRunning = false;
+                StopCoroutine(attack);
+                UnityEngine.Debug.Log("Coroutine Stopped");
+                canHit = false;
+                animator.SetBool("attacking", false);
+
+                //Play ending animation
+                animator.SetBool("inRange", false);
+
+            }
+        }
     }
 
     
-    private void OnTriggerEnter2D(Collider2D other)
+    /*private void OnTriggerEnter2D(Collider2D other)
     {
         // If player gets within the plant's range
         if (other.gameObject.CompareTag("Player"))
@@ -55,17 +84,12 @@ public class plantEnemyScript : MonoBehaviour
             //plantSprite.enabled = true;
             animator.SetBool("inRange", true);
 
-            if (!coroutineRunning)
-            {
-                coroutineRunning = true;
-                UnityEngine.Debug.Log("Coroutine Started");
-                StartCoroutine(attack);
-            }
+
         }
 
 
-    }
-    
+    }*/
+
     /*
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -81,20 +105,30 @@ public class plantEnemyScript : MonoBehaviour
         }
     }
     */
+    private void OnTriggerStay2D(Collider2D other)
+    {
 
-    private void OnTriggerExit2D(Collider2D other)
+        if (other.gameObject.CompareTag("Drop Flame") || other.gameObject.CompareTag("Player") || other.name == ("Light_Hitbox"))
+        {
+            UnityEngine.Debug.Log("plant health: " + health);
+
+            health -= 0.25f;
+            if (health <= 0)
+            {
+                gameObject.SetActive(false);
+
+            }
+        }
+    }
+
+    /*private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //Play ending animation
-            animator.SetBool("inRange", false);
 
-            coroutineRunning = false;
-            StopCoroutine(attack);
-            UnityEngine.Debug.Log("Coroutine Stopped");
             //plantSprite.enabled = false;
         }
-    }
+    }*/
 
     public IEnumerator AttackCoroutine()
     {
@@ -106,7 +140,7 @@ public class plantEnemyScript : MonoBehaviour
             UnityEngine.Debug.Log("plantEnemyPosition: " + plantEnemyPosition);
             UnityEngine.Debug.Log("playerPosition: " + playerPosition);
             UnityEngine.Debug.Log("Coroutine Running");
-            if (Mathf.Abs(plantEnemyPosition.x - playerPosition.x) <= attackRange && Mathf.Abs(plantEnemyPosition.y - playerPosition.y) <= attackRange)
+            if (Mathf.Abs(plantEnemyPosition.x - playerPosition.x) <= attackRange + 0.5 * attackRange && Mathf.Abs(plantEnemyPosition.y - playerPosition.y) <= attackRange)
             {
                 canHit = true;
             }
@@ -122,7 +156,7 @@ public class plantEnemyScript : MonoBehaviour
                 //WaitForSeconds (until attack animation ends)
                 yield return new WaitForSeconds(0.917f);
 
-                if (Mathf.Abs(plantEnemyPosition.x - playerPosition.x) <= attackRange && Mathf.Abs(plantEnemyPosition.y - playerPosition.y) <= attackRange)
+                if (Mathf.Abs(plantEnemyPosition.x - playerPosition.x) <= attackRange + 0.5 * attackRange && Mathf.Abs(plantEnemyPosition.y - playerPosition.y) <= attackRange)
                 {
                     canHit = true;
 
@@ -134,14 +168,21 @@ public class plantEnemyScript : MonoBehaviour
                 }
                 if (canHit)
                 {
-                    pcScript.setWaxCurrent(pcScript.getWaxCurrent() - 10);
+                    pcScript.setWaxCurrent(pcScript.getWaxCurrent() - 10.0f);
                     UnityEngine.Debug.Log("Damaged Player");
+                }
+                else
+                {
+                    animator.SetBool("attacking", false);
+
                 }
             }
             else
             {
                 animator.SetBool("attacking", false);
+
             }
+
             yield return null;
         }
     }
