@@ -10873,7 +10873,7 @@ MonoBehaviour:
   solved: 0
   timer: 0
   numLit: 0
-  plant1: {fileID: 0}
+  plant1: {fileID: 839075501}
 --- !u!1 &767504902
 GameObject:
   m_ObjectHideFlags: 0
@@ -12085,6 +12085,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 99
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &839075501 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5882087421926032979, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
+  m_PrefabInstance: {fileID: 2091090159}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &853884915
 GameObject:
   m_ObjectHideFlags: 0
