@@ -51,10 +51,11 @@ public class Light_Puzzle_Checker : MonoBehaviour
                 gameObject.GetComponent<AudioSource>().Play();
             }
             solved = true;
+            GameObject.Find("Lanterns").GetComponent<Lantern_Checker>().check();
         }
     }
     
-    bool GetSolved()
+    public bool getSolved()
     {
         return solved;
     }
