@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class TutorialTrigger : MonoBehaviour
 {
-    [SerializeField] private GameObject tutorial, canvas, text;
+    [SerializeField] private GameObject tutorial, text;
+    private GameObject canvas;
     private int count = 0;
     
     // Start is called before the first frame update
@@ -17,11 +18,11 @@ public class TutorialTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (tutorial.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
+        if (tutorial.activeInHierarchy && Input.GetKeyDown(KeyCode.Space))
         {
             tutorial.SetActive(false);
             text.SetActive(false);
-            Time.timeScale = 1.0f;
+            Time.timeScale = 1;
             canvas.transform.GetChild(0).gameObject.SetActive(true);
             canvas.transform.GetChild(3).gameObject.SetActive(true);
             canvas.transform.GetChild(4).gameObject.SetActive(true);
