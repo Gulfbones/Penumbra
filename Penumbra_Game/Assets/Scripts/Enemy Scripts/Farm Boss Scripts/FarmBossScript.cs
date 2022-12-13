@@ -14,6 +14,7 @@ public class FarmBossScript : MonoBehaviour
     public GameObject head3;
     public GameObject head4;
     public GameObject blocker;
+    [SerializeField] AudioClip defeatedBoss;
 
     private Animator anim;
     // Start is called before the first frame update
@@ -55,6 +56,8 @@ public class FarmBossScript : MonoBehaviour
         {
             gameObject.SetActive(false);
             blocker.SetActive(false);
+            GameObject.Find("Audio Source").gameObject.GetComponent<AudioSource>().Stop();
+            GameObject.Find("Audio Source").gameObject.GetComponent<AudioSource>().PlayOneShot(defeatedBoss);
         }
     }
 
