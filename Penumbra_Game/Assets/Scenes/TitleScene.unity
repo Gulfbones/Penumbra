@@ -331,8 +331,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e804d8172a795f4f84e2b5f0de6b4cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextLevelName: Sprint_3_03
+  _nextLevelName: FixTutorial
   creditScreen: {fileID: 240047200}
+  pcScript: {fileID: 0}
 --- !u!4 &256386477
 Transform:
   m_ObjectHideFlags: 0
