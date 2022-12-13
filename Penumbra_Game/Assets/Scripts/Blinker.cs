@@ -12,7 +12,7 @@ public class Blinker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("this gameObject:" + gameObject.name);
+        //Debug.Log("this gameObject:" + gameObject.name);
         blinkTime = 5.0f;
         //eyes = gameObject;
         posBeforeBlink = transform.localScale;

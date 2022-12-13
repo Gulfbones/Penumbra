@@ -179,8 +179,8 @@ public class PlayerScript : MonoBehaviour
             lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, hidingLightHitBox, hidingShrinkSpeed * Time.deltaTime);
             // Shrinks light size
             candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, originalLightSize * 0.5f, hidingShrinkSpeed * Time.deltaTime);
-            UnityEngine.Debug.Log("lightHitBox.transform.localScale: " + lightHitBox.transform.localScale);
-            UnityEngine.Debug.Log("candleLight.pointLightOuterRadius: " + candleLight.pointLightOuterRadius);
+            //UnityEngine.Debug.Log("lightHitBox.transform.localScale: " + lightHitBox.transform.localScale);
+            //UnityEngine.Debug.Log("candleLight.pointLightOuterRadius: " + candleLight.pointLightOuterRadius);
 
         }
         else
@@ -193,8 +193,8 @@ public class PlayerScript : MonoBehaviour
                 // Grows light size
                 candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, originalLightSize, hidingShrinkSpeed * 2 * Time.deltaTime);
             }
-            UnityEngine.Debug.Log("lightHitBox.transform.localScale: " + lightHitBox.transform.localScale);
-            UnityEngine.Debug.Log("candleLight.pointLightOuterRadius: " + candleLight.pointLightOuterRadius);
+            //UnityEngine.Debug.Log("lightHitBox.transform.localScale: " + lightHitBox.transform.localScale);
+            //UnityEngine.Debug.Log("candleLight.pointLightOuterRadius: " + candleLight.pointLightOuterRadius);
 
         }
 
@@ -278,6 +278,8 @@ public class PlayerScript : MonoBehaviour
         // If player touches a hazard
         if (other.CompareTag("Hazard")) {
             waxCurrent -= 20.0f;
+            UnityEngine.Debug.Log(other.name);
+
             if(waxCurrent <= 0)
             {
                 //?
@@ -291,6 +293,7 @@ public class PlayerScript : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             waxCurrent -= 10.0f;
+            UnityEngine.Debug.Log(other.name);
         }
         if (other.CompareTag("Interactable") || other.CompareTag("Lantern"))
         {
