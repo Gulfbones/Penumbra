@@ -9603,8 +9603,8 @@ Tilemap:
   - first: {x: -1, y: -9, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 13
-      m_TileSpriteIndex: 13
+      m_TileIndex: 12
+      m_TileSpriteIndex: 12
       m_TileMatrixIndex: 3
       m_TileColorIndex: 1
       m_TileObjectToInstantiateIndex: 65535
@@ -31126,9 +31126,9 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 3
+  - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: 8eb3c91d6dc8c434a89c684bf05ddb05, type: 2}
-  - m_RefCount: 2609
+  - m_RefCount: 2608
     m_Data: {fileID: 11400000, guid: 18e274104b44caf4891f5e839f81cbc6, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
@@ -31155,9 +31155,9 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 3
+  - m_RefCount: 4
     m_Data: {fileID: 21300000, guid: 44a4f95e788e1a940907fdac70eb3d0b, type: 3}
-  - m_RefCount: 2609
+  - m_RefCount: 2608
     m_Data: {fileID: 21300000, guid: df3d450b81dd1da4782c4b5b283f03c7, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 0
@@ -31276,7 +31276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1407621693
 Transform:
   m_ObjectHideFlags: 0
@@ -32080,7 +32080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySleepingGroup: {fileID: 889825708}
-  newEnemySleepingGroup: {fileID: 0}
+  newEnemySleepingGroup: {fileID: 1407621692}
   door: {fileID: 686989244}
 --- !u!61 &1608711888
 BoxCollider2D:
@@ -33354,16 +33354,6 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 13
       m_TileSpriteIndex: 13
-      m_TileMatrixIndex: 3
-      m_TileColorIndex: 1
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -1, y: -9, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 7
-      m_TileSpriteIndex: 7
       m_TileMatrixIndex: 3
       m_TileColorIndex: 1
       m_TileObjectToInstantiateIndex: 65535
@@ -35885,8 +35875,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 9ccd4c06a1fa66d4095255cca0d89350, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 8eb3c91d6dc8c434a89c684bf05ddb05, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: dbdaa5f3cec34c547af59179b1576c9e, type: 2}
   - m_RefCount: 17
@@ -35914,8 +35904,8 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: a797c15772fa0374ea937154a73380b8, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 44a4f95e788e1a940907fdac70eb3d0b, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: eb17d9a914319ed4ab2ff1eaf880ed5b, type: 3}
   - m_RefCount: 17
@@ -35983,7 +35973,7 @@ Tilemap:
       e31: 7.93e-43
       e32: 7.9e-43
       e33: 7.93e-43
-  - m_RefCount: 331
+  - m_RefCount: 330
     m_Data:
       e00: 1
       e01: 0
@@ -36004,7 +35994,7 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 0
     m_Data: {r: 1.6131423e+29, g: 1.6131423e+29, b: 1.6131423e+29, a: 1.6131423e+29}
-  - m_RefCount: 331
+  - m_RefCount: 330
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -36458,14 +36448,6 @@ CompositeCollider2D:
         Y: -350000000
       - X: 500000000
         Y: -350000000
-    - - X: 0
-        Y: -400000000
-      - X: -50000000
-        Y: -400000000
-      - X: -50000000
-        Y: -450000000
-      - X: 0
-        Y: -450000000
   m_CompositePaths:
     m_Paths:
     - - {x: 19.999971, y: -85}
@@ -36672,10 +36654,6 @@ CompositeCollider2D:
       - {x: 47.13867, y: -30.000029}
       - {x: 47.13379, y: -30.161133}
       - {x: 47.13382, y: -35}
-    - - {x: -0.000029300001, y: -45}
-      - {x: -0.000029300001, y: -40}
-      - {x: -5, y: -40.00003}
-      - {x: -4.999971, y: -45}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &1737878066
