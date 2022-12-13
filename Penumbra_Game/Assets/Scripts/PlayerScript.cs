@@ -154,7 +154,7 @@ public class PlayerScript : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.L)) && !busy && !attacking && !hidingFlame && (dropCoolDownTimer <= 0.0f))
         {
             // Creates drop flame object
-            Instantiate(droppedFlame, new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z), Quaternion.identity);
+            Instantiate(droppedFlame, new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z), Quaternion.identity);
             waxCurrent -= candleDropWaxLost;// dropFlameWaxCost;
             dropCoolDownTimer = dropCoolDown; // Sets drop timer to 5
 

@@ -12,7 +12,7 @@ public class Lantern_Checker : MonoBehaviour
     void Start()
     {
         lanterns = gameObject.GetComponentsInChildren<lanternInteract>();
-        puzzle = gameObject.GetComponent<Light_Puzzle_Checker>();
+        puzzle = GameObject.Find("Light_Puzzle_Checker").gameObject.GetComponent<Light_Puzzle_Checker>();
         solved = false;
     }
 

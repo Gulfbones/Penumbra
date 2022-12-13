@@ -10812,6 +10812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lanterns: []
+  puzzle: {fileID: 0}
   solved: 0
   timer: 0
 --- !u!1 &767504902
@@ -19419,11 +19420,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6460960295222572254, guid: 313c814e06bfb354ab93b46b5e75cfa4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -29.29
+      value: -28.63
       objectReference: {fileID: 0}
     - target: {fileID: 6460960295222572254, guid: 313c814e06bfb354ab93b46b5e75cfa4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.0600014
+      value: -0.46
       objectReference: {fileID: 0}
     - target: {fileID: 6460960295222572254, guid: 313c814e06bfb354ab93b46b5e75cfa4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -73607,7 +73608,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7258547637349394044, guid: 336998fdfbfdff2428a5f56942a34c02, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -44.84
+      value: -48.79
       objectReference: {fileID: 0}
     - target: {fileID: 7258547637349394044, guid: 336998fdfbfdff2428a5f56942a34c02, type: 3}
       propertyPath: m_LocalPosition.y
