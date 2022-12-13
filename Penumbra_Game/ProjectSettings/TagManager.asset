@@ -23,6 +23,7 @@ TagManager:
   - DespawnBoxR
   - DespawnBoxL
   - Boss
+  - plant1
   layers:
   - Default
   - TransparentFX
