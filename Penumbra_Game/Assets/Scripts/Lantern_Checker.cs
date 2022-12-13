@@ -19,11 +19,6 @@ public class Lantern_Checker : MonoBehaviour
         numLit = 0;
         plant1 = GameObject.FindGameObjectWithTag("plant1");
         plant1.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         for (int i = 0; i < lanterns.Length; i++)
         {
             if (lanterns[i].lit == true)
@@ -31,6 +26,11 @@ public class Lantern_Checker : MonoBehaviour
                 numLit++;
             }
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         enableEnemies();
         timer += 1.0f * Time.deltaTime;
         if (solved == false && timer > 1.0f)
@@ -65,15 +65,13 @@ public class Lantern_Checker : MonoBehaviour
 
     public void enableEnemies()
     {
-        if (numLit > 3)
+        UnityEngine.Debug.Log("numLit: " + numLit);
+        if (numLit > 9)
         {
             //enable enemy 1
             plant1.SetActive(true);
         }
-        if (numLit > 5)
-        {
-            //enable enemy 2
-        }
+
     }
 
     bool GetSolved()
