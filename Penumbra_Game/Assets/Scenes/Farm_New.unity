@@ -10812,7 +10812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lanterns: []
-  puzzle: {fileID: 0}
+  puzzle: {fileID: 382065321}
   solved: 0
   timer: 0
 --- !u!1 &767504902
