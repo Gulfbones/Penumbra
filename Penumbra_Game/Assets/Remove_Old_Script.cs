@@ -5,6 +5,7 @@ using UnityEngine;
 public class Remove_Old_Script : MonoBehaviour
 {
     [SerializeField] GameObject enemySleepingGroup;
+    [SerializeField] GameObject newEnemySleepingGroup;
     [SerializeField] GameObject door;
     //[SerializeField] private Button_Door door;
     // Start is called before the first frame update
@@ -25,6 +26,7 @@ public class Remove_Old_Script : MonoBehaviour
             Destroy(enemySleepingGroup);
             door.SetActive(true);
             Destroy(this);
+            newEnemySleepingGroup.SetActive(true);
             //Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         }
     }
