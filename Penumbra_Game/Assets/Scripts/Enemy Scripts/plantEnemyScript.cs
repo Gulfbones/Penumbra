@@ -20,6 +20,8 @@ public class plantEnemyScript : MonoBehaviour
     IEnumerator attack;
     private Animator animator;
     private float health;
+    private float xDiff;
+    private float yDiff;
 
 
     // Start is called before the first frame update
@@ -39,15 +41,18 @@ public class plantEnemyScript : MonoBehaviour
         attack = AttackCoroutine();
         animator = gameObject.GetComponent<Animator>();
         health = 300.0f;
+        xDiff = Mathf.Abs(plantEnemyPosition.x - playerPosition.x);
+        yDiff = Mathf.Abs(plantEnemyPosition.y - playerPosition.y);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
         playerPosition = new Vector3(pcObject.transform.position.x, pcObject.transform.position.y, pcObject.transform.position.z);
-        if (Mathf.Abs(plantEnemyPosition.x - playerPosition.x) <= 8.0f && Mathf.Abs(plantEnemyPosition.y - playerPosition.y) <= 6.0f)
+        xDiff = Mathf.Abs(plantEnemyPosition.x - playerPosition.x);
+        yDiff = Mathf.Abs(plantEnemyPosition.y - playerPosition.y);
+        if (Mathf.Sqrt(xDiff * xDiff + yDiff * yDiff) <= 5.0f)
         {
             animator.SetBool("inRange", true);
             if (!coroutineRunning)
@@ -140,7 +145,7 @@ public class plantEnemyScript : MonoBehaviour
             UnityEngine.Debug.Log("plantEnemyPosition: " + plantEnemyPosition);
             UnityEngine.Debug.Log("playerPosition: " + playerPosition);
             UnityEngine.Debug.Log("Coroutine Running");
-            if (Mathf.Abs(plantEnemyPosition.x - playerPosition.x) <= attackRange + 0.5 * attackRange && Mathf.Abs(plantEnemyPosition.y - playerPosition.y) <= attackRange)
+            if (Mathf.Sqrt(xDiff * xDiff + yDiff * yDiff) <= attackRange)
             {
                 canHit = true;
             }
