@@ -5,12 +5,14 @@ using UnityEngine;
 public class Lantern_Checker : MonoBehaviour
 {
     public lanternInteract[] lanterns;
+    public Light_Puzzle_Checker puzzle;
     public bool solved;
     public float timer;
 
     void Start()
     {
         lanterns = gameObject.GetComponentsInChildren<lanternInteract>();
+        puzzle = gameObject.GetComponent<Light_Puzzle_Checker>();
         solved = false;
     }
 
@@ -36,8 +38,9 @@ public class Lantern_Checker : MonoBehaviour
         bool checking = true;
         for (int i = 0; i < lanterns.Length; ++i)
         {
-            if (lanterns[i].lit == false)
+            if (lanterns[i].lit == false && puzzle.getSolved() == true)
             {
+                
                 checking = false;
             }
         }
