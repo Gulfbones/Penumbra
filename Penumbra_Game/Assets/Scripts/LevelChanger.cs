@@ -8,6 +8,7 @@ public class LevelChanger : MonoBehaviour
 {
     [SerializeField] string _nextLevelName;
     [SerializeField] private GameObject creditScreen;
+    public PlayerScript pcScript;
 
     void OnTriggerEnter2D(Collider2D ChangeScene)
     {
@@ -21,6 +22,8 @@ public class LevelChanger : MonoBehaviour
     {
         Debug.Log("Go to level: " + _nextLevelName);
         SceneManager.LoadScene(_nextLevelName);
+        pcScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        pcScript.setWaxCurrent(pcScript.getWaxMax());
     }
 
     //public void StartLevel()
@@ -31,6 +34,8 @@ public class LevelChanger : MonoBehaviour
     {
         string name = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(name);//"Sprint_3_03");
+        pcScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        pcScript.setWaxCurrent(pcScript.getWaxMax());
     }
 
     public void QuitGame()
