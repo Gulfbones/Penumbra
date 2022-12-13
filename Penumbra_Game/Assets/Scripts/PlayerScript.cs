@@ -7,6 +7,7 @@ using System.Dynamic;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -84,7 +85,11 @@ public class PlayerScript : MonoBehaviour
         hideFlame();
         candleDrop();
         waxMeter();
-
+        if(dead && Input.GetKeyDown(KeyCode.R))
+        {
+            string name = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(name);//"Sprint_3_03");
+        }
     }
 
 
