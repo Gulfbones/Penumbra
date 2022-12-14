@@ -21,34 +21,16 @@ public class Lantern_Checker : MonoBehaviour
         puzzle = GameObject.Find("Lantern_Puzzle_Checker").GetComponent<Light_Puzzle_Checker>();
         solved = false;
         numLit = 0;
-        plant1 = GameObject.FindGameObjectWithTag("plant1");
-        plant1.SetActive(false);
+        
         //rat1 = GameObject.FindGameObjectWithTag("rat1");
         //rat1.SetActive(false);
-        plant2 = GameObject.FindGameObjectWithTag("plant2");
-        plant2.SetActive(false);
-        plant3 = GameObject.FindGameObjectWithTag("plant3");
-        plant3.SetActive(false);
-        for (int i = 0; i < lanterns.Length; i++)
-        {
-            if (lanterns[i].lit == true)
-            {
-                numLit++;
-            }
-        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        numLit = 0;
-        for (int i = 0; i < lanterns.Length; i++)
-        {
-            if (lanterns[i].lit == true)
-            {
-                numLit++;
-            }
-        }
+        
         //UnityEngine.Debug.Log("numLit: " + numLit);
         enableEnemies();
         timer += 1.0f * Time.deltaTime;
@@ -82,26 +64,6 @@ public class Lantern_Checker : MonoBehaviour
         }
     }
 
-    public void enableEnemies()
-    {
-        /*if (numLit > 9)
-        {
-            rat1.SetActive(true);
-        }*/
-        if (numLit >= 10)
-        {
-            plant2.SetActive(true);
-        }
-        if (numLit >= 12)
-        {
-            plant3.SetActive(true);
-        }
-        if (numLit >= 14)
-        {
-            plant1.SetActive(true);
-        }
-
-    }
 
     bool GetSolved()
     {
