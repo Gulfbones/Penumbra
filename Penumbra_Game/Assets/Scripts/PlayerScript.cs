@@ -25,7 +25,7 @@ public class PlayerScript : MonoBehaviour
     private Vector3 startingLightHitBox, attackingLightHitBox, hidingLightHitBox;
 
     //bool wasAttacking;
-    bool attacking, busy, candleDropping, hidingFlame;
+    public bool attacking, busy, candleDropping, hidingFlame;
     public GameObject down, up, left, right;
     public GameObject interactUI;
     public SpriteRenderer interactSprite;
