@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
@@ -12,6 +14,7 @@ public class currencyInteractScript : MonoBehaviour
     [SerializeField] Sprite litSprite;
     [SerializeField] Sprite unlitSprite;
     GameObject currentObject = null;
+    public bool pickedUp;
 
     private AudioSource audioSource;
 
@@ -20,6 +23,7 @@ public class currencyInteractScript : MonoBehaviour
     void Start()
     {
         currentSprite = gameObject.GetComponent<SpriteRenderer>();
+        pickedUp = false;
 
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         if(currentObject.CompareTag("Player"))
@@ -35,6 +39,15 @@ public class currencyInteractScript : MonoBehaviour
         {
             //lightGameObject.SetActive(false);
             currentSprite.sprite = unlitSprite;
+        }
+        if (pickedUp == false && currentObject && Input.GetKey(KeyCode.E) && !playerScript.getAttacking() && !playerScript.getBusy())
+        {
+            //currentObject.SetActive(false);
+            //playerScript.setWaxCurrent(playerScript.getWaxMax());
+            pickedUp = true;
+            //lightGameObject.SetActive(true);
+            currentSprite.sprite = litSprite;
+            gameObject.tag = "Untagged";
         }
 
         /*if (lit == false && currentObject && Input.GetKey(KeyCode.E) && !playerScript.getAttacking() && !playerScript.getBusy())

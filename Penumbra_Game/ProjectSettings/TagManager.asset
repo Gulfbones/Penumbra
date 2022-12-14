@@ -24,6 +24,8 @@ TagManager:
   - DespawnBoxL
   - Boss
   - plant1
+  - plant2
+  - rat1
   layers:
   - Default
   - TransparentFX
@@ -64,6 +66,9 @@ TagManager:
   - name: Background
     uniqueID: 1317880659
     locked: 0
+  - name: Items
+    uniqueID: 4104263087
+    locked: 0
   - name: Enemy
     uniqueID: 880043935
     locked: 0
@@ -75,7 +80,4 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1909330347
-    locked: 0
-  - name: Items
-    uniqueID: 4104263087
     locked: 0
