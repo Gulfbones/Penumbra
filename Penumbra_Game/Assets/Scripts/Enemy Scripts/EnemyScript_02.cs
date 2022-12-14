@@ -151,7 +151,7 @@ public class EnemyScript_02 : MonoBehaviour
                 {
                     sleeping = false;
                     animator.SetFloat("Waking speed", 1);
-                    state = Enemy_State.FLEEING;
+                    state = Enemy_State.ATTACKING;
                     Bone_2.volume = 0.5f;
                     attackTimer = 4; // more agressive on wake;
                     eyesGameObject.GetComponent<Blinker>().enabled = true;
