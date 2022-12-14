@@ -8,13 +8,16 @@ public class PlayerStandUp : MonoBehaviour
     // Start is called before the first frame update
     public Animation theAnimation;
     public Animator theAnimator;
+    public Animator theAnimator2;
     public bool started;
     void Start()
     {
         gameObject.GetComponent<PlayerScript>().enabled = false;
         gameObject.GetComponent<PlayerMovementScript>().enabled = false;
         theAnimator = GameObject.Find("Player_Character_right").gameObject.GetComponent<Animator>();
+        //theAnimator2 = GameObject.Find("Player_Character_right").gameObject.GetComponent<Animator>().Play(""layer)//GetLayerIndex("Bottom");
         theAnimator.Play("side sit");
+        theAnimator.Play("sits",1);
         started = false;
     }
 
@@ -34,7 +37,9 @@ public class PlayerStandUp : MonoBehaviour
         
         //playerObject.transform.rotation = Quaternion.Lerp(playerObject.transform.rotation, desiredAngle, 10.0f * Time.deltaTime);
         yield return new WaitForSeconds(2);
+        theAnimator.Play("Bottoms_Idle",1);
         gameObject.GetComponent<PlayerScript>().enabled = true;
         gameObject.GetComponent<PlayerMovementScript>().enabled = true;
+
     }
 }
