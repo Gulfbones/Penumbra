@@ -115,7 +115,7 @@ public class plantEnemyScript : MonoBehaviour
 
         if (other.gameObject.CompareTag("Drop Flame") || other.gameObject.CompareTag("Player") || other.name == ("Light_Hitbox"))
         {
-            UnityEngine.Debug.Log("plant health: " + health);
+            //UnityEngine.Debug.Log("plant health: " + health);
 
             health -= 0.5f;
             if (health <= 0)
