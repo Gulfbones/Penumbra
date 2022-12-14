@@ -299,7 +299,7 @@ public class PlayerScript : MonoBehaviour
             waxCurrent -= 10.0f;
             UnityEngine.Debug.Log(other.name);
         }
-        if (other.CompareTag("Interactable") || other.CompareTag("Lantern"))
+        if (other.CompareTag("Interactable") || other.CompareTag("Lantern") || other.CompareTag("waxbottle"))
         {
             interactUI.SetActive(true);
         }

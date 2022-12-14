@@ -113,7 +113,7 @@ public class plantEnemyScript : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
 
-        if (other.gameObject.CompareTag("Drop Flame") || other.gameObject.CompareTag("Player") || other.name == ("Light_Hitbox"))
+        if (other.gameObject.CompareTag("Drop Flame") || other.name == ("Light_Hitbox"))
         {
             //UnityEngine.Debug.Log("plant health: " + health);
 
