@@ -86,7 +86,7 @@ public class Minecart_Script : MonoBehaviour
         originPosition = transform.position;
         originRotation = transform.rotation;
         temp_shake_intensity = shake_intensity;
-        Debug.Log("shaka");
+        //Debug.Log("shaka");
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

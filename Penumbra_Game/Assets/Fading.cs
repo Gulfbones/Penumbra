@@ -26,16 +26,20 @@ public class Fading : MonoBehaviour
         }
         spriteRenderer.color = new Color(color.r,color.g,color.b,fadeAmount);
     }
-
-    public void fadeOut() // Solid to transparent
+    /*
+     * Solid to transparent
+     */
+    public void fadeOut(float change = -0.8f,bool reset = true) 
     {
-        fadeChange = -0.8f;
-        fadeAmount = 1.0f;
-
+        fadeChange = change;
+        if(reset) fadeAmount = 1.0f;
     }
-    public void fadeIn() // transparent to Solid
+    /*
+     * Transparent to Solid
+     */
+    public void fadeIn(float change = 0.8f, bool reset = true) 
     {
-        fadeChange = 0.8f;
-        fadeAmount = 0.0f;
+        fadeChange = change;
+        if(reset) fadeAmount = 0.0f;
     }
 }
