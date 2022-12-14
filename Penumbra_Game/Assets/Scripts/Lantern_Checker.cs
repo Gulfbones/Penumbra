@@ -32,7 +32,7 @@ public class Lantern_Checker : MonoBehaviour
     {
         
         //UnityEngine.Debug.Log("numLit: " + numLit);
-        enableEnemies();
+        //enableEnemies();
         timer += 1.0f * Time.deltaTime;
         if (solved == false && timer > 1.0f)
         {
