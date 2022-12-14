@@ -26,6 +26,9 @@ public class Crank : MonoBehaviour
         clipRails.Pause();
         textNeed = gameObject.transform.GetChild(0).gameObject;
         textCrank = gameObject.transform.GetChild(1).gameObject;
+
+        textCrank.SetActive(false);
+        textNeed.SetActive(true);
     }
 
     // Update is called once per frame
@@ -44,6 +47,9 @@ public class Crank : MonoBehaviour
         gameObject.tag = "Interactable";
         // Changes Sprite to add handle
         spriteRenderer.sprite = newSprite;
+        textCrank.SetActive(true);
+        textNeed.SetActive(false);
+
     }
     void OnTriggerStay2D(Collider2D other)
     {
@@ -66,22 +72,42 @@ public class Crank : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
-        if (handleCollected)
+        if (collision.CompareTag("Player"))
         {
-            textCrank.SetActive(true);
-        }
-        else
-        {
-            textNeed.SetActive(true);
+            if (handleCollected)
+            {
+                if(textCrank.GetComponent<Fading>().fadeChange != 1.5f)
+                    textCrank.GetComponent<Fading>().fadeIn(1.5f);
+                //textCrank.SetActive(true);
+                //textNeed.SetActive(false);
+            }
+            else
+            {
+                if (textNeed.GetComponent<Fading>().fadeChange != 1.5f)
+                    textNeed.GetComponent<Fading>().fadeIn(1.5f);
+                //textCrank.SetActive(false);
+                //textNeed.SetActive(true);
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            textNeed.SetActive(false);
-            textCrank.SetActive(false);
+            if (handleCollected)
+            {
+                if (textCrank.GetComponent<Fading>().fadeChange != -0.8f)
+                    textCrank.GetComponent<Fading>().fadeOut(-0.8f);
+                //textCrank.SetActive(false);
+                //textNeed.SetActive(false);
+            }
+            else
+            {
+                if (textNeed.GetComponent<Fading>().fadeChange != -0.8f)
+                    textNeed.GetComponent<Fading>().fadeOut(-0.8f);
+                //textNeed.SetActive(false);
+                //textCrank.SetActive(false);
+            }
         }
     }
 
