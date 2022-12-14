@@ -42,7 +42,7 @@ public class NPCscript : MonoBehaviour
             {
                 zeroText();
                 animator.SetBool("talking", false);
-                //interact.SetActive(false); 
+                dialoguePanel.SetActive(false);
             }
             else
             {
@@ -120,6 +120,7 @@ public class NPCscript : MonoBehaviour
             dialoguePanel.SetActive(false);
             zeroText();
             interact.SetActive(false);
+            playerIsClose= false;
             
         }
     }
