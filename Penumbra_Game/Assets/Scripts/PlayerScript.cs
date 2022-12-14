@@ -7,6 +7,7 @@ using System.Dynamic;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
         audioSource = GetComponent<AudioSource>();
         playerMovementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementScript>();
 
@@ -80,11 +81,19 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isAttacking();
-        hideFlame();
-        candleDrop();
-        waxMeter();
+        if(!dead)
+        {
+            isAttacking();
+            hideFlame();
+            candleDrop();
+            waxMeter();
+        }
 
+        if(dead && Input.GetKeyDown(KeyCode.R))
+        {
+            string name = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(name);//"Sprint_3_03");
+        }
     }
 
 
@@ -145,7 +154,7 @@ public class PlayerScript : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.L)) && !busy && !attacking && !hidingFlame && (dropCoolDownTimer <= 0.0f))
         {
             // Creates drop flame object
-            Instantiate(droppedFlame, new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z), Quaternion.identity);
+            Instantiate(droppedFlame, new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z), Quaternion.identity);
             waxCurrent -= candleDropWaxLost;// dropFlameWaxCost;
             dropCoolDownTimer = dropCoolDown; // Sets drop timer to 5
 
@@ -174,8 +183,8 @@ public class PlayerScript : MonoBehaviour
             lightHitBox.transform.localScale = Vector3.MoveTowards(lightHitBox.transform.localScale, hidingLightHitBox, hidingShrinkSpeed * Time.deltaTime);
             // Shrinks light size
             candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, originalLightSize * 0.5f, hidingShrinkSpeed * Time.deltaTime);
-            UnityEngine.Debug.Log("lightHitBox.transform.localScale: " + lightHitBox.transform.localScale);
-            UnityEngine.Debug.Log("candleLight.pointLightOuterRadius: " + candleLight.pointLightOuterRadius);
+            //UnityEngine.Debug.Log("lightHitBox.transform.localScale: " + lightHitBox.transform.localScale);
+            //UnityEngine.Debug.Log("candleLight.pointLightOuterRadius: " + candleLight.pointLightOuterRadius);
 
         }
         else
@@ -188,8 +197,8 @@ public class PlayerScript : MonoBehaviour
                 // Grows light size
                 candleLight.pointLightOuterRadius = Mathf.MoveTowards(candleLight.pointLightOuterRadius, originalLightSize, hidingShrinkSpeed * 2 * Time.deltaTime);
             }
-            UnityEngine.Debug.Log("lightHitBox.transform.localScale: " + lightHitBox.transform.localScale);
-            UnityEngine.Debug.Log("candleLight.pointLightOuterRadius: " + candleLight.pointLightOuterRadius);
+            //UnityEngine.Debug.Log("lightHitBox.transform.localScale: " + lightHitBox.transform.localScale);
+            //UnityEngine.Debug.Log("candleLight.pointLightOuterRadius: " + candleLight.pointLightOuterRadius);
 
         }
 
@@ -273,6 +282,8 @@ public class PlayerScript : MonoBehaviour
         // If player touches a hazard
         if (other.CompareTag("Hazard")) {
             waxCurrent -= 20.0f;
+            UnityEngine.Debug.Log(other.name);
+
             if(waxCurrent <= 0)
             {
                 //?
@@ -286,6 +297,7 @@ public class PlayerScript : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             waxCurrent -= 10.0f;
+            UnityEngine.Debug.Log(other.name);
         }
         if (other.CompareTag("Interactable") || other.CompareTag("Lantern"))
         {
@@ -297,6 +309,7 @@ public class PlayerScript : MonoBehaviour
     {
         if(other.CompareTag("Interactable") || other.CompareTag("Lantern") || other.CompareTag("Untagged"))
         {
+            if(interactUI != null)
             interactUI.SetActive(false);
         }
     }
@@ -330,5 +343,8 @@ public class PlayerScript : MonoBehaviour
     {
         return busy;
     }
-    
+    public bool isDead()
+    {
+        return dead;
+    }
 }

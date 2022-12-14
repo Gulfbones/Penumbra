@@ -85,7 +85,7 @@ public class EnemyScript_02 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //if(gameObject.)
         switch (state)
         {
             case Enemy_State.STALKING:

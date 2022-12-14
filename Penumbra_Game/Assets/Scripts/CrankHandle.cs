@@ -25,6 +25,7 @@ public class CrankHandle : MonoBehaviour
             Debug.Log("Collected Handle");
             cranker.CollectHandle();
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
             //Destroy(gameObject);
         }
     }

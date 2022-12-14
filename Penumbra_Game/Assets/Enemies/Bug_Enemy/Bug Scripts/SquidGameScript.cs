@@ -18,6 +18,7 @@ public class SquidGameScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startPosition = transform.position;
         //obj.GetComponent<PlayerMovementScript>().isMoving = true;
     }
 

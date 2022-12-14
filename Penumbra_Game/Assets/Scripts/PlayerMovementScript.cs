@@ -21,6 +21,8 @@ public class PlayerMovementScript : MonoBehaviour
 
     public bool isMoving = false;
 
+    public PlayerScript pcScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +36,10 @@ public class PlayerMovementScript : MonoBehaviour
 
         // Gets the first child gameObject of the main player 
         playerObject = gameObject.transform.GetChild(0).gameObject;
-         
+
+        // Gets the main script of the player
+        pcScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+
         // Gets the the SpriteRenderer of the first childs, first child of the main player
         PlayerCandleSpriteRenderer = playerObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
 
@@ -69,7 +74,7 @@ public class PlayerMovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!UIManager.isPaused) //isPaused is from UIManager.cs, also attached to the player
+        if (!UIManager.isPaused && !pcScript.isDead()) //isPaused is from UIManager.cs, also attached to the player
         {
             // Can only move LEFT or RIGHT
             if (Input.GetKey(KeyCode.D)) // RIGHT
