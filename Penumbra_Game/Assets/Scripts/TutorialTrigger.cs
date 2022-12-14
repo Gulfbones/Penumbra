@@ -18,7 +18,7 @@ public class TutorialTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (tutorial.activeInHierarchy && Input.GetKeyDown(KeyCode.Space))
+        if (tutorial.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
         {
             tutorial.SetActive(false);
             text.SetActive(false);
@@ -94,6 +94,21 @@ public class TutorialTrigger : MonoBehaviour
             canvas.transform.GetChild(5).gameObject.SetActive(false);
             count++;
 
+        }
+        if (other.gameObject.CompareTag("Player") && count == 4)
+        {
+            Time.timeScale = 0f;
+            tutorial.SetActive(true);
+            tutorial.transform.GetChild(0).gameObject.SetActive(false);
+            tutorial.transform.GetChild(2).gameObject.SetActive(false);
+            tutorial.transform.GetChild(1).gameObject.SetActive(false);
+            tutorial.transform.GetChild(4).gameObject.SetActive(false);
+            text.SetActive(true);
+            canvas.transform.GetChild(0).gameObject.SetActive(false);
+            canvas.transform.GetChild(3).gameObject.SetActive(false);
+            canvas.transform.GetChild(4).gameObject.SetActive(false);
+            canvas.transform.GetChild(5).gameObject.SetActive(false);
+            count++;
         }
     }
 }

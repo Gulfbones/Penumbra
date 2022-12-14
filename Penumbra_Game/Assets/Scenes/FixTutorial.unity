@@ -345,7 +345,7 @@ MonoBehaviour:
     of wax, and perish. Avoid doing so.
 
 
-    Press ''Spacebar'' to continue.'
+    Press ''E'' to continue.'
 --- !u!222 &202848719
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -433,7 +433,7 @@ MonoBehaviour:
     them.
 
 
-    Press ''Spacebar'' to continue.'
+    Press ''E'' to continue.'
 --- !u!222 &274728652
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2258,7 +2258,7 @@ MonoBehaviour:
 
 
     Press
-    ''Spacebar'' to continue.'
+    ''E'' to continue.'
 --- !u!222 &872425283
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2805,7 +2805,7 @@ MonoBehaviour:
     out your light. Shine the light at them to scare these monsters away, and protect
     your light at all costs.\n\nIf you need a reminder on any of the controls, press
     'Escape' to pause the game and bring up the controls. \n\nGood luck on your journey
-    to bring light back to this world. Press 'Spacebar' to continue."
+    to bring light back to this world. Press 'E' to continue."
 --- !u!222 &1146059716
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2827,11 +2827,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6345699667731384741, guid: 125e52f33e7516241bdf686e1392fe7e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.278621
+      value: -15.4
       objectReference: {fileID: 0}
     - target: {fileID: 6345699667731384741, guid: 125e52f33e7516241bdf686e1392fe7e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.88
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6345699667731384741, guid: 125e52f33e7516241bdf686e1392fe7e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8438,7 +8438,7 @@ MonoBehaviour:
 
 
     Press
-    ''Spacebar'' to continue.'
+    ''E'' to continue.'
 --- !u!222 &1891756356
 CanvasRenderer:
   m_ObjectHideFlags: 0
