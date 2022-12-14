@@ -8,6 +8,7 @@ public class NPCscript : MonoBehaviour
 {
     public GameObject dialoguePanel;
     public Text dialogueText;
+    //public GameObject dialogueClose;
     public string[] dialogue;
     private int index;
 
@@ -18,7 +19,7 @@ public class NPCscript : MonoBehaviour
     public Animator animator;
     public AudioClip ClipTalking;
     public AudioSource audioSource;
-    public 
+    public GameObject interact;
     
     
 
@@ -34,21 +35,25 @@ public class NPCscript : MonoBehaviour
     void Update()
     {
         
+        
         if (Input.GetKeyDown(KeyCode.E) && playerIsClose)
         {
             if(dialoguePanel.activeInHierarchy)
             {
                 zeroText();
                 animator.SetBool("talking", false);
+                //interact.SetActive(false); 
             }
             else
             {
+                interact.SetActive(false);
                 audioSource.PlayOneShot(ClipTalking,1.0f);
                 animator.SetBool("talking", true);
                 dialoguePanel.SetActive(true);
                 dialogueText.text = "";
                 StartCoroutine(Typing());
                 Debug.Log("she working");
+                
             }
 
         }
@@ -79,6 +84,7 @@ public class NPCscript : MonoBehaviour
     public void NextLine()
     {
         contButton.SetActive(false);
+        
 
         if(index < dialogue.Length - 1)
         {
@@ -88,6 +94,7 @@ public class NPCscript : MonoBehaviour
         }
         else
         {
+
             zeroText();
         }
     }
@@ -96,18 +103,24 @@ public class NPCscript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            
+            Debug.Log("entered box");
+            interact.SetActive(true);
+
             playerIsClose = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        
         if (!other.CompareTag("Player"))
         {
+            //interact.SetActive(false);
             animator.SetBool("talking", false);
             dialoguePanel.SetActive(false);
             zeroText();
+            interact.SetActive(false);
+            
         }
     }
 
