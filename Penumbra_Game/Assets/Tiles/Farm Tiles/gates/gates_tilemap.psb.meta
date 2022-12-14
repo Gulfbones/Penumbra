@@ -1881,7 +1881,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: -1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 141
     mosaicPosition: {x: 0, y: 0}
   - name: <Rectangle>
@@ -1895,7 +1895,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 138
     mosaicPosition: {x: 0, y: 0}
   - name: "<Compound Path>\_+\_<Path>"
@@ -1930,14 +1930,14 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 132
     mosaicPosition: {x: 0, y: 0}
   - name: <Group>
     spriteName: 
     isGroup: 1
     parentIndex: 8
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 130
     mosaicPosition: {x: 0, y: 0}
   - name: <Group>
@@ -1958,14 +1958,14 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 126
     mosaicPosition: {x: 0, y: 0}
   - name: <Group>
     spriteName: 
     isGroup: 1
     parentIndex: 12
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 124
     mosaicPosition: {x: 0, y: 0}
   - name: <Group>
@@ -1986,7 +1986,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 120
     mosaicPosition: {x: 0, y: 0}
   - name: "<Compound Path>\_+\_<Path>"
@@ -2021,7 +2021,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 114
     mosaicPosition: {x: 0, y: 0}
   - name: "<Compound Path>\_+\_<Path>"
@@ -2056,7 +2056,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 108
     mosaicPosition: {x: 0, y: 0}
   - name: <Compound Path>
@@ -2084,7 +2084,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 103
     mosaicPosition: {x: 0, y: 0}
   - name: "<Compound Path>\_+\_<Path>"
@@ -2119,7 +2119,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 97
     mosaicPosition: {x: 0, y: 0}
   - name: <Compound Path>
@@ -2147,7 +2147,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 92
     mosaicPosition: {x: 0, y: 0}
   - name: "<Compound Path>\_+\_<Path>"
@@ -2182,14 +2182,14 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 86
     mosaicPosition: {x: 0, y: 0}
   - name: <Group>
     spriteName: 
     isGroup: 1
     parentIndex: 44
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 84
     mosaicPosition: {x: 0, y: 0}
   - name: <Group>
@@ -2210,7 +2210,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 80
     mosaicPosition: {x: 0, y: 0}
   - name: "<Compound Path>\_+\_<Path>"
@@ -2245,7 +2245,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 74
     mosaicPosition: {x: 0, y: 0}
   - name: "<Compound Path>\_+\_<Path>"
@@ -2280,7 +2280,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 68
     mosaicPosition: {x: 0, y: 0}
   - name: <Compound Path>
@@ -2308,7 +2308,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 63
     mosaicPosition: {x: 0, y: 0}
   - name: "<Compound Path>\_+\_<Path>"
@@ -2343,7 +2343,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 57
     mosaicPosition: {x: 0, y: 0}
   - name: <Compound Path>
@@ -2371,14 +2371,14 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 52
     mosaicPosition: {x: 0, y: 0}
   - name: <Group>
     spriteName: 
     isGroup: 1
     parentIndex: 71
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 50
     mosaicPosition: {x: 0, y: 0}
   - name: <Group>
@@ -2399,7 +2399,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 46
     mosaicPosition: {x: 0, y: 0}
   - name: "<Compound Path>\_+\_<Path>"
@@ -2434,14 +2434,14 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 40
     mosaicPosition: {x: 0, y: 0}
   - name: <Group>
     spriteName: 
     isGroup: 1
     parentIndex: 80
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 38
     mosaicPosition: {x: 0, y: 0}
   - name: <Group>
@@ -2462,7 +2462,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 34
     mosaicPosition: {x: 0, y: 0}
   - name: "<Compound Path>\_+\_<Path>"
@@ -2497,7 +2497,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 28
     mosaicPosition: {x: 0, y: 0}
   - name: "<Compound Path>\_+\_<Path>"
@@ -2532,14 +2532,14 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 22
     mosaicPosition: {x: 0, y: 0}
   - name: <Group>
     spriteName: 
     isGroup: 1
     parentIndex: 94
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 20
     mosaicPosition: {x: 0, y: 0}
   - name: <Group>
@@ -2560,7 +2560,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 16
     mosaicPosition: {x: 0, y: 0}
   - name: "<Compound Path>\_+\_<Path>"
@@ -2595,7 +2595,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 10
     mosaicPosition: {x: 0, y: 0}
   - name: <Compound Path>
@@ -2623,7 +2623,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 5
     mosaicPosition: {x: 0, y: 0}
   - name: <Compound Path>
