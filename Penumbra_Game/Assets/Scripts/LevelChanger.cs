@@ -59,7 +59,7 @@ public class LevelChanger : MonoBehaviour
         GameObject.Find("FadeSquare").gameObject.GetComponent<Fading>().fadeIn(0.8f);
         Debug.Log("Go to level: " + _nextLevelName);
         pcScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementScript>().gameObject.SetActive(false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementScript>().enabled = false;
         //pcScript = 
         //GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<>.SetActive(false);
         pcScript.setWaxCurrent(pcScript.getWaxMax());

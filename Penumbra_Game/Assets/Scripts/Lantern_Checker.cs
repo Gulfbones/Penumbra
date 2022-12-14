@@ -12,6 +12,8 @@ public class Lantern_Checker : MonoBehaviour
     public GameObject plant1;
     //public GameObject rat1;
     public GameObject plant2;
+    public GameObject plant3;
+
 
     void Start()
     {
@@ -25,14 +27,37 @@ public class Lantern_Checker : MonoBehaviour
         //rat1.SetActive(false);
         plant2 = GameObject.FindGameObjectWithTag("plant2");
         plant2.SetActive(false);
-        
+        plant3 = GameObject.FindGameObjectWithTag("plant3");
+        plant3.SetActive(false);
+        for (int i = 0; i < lanterns.Length; i++)
+        {
+            if (lanterns[i].lit == true)
+            {
+                numLit++;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        
+        numLit = 0;
+        for (int i = 0; i < lanterns.Length; i++)
+        {
+            if (lanterns[i].lit == true)
+            {
+                numLit++;
+            }
+        }
+        //UnityEngine.Debug.Log("numLit: " + numLit);
+        enableEnemies();
+        timer += 1.0f * Time.deltaTime;
+        if (solved == false && timer > 1.0f)
+        {
+            //Debug.Log("checked");
+            check();
+            timer = 0.0f;
+        }
     }
     /*private void FixedUpdate()
     { 
@@ -41,21 +66,16 @@ public class Lantern_Checker : MonoBehaviour
 
     public void check()
     {
-        numLit = 0;
+
         bool checking = true;
         for (int i = 0; i < lanterns.Length; ++i)
         {
-            if (lanterns[i].lit)
-            {
-                numLit++;
-            }
             if (lanterns[i].lit == false && puzzle.getSolved() == false)
             {
                 
                 checking = false;
             }
         }
-        enableEnemies();
         if (checking == true)
         {
             Destroy(GameObject.Find("ShadowWall"));
@@ -68,11 +88,15 @@ public class Lantern_Checker : MonoBehaviour
         {
             rat1.SetActive(true);
         }*/
-        if (numLit > 10)
+        if (numLit >= 10)
         {
             plant2.SetActive(true);
         }
-        if (numLit > 12)
+        if (numLit >= 12)
+        {
+            plant3.SetActive(true);
+        }
+        if (numLit >= 14)
         {
             plant1.SetActive(true);
         }

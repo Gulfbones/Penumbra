@@ -151,7 +151,7 @@ public class PlayerScript : MonoBehaviour
         {
             dropCoolDownTimer -= 1.0f * Time.deltaTime;
         }
-        if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.L)) && !busy && !attacking && !hidingFlame && (dropCoolDownTimer <= 0.0f))
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.L)) && !busy && !attacking && !hidingFlame && (dropCoolDownTimer <= 0.0f))
         {
             // Creates drop flame object
             Instantiate(droppedFlame, new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z), Quaternion.identity);
@@ -173,7 +173,7 @@ public class PlayerScript : MonoBehaviour
 
     public bool hideFlame()
     {
-        if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.J)) && !busy && !attacking && !candleDropping)
+        if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.J)) && !busy && !attacking && !candleDropping)
         {
             hidingFlame = true;
 
@@ -299,7 +299,7 @@ public class PlayerScript : MonoBehaviour
             waxCurrent -= 10.0f;
             UnityEngine.Debug.Log(other.name);
         }
-        if (other.CompareTag("Interactable") || other.CompareTag("Lantern"))
+        if (other.CompareTag("Interactable") || other.CompareTag("Lantern") || other.CompareTag("waxbottle"))
         {
             interactUI.SetActive(true);
         }

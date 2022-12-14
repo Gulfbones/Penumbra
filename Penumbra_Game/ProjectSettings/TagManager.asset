@@ -26,6 +26,7 @@ TagManager:
   - plant1
   - plant2
   - rat1
+  - plant3
   layers:
   - Default
   - TransparentFX

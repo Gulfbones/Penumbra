@@ -40,7 +40,7 @@ public class plantEnemyScript : MonoBehaviour
         attackRange = 2.5f;
         attack = AttackCoroutine();
         animator = gameObject.GetComponent<Animator>();
-        health = 250.0f;
+        health = 300.0f;
         xDiff = Mathf.Abs(plantEnemyPosition.x - playerPosition.x);
         yDiff = Mathf.Abs(plantEnemyPosition.y - playerPosition.y);
 
@@ -113,11 +113,11 @@ public class plantEnemyScript : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
 
-        if (other.gameObject.CompareTag("Drop Flame") || other.gameObject.CompareTag("Player") || other.name == ("Light_Hitbox"))
+        if (other.gameObject.CompareTag("Drop Flame") || other.name == ("Light_Hitbox"))
         {
             //UnityEngine.Debug.Log("plant health: " + health);
 
-            health -= 0.5f;
+            health -= 0.4f;
             if (health <= 0)
             {
                 gameObject.SetActive(false);
