@@ -6,6 +6,8 @@ public class FarmEnemySpawner : MonoBehaviour
 {
     [SerializeField]
     public GameObject desiredEnemy;
+    public GameObject desiredEnemy2;
+    public GameObject desiredEnemy3;
 
     public GameObject boss;
 
@@ -20,11 +22,13 @@ public class FarmEnemySpawner : MonoBehaviour
     public Transform spawner2Pos;
     public Transform spawner3Pos;
 
-    private int rand = 0;
+    private int randBox = 0;
+    private int randEnemy = 0;
 
     private bool decrease1 = true;
     private bool decrease2 = true;
     private bool decrease3 = true;
+    private GameObject enemySpawned;
 
 
     // Start is called before the first frame update
@@ -48,11 +52,15 @@ public class FarmEnemySpawner : MonoBehaviour
         {
             spawnerInterval = (spawnerInterval - dropInterval);
             decrease1 = false;
+            StopAllCoroutines();
+            StartCoroutine(spawnEnemy2(spawnerInterval));
         }
         if ((boss.GetComponent<FarmBossScript>().bossHealth <= 500) && (decrease2 == true))
         {
             spawnerInterval = (spawnerInterval - dropInterval);
             decrease2 = false;
+            StopAllCoroutines();
+            StartCoroutine(spawnEnemy3(spawnerInterval));
         }
         if ((boss.GetComponent<FarmBossScript>().bossHealth <= 250) && (decrease3 == true))
         {
@@ -69,25 +77,102 @@ public class FarmEnemySpawner : MonoBehaviour
     // Chooses a random number from 0-2 to determine what spawner the enemy spawns at
     private IEnumerator spawnEnemy(float interval, GameObject enemy)
     {
-        rand = Random.Range(0, 3);
+        randBox = Random.Range(0, 3);
 
-        if (rand == 0)
+        if (randBox == 0)
         {
-            yield return new WaitForSeconds(interval);
             GameObject newEnemy = Instantiate(enemy, spawner1Pos);
+            yield return new WaitForSeconds(interval);
             StartCoroutine(spawnEnemy(interval, enemy));
         }
-        else if (rand == 1)
+        else if (randBox == 1)
         {
-            yield return new WaitForSeconds(interval);
             GameObject newEnemy = Instantiate(enemy, spawner2Pos);
+            yield return new WaitForSeconds(interval);
             StartCoroutine(spawnEnemy(interval, enemy));
         }
         else
         {
-            yield return new WaitForSeconds(interval);
             GameObject newEnemy = Instantiate(enemy, spawner3Pos);
+            yield return new WaitForSeconds(interval);
             StartCoroutine(spawnEnemy(interval, enemy));
         }
     }
+
+    private IEnumerator spawnEnemy2(float interval)
+    {
+        randBox = Random.Range(0, 3);
+        randEnemy = Random.Range(0, 2);
+
+        // Randomly selects one of two enemies to spawn
+        if (randEnemy == 0)
+        {
+            enemySpawned = desiredEnemy;
+        }
+        else
+        {
+            enemySpawned = desiredEnemy2;
+        }
+
+        // Randomly selects an area to spawn the enemy, wait, and begin the process again
+        if (randBox == 0)
+        {
+            GameObject newEnemy = Instantiate(enemySpawned, spawner1Pos);
+            yield return new WaitForSeconds(interval);
+            StartCoroutine(spawnEnemy2(interval));
+        }
+        else if (randBox == 1)
+        {
+            GameObject newEnemy = Instantiate(enemySpawned, spawner2Pos);
+            yield return new WaitForSeconds(interval);
+            StartCoroutine(spawnEnemy2(interval));
+        }
+        else
+        {
+            GameObject newEnemy = Instantiate(enemySpawned, spawner3Pos);
+            yield return new WaitForSeconds(interval);
+            StartCoroutine(spawnEnemy2(interval));
+        }
+    }
+    
+    private IEnumerator spawnEnemy3(float interval)
+    {
+        randBox = Random.Range(0, 3);
+        randEnemy = Random.Range(0, 3);
+
+        // Randomly selects one of two enemies to spawn
+        if (randEnemy == 0)
+        {
+            enemySpawned = desiredEnemy;
+        }
+        else if (randEnemy == 1)
+        {
+            enemySpawned = desiredEnemy2;
+        }
+        else
+        {
+            enemySpawned = desiredEnemy3;
+        }
+
+        // Randomly selects an area to spawn the enemy, wait, and begin the process again
+        if (randBox == 0)
+        {
+            GameObject newEnemy = Instantiate(enemySpawned, spawner1Pos);
+            yield return new WaitForSeconds(interval);
+            StartCoroutine(spawnEnemy3(interval));
+        }
+        else if (randBox == 1)
+        {
+            GameObject newEnemy = Instantiate(enemySpawned, spawner2Pos);
+            yield return new WaitForSeconds(interval);
+            StartCoroutine(spawnEnemy3(interval));
+        }
+        else
+        {
+            GameObject newEnemy = Instantiate(enemySpawned, spawner3Pos);
+            yield return new WaitForSeconds(interval);
+            StartCoroutine(spawnEnemy3(interval));
+        }
+    }
+
 }

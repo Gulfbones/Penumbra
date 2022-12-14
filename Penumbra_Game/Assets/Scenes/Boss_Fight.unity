@@ -8391,7 +8391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1184553557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8405,11 +8405,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desiredEnemy: {fileID: 4008670216598533379, guid: 6ed8beb1b65cab441b4e3f0ea7cbf556, type: 3}
+  desiredEnemy2: {fileID: 8854161908872832560, guid: 53a380697d879b44783cd3dd17a46409, type: 3}
+  desiredEnemy3: {fileID: 8327010738492474026, guid: 9b662c105a931e54ca2f02a76ca58988, type: 3}
   boss: {fileID: 1288696319}
   spawner1: {fileID: 87376034}
   spawner2: {fileID: 620010910}
   spawner3: {fileID: 1048738619}
-  spawnerInterval: 9
+  spawnerInterval: 15
   dropInterval: 2
   spawner1Pos: {fileID: 0}
   spawner2Pos: {fileID: 0}
@@ -8422,7 +8424,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184553556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20, y: -7, z: -660.05945}
+  m_LocalPosition: {x: 25, y: -7, z: -660.05945}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 87376035}
@@ -8810,7 +8812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 273386613}
   bossHealth: 1000
-  damage: 250
+  damage: 125
   head1: {fileID: 995783760}
   head2: {fileID: 1594513028}
   head3: {fileID: 755040187}
@@ -8947,7 +8949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1401903136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8961,11 +8963,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desiredEnemy: {fileID: 5752069529594043040, guid: 0bdd1840465918047ad1c7aeb98d2fb1, type: 3}
+  desiredEnemy2: {fileID: 1315840446287794390, guid: 5b280f5e875d15b42bbc76ae513ca752, type: 3}
+  desiredEnemy3: {fileID: 115029181266892725, guid: bba73f9b4e826124fbee732a62f3474a, type: 3}
   boss: {fileID: 1288696319}
   spawner1: {fileID: 19507177}
   spawner2: {fileID: 1348714123}
   spawner3: {fileID: 1116272142}
-  spawnerInterval: 7
+  spawnerInterval: 13
   dropInterval: 2
   spawner1Pos: {fileID: 0}
   spawner2Pos: {fileID: 0}
@@ -8978,7 +8982,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401903135}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20, y: -7, z: -660.05945}
+  m_LocalPosition: {x: -25, y: -7, z: -660.05945}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 19507179}
@@ -9958,6 +9962,14 @@ PrefabInstance:
     - target: {fileID: 1666848151531296839, guid: 7140d3f95c9245e43ae75e18e18f3716, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2463514710503975784, guid: 7140d3f95c9245e43ae75e18e18f3716, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2463514710503975784, guid: 7140d3f95c9245e43ae75e18e18f3716, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1868475665
       objectReference: {fileID: 0}
     - target: {fileID: 2463514710503975785, guid: 7140d3f95c9245e43ae75e18e18f3716, type: 3}
       propertyPath: m_RootOrder

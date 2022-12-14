@@ -35,6 +35,10 @@ public class stage3Behavior : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.ResetTrigger("idle");
+        animator.ResetTrigger("rAttack");
+        animator.ResetTrigger("lAttack");
+        animator.ResetTrigger("dAttack");
 
     }
 }
