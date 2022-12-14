@@ -3483,6 +3483,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1346662512}
     m_Modifications:
+    - target: {fileID: 1003937651, guid: 313c814e06bfb354ab93b46b5e75cfa4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6460960295222572249, guid: 313c814e06bfb354ab93b46b5e75cfa4, type: 3}
       propertyPath: playerScript
       value: 
@@ -3501,7 +3505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6460960295222572254, guid: 313c814e06bfb354ab93b46b5e75cfa4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.77
+      value: 3.31
       objectReference: {fileID: 0}
     - target: {fileID: 6460960295222572254, guid: 313c814e06bfb354ab93b46b5e75cfa4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3568,7 +3572,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1378225240}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -8190,6 +8194,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1346662512}
     m_Modifications:
+    - target: {fileID: 1003937651, guid: 313c814e06bfb354ab93b46b5e75cfa4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6460960295222572253, guid: 313c814e06bfb354ab93b46b5e75cfa4, type: 3}
       propertyPath: m_Name
       value: Latern Object (4)
@@ -8204,7 +8212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6460960295222572254, guid: 313c814e06bfb354ab93b46b5e75cfa4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.91
+      value: 2.52
       objectReference: {fileID: 0}
     - target: {fileID: 6460960295222572254, guid: 313c814e06bfb354ab93b46b5e75cfa4, type: 3}
       propertyPath: m_LocalPosition.z
