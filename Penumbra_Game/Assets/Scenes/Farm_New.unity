@@ -10238,15 +10238,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.31
+      value: -19.1
       objectReference: {fileID: 0}
     - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.95
+      value: -56.9
       objectReference: {fileID: 0}
     - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10287,10 +10287,6 @@ PrefabInstance:
     - target: {fileID: 5882087421926032979, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5882087421926032979, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
-      propertyPath: m_TagString
-      value: plant2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
@@ -12239,7 +12235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2980148259862331485, guid: 9121664646bf03140a59cc45fc6ff8b3, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2980148259862331485, guid: 9121664646bf03140a59cc45fc6ff8b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24891,11 +24887,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.23
+      value: 39.67
       objectReference: {fileID: 0}
     - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -45.64
+      value: -51.02
       objectReference: {fileID: 0}
     - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24932,10 +24928,6 @@ PrefabInstance:
     - target: {fileID: 5882087421926032979, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
       propertyPath: m_Name
       value: penumbra weed shadow (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5882087421926032979, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
@@ -48681,67 +48673,6 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
---- !u!1001 &1749471292
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
-      propertyPath: m_RootOrder
-      value: 193
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -19.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -48.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713376055035600432, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5882087421926032979, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
-      propertyPath: m_Name
-      value: penumbra weed shadow (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5882087421926032979, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8ad621f155dc08c4fb4a4e2891a9060a, type: 3}
 --- !u!1 &1766686979 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 720846971274731721, guid: 47b43c0dcbc897548bdf78bb5abe5c15, type: 3}
