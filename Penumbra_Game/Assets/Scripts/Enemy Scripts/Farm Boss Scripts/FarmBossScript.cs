@@ -41,6 +41,7 @@ public class FarmBossScript : MonoBehaviour
 
         if(bossHealth <= 500)
         {
+            anim.ResetTrigger("stageTwo");
             anim.SetTrigger("stageThree");
             head2.SetActive(false);
             head3.SetActive(true);
@@ -48,6 +49,7 @@ public class FarmBossScript : MonoBehaviour
 
         if(bossHealth <= 250)
         {
+            anim.ResetTrigger("stageThree");
             anim.SetTrigger("stageF");
             head3.SetActive(false);
             head4.SetActive(true);
