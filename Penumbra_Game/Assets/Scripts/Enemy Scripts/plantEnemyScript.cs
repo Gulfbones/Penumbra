@@ -40,7 +40,7 @@ public class plantEnemyScript : MonoBehaviour
         attackRange = 2.5f;
         attack = AttackCoroutine();
         animator = gameObject.GetComponent<Animator>();
-        health = 300.0f;
+        health = 250.0f;
         xDiff = Mathf.Abs(plantEnemyPosition.x - playerPosition.x);
         yDiff = Mathf.Abs(plantEnemyPosition.y - playerPosition.y);
 
@@ -58,7 +58,7 @@ public class plantEnemyScript : MonoBehaviour
             if (!coroutineRunning)
             {
                 coroutineRunning = true;
-                UnityEngine.Debug.Log("Coroutine Started");
+                //UnityEngine.Debug.Log("Coroutine Started");
                 StartCoroutine(attack);
             }
         }
@@ -68,7 +68,7 @@ public class plantEnemyScript : MonoBehaviour
             {
                 coroutineRunning = false;
                 StopCoroutine(attack);
-                UnityEngine.Debug.Log("Coroutine Stopped");
+                //UnityEngine.Debug.Log("Coroutine Stopped");
                 canHit = false;
                 animator.SetBool("attacking", false);
 
@@ -115,9 +115,9 @@ public class plantEnemyScript : MonoBehaviour
 
         if (other.gameObject.CompareTag("Drop Flame") || other.gameObject.CompareTag("Player") || other.name == ("Light_Hitbox"))
         {
-            UnityEngine.Debug.Log("plant health: " + health);
+            //UnityEngine.Debug.Log("plant health: " + health);
 
-            health -= 0.25f;
+            health -= 0.5f;
             if (health <= 0)
             {
                 gameObject.SetActive(false);
@@ -142,9 +142,9 @@ public class plantEnemyScript : MonoBehaviour
 
         while (true)
         {
-            UnityEngine.Debug.Log("plantEnemyPosition: " + plantEnemyPosition);
-            UnityEngine.Debug.Log("playerPosition: " + playerPosition);
-            UnityEngine.Debug.Log("Coroutine Running");
+            //UnityEngine.Debug.Log("plantEnemyPosition: " + plantEnemyPosition);
+            //UnityEngine.Debug.Log("playerPosition: " + playerPosition);
+            //UnityEngine.Debug.Log("Coroutine Running");
             if (Mathf.Sqrt(xDiff * xDiff + yDiff * yDiff) <= attackRange)
             {
                 canHit = true;
@@ -153,7 +153,7 @@ public class plantEnemyScript : MonoBehaviour
             {
                 canHit = false;
             }
-            UnityEngine.Debug.Log("canHit: " + canHit);
+            //UnityEngine.Debug.Log("canHit: " + canHit);
             if (canHit)
             {
                 //Play attack animation
@@ -174,7 +174,7 @@ public class plantEnemyScript : MonoBehaviour
                 if (canHit)
                 {
                     pcScript.setWaxCurrent(pcScript.getWaxCurrent() - 10.0f);
-                    UnityEngine.Debug.Log("Damaged Player");
+                   // UnityEngine.Debug.Log("Damaged Player");
                 }
                 else
                 {

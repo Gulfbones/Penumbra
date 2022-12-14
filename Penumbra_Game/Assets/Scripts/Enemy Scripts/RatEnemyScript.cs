@@ -103,7 +103,7 @@ public class RatEnemyScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Drop Flame") || other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Drop Flame") || other.gameObject.CompareTag("Player") || other.name == ("Light_Hitbox"))
         {
             gameObject.SetActive(false);
         }
