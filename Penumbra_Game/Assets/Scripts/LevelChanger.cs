@@ -9,6 +9,7 @@ public class LevelChanger : MonoBehaviour
     [SerializeField] string _nextLevelName;
     [SerializeField] private GameObject creditScreen;
     public PlayerScript pcScript;
+    public bool goNext;
 
     void OnTriggerEnter2D(Collider2D ChangeScene)
     {
@@ -20,10 +21,8 @@ public class LevelChanger : MonoBehaviour
 
     public void GoToNextLevel()
     {
-        Debug.Log("Go to level: " + _nextLevelName);
-        SceneManager.LoadScene(_nextLevelName);
-        pcScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
-        pcScript.setWaxCurrent(pcScript.getWaxMax());
+        StartCoroutine(RestartCoroutine());
+        
     }
 
     //public void StartLevel()
@@ -36,6 +35,7 @@ public class LevelChanger : MonoBehaviour
         SceneManager.LoadScene(name);//"Sprint_3_03");
         pcScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         pcScript.setWaxCurrent(pcScript.getWaxMax());
+        
     }
 
     public void QuitGame()
@@ -51,6 +51,16 @@ public class LevelChanger : MonoBehaviour
     public void Return()
     {
         creditScreen.SetActive(false);   
+    }
+
+    public IEnumerator RestartCoroutine()
+    {
+        GameObject.Find("FadeSquare").gameObject.GetComponent<Fading>().fadeIn();
+        yield return new WaitForSeconds(2);
+        Debug.Log("Go to level: " + _nextLevelName);
+        pcScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        pcScript.setWaxCurrent(pcScript.getWaxMax());
+        SceneManager.LoadScene(_nextLevelName);
     }
 
 }

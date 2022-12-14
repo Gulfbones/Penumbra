@@ -309,12 +309,14 @@ public class PlayerScript : MonoBehaviour
     {
         if(other.CompareTag("Interactable") || other.CompareTag("Lantern") || other.CompareTag("Untagged"))
         {
-            if(interactUI != null)
             interactUI.SetActive(false);
         }
     }
     
-    
+    public void takeDamage(double dmg)
+    {
+
+    }
     public float getWaxMax()
     {
         return waxMax;

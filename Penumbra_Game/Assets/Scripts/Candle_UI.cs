@@ -24,7 +24,8 @@ public class Candle_UI : MonoBehaviour
         if (playerScript.getWaxCurrent() <= 0)
         {
             Debug.LogWarning("You Lose!");
-            Destroy(transform.parent.gameObject);
+            transform.parent.gameObject.SetActive(false);
+            //Destroy(transform.parent.gameObject);
         }
     }
 }

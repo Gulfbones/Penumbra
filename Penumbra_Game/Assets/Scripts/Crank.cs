@@ -9,6 +9,8 @@ public class Crank : MonoBehaviour
     public Sprite newSprite;
     public SpriteRenderer spriteRenderer;
     public GameObject rails;
+    public GameObject textNeed;
+    public GameObject textCrank;
     public AudioSource clipRails;
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,8 @@ public class Crank : MonoBehaviour
         gameObject.GetComponent<AudioSource>().Pause();
         clipRails.Play();
         clipRails.Pause();
+        textNeed = gameObject.transform.GetChild(0).gameObject;
+        textCrank = gameObject.transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
@@ -59,6 +63,26 @@ public class Crank : MonoBehaviour
         //{
         //    gameObject.GetComponent<AudioSource>().UnPause();
         //}
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player"))
+        if (handleCollected)
+        {
+            textCrank.SetActive(true);
+        }
+        else
+        {
+            textNeed.SetActive(true);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            textNeed.SetActive(false);
+            textCrank.SetActive(false);
+        }
     }
 
 }
