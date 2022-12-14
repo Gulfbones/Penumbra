@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FarmBossScript : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class FarmBossScript : MonoBehaviour
     public GameObject head3;
     public GameObject head4;
     public GameObject blocker;
+    public Slider healthSlider;
     [SerializeField] AudioClip defeatedBoss;
 
     private Animator anim;
@@ -26,6 +28,7 @@ public class FarmBossScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        healthSlider.value = bossHealth;
         if(damageInterval > 0)
         {
             damageInterval -= Time.deltaTime;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmalClawTwoBehavior : StateMachineBehaviour
+public class AmalIdleFinalBehavior : StateMachineBehaviour
 {
     public float timer;
     public float minTime;
@@ -15,7 +15,7 @@ public class AmalClawTwoBehavior : StateMachineBehaviour
     {
         rand = 0;
         timer = Random.Range(minTime, maxTime);
-        rand = Random.Range(0, 101);
+        rand = Random.Range(0, 3);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -25,13 +25,17 @@ public class AmalClawTwoBehavior : StateMachineBehaviour
         {
             int num = rand;
             Debug.Log(num);
-            if (rand <= 50)
-            {
-                animator.SetTrigger("idle");
-            }
-            else if (rand > 50)
+            if (rand == 0)
             {
                 animator.SetTrigger("chain");
+            }
+            else if (rand == 1)
+            {
+                animator.SetTrigger("claw");
+            }
+            else
+            {
+                animator.SetTrigger("push");
             }
         }
         else
@@ -43,7 +47,8 @@ public class AmalClawTwoBehavior : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.ResetTrigger("idle");
         animator.ResetTrigger("chain");
+        animator.ResetTrigger("claw");
+        animator.ResetTrigger("push");
     }
 }

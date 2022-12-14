@@ -5,6 +5,9 @@ using UnityEngine;
 public class SquidGameScript : MonoBehaviour
 {
     public Vector3 startPosition;
+    public GameObject light;
+    public PolygonCollider2D lightCollider;
+    public BoxCollider2D enemyCollider;
     GameObject obj;
     private Animator anim;
 
@@ -19,6 +22,7 @@ public class SquidGameScript : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
+        lightCollider = light.GetComponent<PolygonCollider2D>();
         //obj.GetComponent<PlayerMovementScript>().isMoving = true;
     }
 
@@ -35,6 +39,7 @@ public class SquidGameScript : MonoBehaviour
             if(obj.GetComponent<PlayerMovementScript>().isMoving == true)
             {
                 Debug.Log("Player moving. Attack.");
+                lightCollider.enabled = false;
                 anim.SetTrigger("found");
             }
         }
