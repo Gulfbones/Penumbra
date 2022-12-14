@@ -53,6 +53,10 @@ public class LevelChanger : MonoBehaviour
         creditScreen.SetActive(false);   
     }
 
+    public void StartGame()
+    {
+        SceneManager.LoadScene("FixTutorial");//"Sprint_3_03");
+    }
     public IEnumerator RestartCoroutine()
     {
         
