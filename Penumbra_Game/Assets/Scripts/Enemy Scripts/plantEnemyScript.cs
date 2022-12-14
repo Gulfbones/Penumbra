@@ -40,7 +40,7 @@ public class plantEnemyScript : MonoBehaviour
         attackRange = 2.5f;
         attack = AttackCoroutine();
         animator = gameObject.GetComponent<Animator>();
-        health = 250.0f;
+        health = 300.0f;
         xDiff = Mathf.Abs(plantEnemyPosition.x - playerPosition.x);
         yDiff = Mathf.Abs(plantEnemyPosition.y - playerPosition.y);
 
@@ -117,7 +117,7 @@ public class plantEnemyScript : MonoBehaviour
         {
             //UnityEngine.Debug.Log("plant health: " + health);
 
-            health -= 0.5f;
+            health -= 0.4f;
             if (health <= 0)
             {
                 gameObject.SetActive(false);
