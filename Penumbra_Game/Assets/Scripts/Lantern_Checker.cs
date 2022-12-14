@@ -11,6 +11,7 @@ public class Lantern_Checker : MonoBehaviour
     public int numLit;
     public GameObject plant1;
     //public GameObject rat1;
+    public GameObject plant2;
 
     void Start()
     {
@@ -22,6 +23,8 @@ public class Lantern_Checker : MonoBehaviour
         plant1.SetActive(false);
         //rat1 = GameObject.FindGameObjectWithTag("rat1");
         //rat1.SetActive(false);
+        plant2 = GameObject.FindGameObjectWithTag("plant2");
+        plant2.SetActive(false);
         for (int i = 0; i < lanterns.Length; i++)
         {
             if (lanterns[i].lit == true)
@@ -76,14 +79,16 @@ public class Lantern_Checker : MonoBehaviour
 
     public void enableEnemies()
     {
-        UnityEngine.Debug.Log("numLit: " + numLit);
         /*if (numLit > 9)
         {
             rat1.SetActive(true);
         }*/
-        if (numLit > 11)
+        if (numLit > 10)
         {
-            //enable enemy 1
+            plant2.SetActive(true);
+        }
+        if (numLit > 12)
+        {
             plant1.SetActive(true);
         }
 

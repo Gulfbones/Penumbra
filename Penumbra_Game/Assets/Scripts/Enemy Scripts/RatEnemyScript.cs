@@ -30,12 +30,11 @@ public class RatEnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, playerGameObject.transform.position, 0.1f);
-        //gameObject.transform.x = Vector3.MoveTowards();
-        //gameObject.transform.x = Vector3.MoveTowards();
+        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, playerGameObject.transform.position, 5.0f*Time.deltaTime);
+
 
         /*within attacking range of player*/
-        if (Mathf.Abs(playerGameObject.transform.position.x - gameObject.transform.position.x) <= 2 && Mathf.Abs(playerGameObject.transform.position.y - gameObject.transform.position.y) <= 2)
+        if (Mathf.Abs(playerGameObject.transform.position.x - gameObject.transform.position.x) <= 2.0f && Mathf.Abs(playerGameObject.transform.position.y - gameObject.transform.position.y) <= 2.0f)
         {
             animator.SetBool("inAttackRange", true);
             //play attack animation
@@ -89,6 +88,7 @@ public class RatEnemyScript : MonoBehaviour
                 gameObject.transform.localScale = scaleChange;
             }
         }
+        UnityEngine.Debug.Log("coroutine running: " + coroutineRunning);
     }
     public IEnumerator AttackCoroutine()
     {
