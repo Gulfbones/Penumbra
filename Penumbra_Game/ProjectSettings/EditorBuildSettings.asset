@@ -11,15 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FixTutorial.unity
     guid: 1ab504b880ad7de40b8e6b9b202bf1e0
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Sprint_3_03.unity
     guid: 31edf2a1121252f4da74c7d79b69f82f
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/HubWorld.unity
+    guid: 693d888fe7846034cb07015e24c6669b
   - enabled: 1
     path: Assets/Scenes/Farm_New.unity
     guid: 1372e4a392130cf46b0654e19e69731f
@@ -29,13 +26,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sprint_5_01.unity
     guid: 479b7932613aac44686ef5a99dbea91d
+  - enabled: 1
+    path: Assets/Scenes/Final_Boss.unity
+    guid: a7ae405e90c89d742b7872ac9b0cc1c3
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Default_Scene.unity
     guid: 03431b8df1cc89e47af27912b2d2f6db
-  - enabled: 1
-    path: Assets/Scenes/Final_Boss.unity
-    guid: a7ae405e90c89d742b7872ac9b0cc1c3
   m_configObjects: {}
