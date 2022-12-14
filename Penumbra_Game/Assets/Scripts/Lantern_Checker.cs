@@ -51,7 +51,7 @@ public class Lantern_Checker : MonoBehaviour
         bool checking = true;
         for (int i = 0; i < lanterns.Length; ++i)
         {
-            if (lanterns[i].lit == false && puzzle.getSolved() == true)
+            if (lanterns[i].lit == false && puzzle.getSolved() == false)
             {
                 
                 checking = false;
