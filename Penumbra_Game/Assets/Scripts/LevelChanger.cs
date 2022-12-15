@@ -57,24 +57,26 @@ public class LevelChanger : MonoBehaviour
     {
         SceneManager.LoadScene("FixTutorial");//"Sprint_3_03");
     }
+
+    public void Farming()
+    {
+        SceneManager.LoadScene("Farm_New");//Sprint_3_03;
+    }
     public IEnumerator RestartCoroutine()
     {
         
         GameObject.Find("FadeSquare").gameObject.GetComponent<Fading>().fadeIn(0.8f);
         Debug.Log("Go to level: " + _nextLevelName);
         
-        if (SceneManager.GetActiveScene().name != "TitleScene")
-        {
-            pcScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementScript>().enabled = false;
-            pcScript.setWaxCurrent(pcScript.getWaxMax());
-
-        }
+        
         //pcScript = 
         //GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<>.SetActive(false);
         
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene(_nextLevelName);
+        if(SceneManager.GetActiveScene().name == "HubWorld"){
+            SceneManager.LoadScene("Farm_New");//"Sprint_3_03");
+        }
     }
 
 }
