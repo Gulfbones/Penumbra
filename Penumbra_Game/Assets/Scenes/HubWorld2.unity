@@ -15717,6 +15717,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSprite: {fileID: 0}
   player: {fileID: 0}
+--- !u!1 &1471337277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1471337279}
+  - component: {fileID: 1471337278}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1471337278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471337277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e804d8172a795f4f84e2b5f0de6b4cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nextLevelName: 
+  creditScreen: {fileID: 0}
+  pcScript: {fileID: 0}
+  goNext: 0
+--- !u!4 &1471337279
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471337277}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 42
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1496589152
 GameObject:
   m_ObjectHideFlags: 0
@@ -16037,9 +16084,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 115446431244542752, guid: 9ae51a0a92a8d36469716d97e3920258, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1471337278}
+    - target: {fileID: 115446431244542752, guid: 9ae51a0a92a8d36469716d97e3920258, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 697345967925639077, guid: 9ae51a0a92a8d36469716d97e3920258, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522122377090798006, guid: 9ae51a0a92a8d36469716d97e3920258, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1471337278}
+    - target: {fileID: 2522122377090798006, guid: 9ae51a0a92a8d36469716d97e3920258, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
       objectReference: {fileID: 0}
     - target: {fileID: 3454384923991542705, guid: 9ae51a0a92a8d36469716d97e3920258, type: 3}
       propertyPath: m_IsActive
